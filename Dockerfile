@@ -15,11 +15,13 @@ RUN npm install -g ts-node typescript
 COPY . .
 
 # Generate Prisma Client
-RUN npx prisma generate
-RUN npx prisma migrate deploy
+# RUN npx prisma generate
+# RUN npx prisma migrate deploy
 
 # Expose the port your app runs on 
 EXPOSE 8000
 
+# TODO: Add a check for production or development environment
 # Start the app with nodemon
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy && npm run dev"]
