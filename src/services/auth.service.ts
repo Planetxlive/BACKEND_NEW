@@ -11,7 +11,7 @@ class AuthService {
             }
         });
 
-        return await prisma.user.create({ data: safeData });
+        return await prisma.user.create({ data: { id, created_at, ...safeData } });
     }
 
     async findUserByEmail(email: string) {
