@@ -14,6 +14,8 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         const clerkUser = await clerkClient.users.getUser(userId);
         const email = clerkUser.emailAddresses?.[0]?.emailAddress;
         const mobile = clerkUser.phoneNumbers?.[0]?.phoneNumber;
+        const fullName = [clerkUser.firstName, clerkUser.lastName].filter(Boolean).join(" ") || undefined;
+        const createdAt = clerkUser.createdAt ? new Date(clerkUser.createdAt) : new Date();
 
         // Check for existing user by email
         if (email) {
@@ -37,10 +39,8 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
             id: clerkUser.id,
             email,
             mobile,
-            name:
-                `${clerkUser.firstName ?? ""} ${clerkUser.lastName ?? ""}`.trim() ||
-                undefined,
-            created_at: new Date(clerkUser.createdAt),
+            name: fullName,
+            created_at: createdAt,
         });
 
         res.status(201).json({ success: true, user: newUser });

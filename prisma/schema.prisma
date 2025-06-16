@@ -15,21 +15,21 @@ datasource db {
 }
 
 model User {
-  id             String    @id @default(uuid())
+  id             String    @id
   name           String?
   email          String?   @unique
-  isSubscribed   Boolean   @default(false)
+  isSubscribed   Boolean   @default(false) @map("is_subscribed")
   created_at     DateTime  @default(now())
   otp            String?
   otpExpiry      DateTime?
-  refreshToken   String?
-  whatsappMobile String    @default("")
+  whatsappMobile String    @default("") @map("whatsapp_no")
   mobile         String?   @unique
   role           String    @default("user")
   state          String    @default("")
   city           String    @default("")
-
-  // Coordinates (latitude and longitude)
-  latitude  Float?
-  longitude Float?
+  latitude       Float?
+  longitude      Float?
+  imageURL       String?   @map("image_url")
+  coverURL       String?   @map("cover_url")
+  isDeleted      Boolean   @default(false) @map("is_deleted")
 }
