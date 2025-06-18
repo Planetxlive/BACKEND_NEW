@@ -5,6 +5,11 @@ class UserService {
     async findUserById(userId: string) {
         return await prisma.user.findUnique({
             where: { id: userId },
+            include: {
+                blogs: true,
+                likes: true,
+                comments: true,
+            },
         });
     }
 
