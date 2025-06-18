@@ -32,6 +32,12 @@ model User {
   imageURL       String?   @map("image_url")
   coverURL       String?   @map("cover_url")
   isDeleted      Boolean   @default(false) @map("is_deleted")
+  blogs          Blog[]
+  likes          Like[]
+  comments       Comment[]
+
+  @@index([email])
+  @@index([mobile])
 }
 
 model Payment {
@@ -46,4 +52,51 @@ model Payment {
   method            String?
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
+}
+
+model Blog {
+  id          String    @id @default(uuid())
+  userId      String
+  blogType    String
+  images      String[]  @default([])
+  title       String
+  description String
+  longitude   Float
+  latitude    Float
+  contactInfo String?
+  comments    Comment[]
+  likes       Like[]
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([userId])
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  userId    String
+  blogId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([userId, blogId])
+  @@index([userId])
+  @@index([blogId])
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  blogId    String
+  comment   String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([blogId])
+  @@index([userId])
 }

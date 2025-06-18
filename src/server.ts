@@ -18,13 +18,13 @@ app.use(morgan('combined', {
 app.use(limiter);
 app.use(clerkMiddleware());
 
-app.use("/api/v1", router);
-app.use(errorHandler);
-
 app.get("/", (req: Request, res: Response) => {
     logger.info("Root route hit");
     res.json({ msg: "Hello from PlanetX" });
 });
+
+app.use("/api/v1", router);
+app.use(errorHandler);
 
 const PORT = config.port || 8000;
 
