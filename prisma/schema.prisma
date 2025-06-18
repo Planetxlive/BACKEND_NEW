@@ -33,3 +33,17 @@ model User {
   coverURL       String?   @map("cover_url")
   isDeleted      Boolean   @default(false) @map("is_deleted")
 }
+
+model Payment {
+  id                String   @id @default(uuid())
+  userId            String   @map("user_id")
+  razorpayOrderId   String   @unique @map("razorpay_order_id")
+  razorpayPaymentId String?  @map("razorpay_payment_id")
+  razorpaySignature String?  @map("razorpay_signature")
+  amount            Int
+  currency          String   @default("INR")
+  status            String   @default("created")
+  method            String?
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+}
