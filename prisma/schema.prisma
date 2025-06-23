@@ -35,6 +35,7 @@ model User {
   blogs          Blog[]
   likes          Like[]
   comments       Comment[]
+  gyms           Gym[]
 
   @@index([email])
   @@index([mobile])
@@ -98,5 +99,39 @@ model Comment {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@index([blogId])
+  @@index([userId])
+}
+
+model Gym {
+  id                  String   @id @default(uuid()) @map("id")
+  userId              String   @map("user_id")
+  gymName             String   @map("gym_name")
+  locationLatitude    Float    @map("location_latitude")
+  locationLongitude   Float    @map("location_longitude")
+  yearOfGym           Int      @map("year_of_gym")
+  description         String
+  photos              String[] @default([])
+  videos              String[] @default([])
+  lockerFacility      Boolean  @map("locker_facility")
+  timing              Json     @map("timing")
+  categories          String[]
+  rateCard            String?  @map("rate_card")
+  website             String?
+  services            String[]
+  benefits            String[]
+  pricing             Json
+  amenities           String[]
+  availableSports     String[] @map("available_sports")
+  strengthEquipments  String[] @map("strength_equipments")
+  cardioEquipments    String[] @map("cardio_equipments")
+  rules               String[]
+  gender              String
+  counsellingServices Json     @map("counselling_services")
+  socialMediaLinks    Json     @map("social_media_links")
+  isDeleted           Boolean  @default(false) @map("is_deleted")
+  user                User     @relation(fields: [userId], references: [id])
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
   @@index([userId])
 }
