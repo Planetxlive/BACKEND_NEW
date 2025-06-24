@@ -36,6 +36,7 @@ model User {
   likes          Like[]
   comments       Comment[]
   gyms           Gym[]
+  parkings       Parking[]
 
   @@index([email])
   @@index([mobile])
@@ -132,6 +133,34 @@ model Gym {
   user                User     @relation(fields: [userId], references: [id])
   createdAt           DateTime @default(now()) @map("created_at")
   updatedAt           DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+}
+
+model Parking {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  name           String   @map("name_of_parking")
+  description    String
+  latitude       Float
+  longitude      Float
+  price          Json     @map("price")
+  yearOfParking  Int      @map("year_of_parking")
+  parkingType    String   @map("parking_type")
+  vacancies      Int
+  size           String
+  photos         String[] @default([])
+  videos         String[] @default([])
+  amenities      String[] @default([])
+  accessibility  String
+  capacity       Int
+  security       String[] @default([])
+  operatingHours Json     @map("operating_hours")
+  booking        Json
+  isDeleted      Boolean  @default(false) @map("is_deleted")
+  user           User     @relation(fields: [userId], references: [id])
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
 
   @@index([userId])
 }
