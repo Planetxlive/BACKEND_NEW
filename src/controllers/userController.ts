@@ -20,7 +20,7 @@ const getUser = async (req: Request, res: Response, next: NextFunction) => {
             return;
         }
 
-        const { isDeleted, otp, otpExpiry, ...safeUser } = user;
+        const { isDeleted, ...safeUser } = user;
 
         logger.info(`Successfully retrieved user: ${userId}`);
         res.status(200).json({ success: true, user: safeUser });
@@ -71,7 +71,7 @@ const updateProfile = async (
 
         const updatedUser = await userService.updateProfile(userId, updateData);
 
-        const { isDeleted, otp, otpExpiry, ...safeUser } = updatedUser;
+        const { isDeleted, ...safeUser } = updatedUser;
 
         logger?.info?.(`User profile updated: ${userId}`);
         res.status(200).json({ success: true, user: safeUser });

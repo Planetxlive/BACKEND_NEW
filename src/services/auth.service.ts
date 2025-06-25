@@ -14,9 +14,9 @@ class AuthService {
         return await prisma.user.create({ data: { id, created_at, ...safeData } });
     }
 
-    async findUserByEmail(email: string) {
-        return await prisma.user.findUnique({ where: { email } });
-    }
+    // async findUserByEmail(email: string) {
+    //     return await prisma.user.findUnique({ where: { email } });
+    // }
 
     async findUserByMobile(mobile: string) {
         return await prisma.user.findUnique({ where: { mobile } });
