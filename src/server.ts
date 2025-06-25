@@ -6,6 +6,7 @@ import { clerkMiddleware } from '@clerk/express';
 import limiter from "./middlewares/rateLimiter";
 import router from "./routes";
 import errorHandler from "./middlewares/errorHandler";
+import cors from "cors";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(morgan('combined', {
         write: (message) => logger.http(message.trim()),
     },
 }));
+app.use(cors());
 app.use(limiter);
 app.use(clerkMiddleware());
 

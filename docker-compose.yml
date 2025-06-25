@@ -29,6 +29,18 @@ services:
     volumes:
       - .:/app
     tty: true
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./prisma
+          target: /app/prisma
+        - action: sync+restart
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: ./package.json
+          target: /app/package.json
+        
 
 volumes:
   postgres_data:

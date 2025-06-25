@@ -17,11 +17,11 @@ datasource db {
 model User {
   id             String    @id
   name           String?
-  email          String?   @unique
+  // email          String?   @unique
   isSubscribed   Boolean   @default(false) @map("is_subscribed")
   created_at     DateTime  @default(now())
-  otp            String?
-  otpExpiry      DateTime?
+  // otp            String?
+  // otpExpiry      DateTime?
   whatsappMobile String    @default("") @map("whatsapp_no")
   mobile         String?   @unique
   role           String    @default("user")
@@ -29,7 +29,7 @@ model User {
   city           String    @default("")
   latitude       Float?
   longitude      Float?
-  imageURL       String?   @map("image_url")
+  // imageURL       String?   @map("image_url")
   coverURL       String?   @map("cover_url")
   isDeleted      Boolean   @default(false) @map("is_deleted")
   blogs          Blog[]
@@ -37,7 +37,7 @@ model User {
   comments       Comment[]
   gyms           Gym[]
 
-  @@index([email])
+  // @@index([email])
   @@index([mobile])
 }
 

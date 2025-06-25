@@ -153,7 +153,7 @@ class BlogService {
                     select: {
                         id: true,
                         name: true,
-                        imageURL: true,
+                        coverURL: true,
                     },
                 },
             },
@@ -169,7 +169,7 @@ class BlogService {
                     select: {
                         id: true,
                         name: true,
-                        imageURL: true,
+                        coverURL: true,
                     },
                 },
             },

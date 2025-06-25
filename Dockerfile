@@ -24,4 +24,4 @@ EXPOSE 8000
 # TODO: Add a check for production or development environment
 # Start the app with nodemon
 # CMD ["npm", "run", "dev"]
-CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy && npm run dev"]
+CMD ["sh", "-c", "npx -y prisma generate && npx -y prisma migrate deploy && npm run dev"]

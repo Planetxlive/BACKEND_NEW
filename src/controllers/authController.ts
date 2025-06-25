@@ -12,19 +12,19 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         }
 
         const clerkUser = await clerkClient.users.getUser(userId);
-        const email = clerkUser.emailAddresses?.[0]?.emailAddress;
+        // const email = clerkUser.emailAddresses?.[0]?.emailAddress;
         const mobile = clerkUser.phoneNumbers?.[0]?.phoneNumber;
         const fullName = [clerkUser.firstName, clerkUser.lastName].filter(Boolean).join(" ") || undefined;
         const createdAt = clerkUser.createdAt ? new Date(clerkUser.createdAt) : new Date();
 
         // Check for existing user by email
-        if (email) {
-            const existingUser = await authService.findUserByEmail(email);
-            if (existingUser) {
-                res.status(200).json({ success: true, user: existingUser });
-                return;
-            }
-        }
+        // if (email) {
+        //     const existingUser = await authService.findUserByEmail(email);
+        //     if (existingUser) {
+        //         res.status(200).json({ success: true, user: existingUser });
+        //         return;
+        //     }
+        // }
 
         // Check for existing user by mobile
         if (mobile) {
@@ -37,7 +37,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
         const newUser = await authService.createUser({
             id: clerkUser.id,
-            email,
+            // email,
             mobile,
             name: fullName,
             created_at: createdAt,
