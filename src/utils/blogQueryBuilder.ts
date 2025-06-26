@@ -11,7 +11,7 @@ export function buildBlogQueryOptions(
         ...(filters.search && {
             OR: [
                 { title: { contains: filters.search, mode: "insensitive" } },
-                { description: { contains: filters.search, mode: "insensitive" } },
+                { excerpt: { contains: filters.search, mode: "insensitive" } },
             ],
         }),
     };

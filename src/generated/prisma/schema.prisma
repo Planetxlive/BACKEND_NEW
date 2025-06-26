@@ -54,6 +54,7 @@ model Payment {
 model Blog {
   id          String    @id @default(uuid())
   userId      String
+  views       Int       @default(0) @map("views")
   title       String
   excerpt     String
   image       String    @default("")

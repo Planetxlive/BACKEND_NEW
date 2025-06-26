@@ -137,6 +137,7 @@ class BlogService {
                     id: true,
                     excerpt: true,
                     tags: true,
+                    views: true,
                     user: {
                         select: {
                             id: true,
@@ -156,6 +157,26 @@ class BlogService {
             }
 
             return blog;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    // increment views
+    async incrementViews(id: string) {
+        try {
+            const updatedBlog = await prisma.blog.update({
+                where: { id },
+                data: {
+                    views: {
+                        increment: 1
+                    }
+                },
+                select: { views: true }
+            });
+
+            await RedisCache.del(`blog:${id}`);
+            return updatedBlog.views;
         } catch (error) {
             throw error;
         }

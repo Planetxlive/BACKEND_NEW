@@ -153,6 +153,7 @@ exports.Prisma.PaymentScalarFieldEnum = {
 exports.Prisma.BlogScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  views: 'views',
   title: 'title',
   excerpt: 'excerpt',
   image: 'image',

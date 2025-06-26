@@ -3958,13 +3958,24 @@ export namespace Prisma {
 
   export type AggregateBlog = {
     _count: BlogCountAggregateOutputType | null
+    _avg: BlogAvgAggregateOutputType | null
+    _sum: BlogSumAggregateOutputType | null
     _min: BlogMinAggregateOutputType | null
     _max: BlogMaxAggregateOutputType | null
+  }
+
+  export type BlogAvgAggregateOutputType = {
+    views: number | null
+  }
+
+  export type BlogSumAggregateOutputType = {
+    views: number | null
   }
 
   export type BlogMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    views: number | null
     title: string | null
     excerpt: string | null
     image: string | null
@@ -3979,6 +3990,7 @@ export namespace Prisma {
   export type BlogMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    views: number | null
     title: string | null
     excerpt: string | null
     image: string | null
@@ -3993,6 +4005,7 @@ export namespace Prisma {
   export type BlogCountAggregateOutputType = {
     id: number
     userId: number
+    views: number
     title: number
     excerpt: number
     image: number
@@ -4007,9 +4020,18 @@ export namespace Prisma {
   }
 
 
+  export type BlogAvgAggregateInputType = {
+    views?: true
+  }
+
+  export type BlogSumAggregateInputType = {
+    views?: true
+  }
+
   export type BlogMinAggregateInputType = {
     id?: true
     userId?: true
+    views?: true
     title?: true
     excerpt?: true
     image?: true
@@ -4024,6 +4046,7 @@ export namespace Prisma {
   export type BlogMaxAggregateInputType = {
     id?: true
     userId?: true
+    views?: true
     title?: true
     excerpt?: true
     image?: true
@@ -4038,6 +4061,7 @@ export namespace Prisma {
   export type BlogCountAggregateInputType = {
     id?: true
     userId?: true
+    views?: true
     title?: true
     excerpt?: true
     image?: true
@@ -4089,6 +4113,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: BlogAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BlogSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: BlogMinAggregateInputType
@@ -4119,6 +4155,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: BlogCountAggregateInputType | true
+    _avg?: BlogAvgAggregateInputType
+    _sum?: BlogSumAggregateInputType
     _min?: BlogMinAggregateInputType
     _max?: BlogMaxAggregateInputType
   }
@@ -4126,6 +4164,7 @@ export namespace Prisma {
   export type BlogGroupByOutputType = {
     id: string
     userId: string
+    views: number
     title: string
     excerpt: string
     image: string
@@ -4137,6 +4176,8 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     _count: BlogCountAggregateOutputType | null
+    _avg: BlogAvgAggregateOutputType | null
+    _sum: BlogSumAggregateOutputType | null
     _min: BlogMinAggregateOutputType | null
     _max: BlogMaxAggregateOutputType | null
   }
@@ -4158,6 +4199,7 @@ export namespace Prisma {
   export type BlogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    views?: boolean
     title?: boolean
     excerpt?: boolean
     image?: boolean
@@ -4177,6 +4219,7 @@ export namespace Prisma {
   export type BlogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    views?: boolean
     title?: boolean
     excerpt?: boolean
     image?: boolean
@@ -4193,6 +4236,7 @@ export namespace Prisma {
   export type BlogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    views?: boolean
     title?: boolean
     excerpt?: boolean
     image?: boolean
@@ -4209,6 +4253,7 @@ export namespace Prisma {
   export type BlogSelectScalar = {
     id?: boolean
     userId?: boolean
+    views?: boolean
     title?: boolean
     excerpt?: boolean
     image?: boolean
@@ -4221,7 +4266,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type BlogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "title" | "excerpt" | "image" | "tags" | "category" | "content" | "location" | "contactInfo" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
+  export type BlogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "views" | "title" | "excerpt" | "image" | "tags" | "category" | "content" | "location" | "contactInfo" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
   export type BlogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     comments?: boolean | Blog$commentsArgs<ExtArgs>
@@ -4245,6 +4290,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      views: number
       title: string
       excerpt: string
       image: string
@@ -4683,6 +4729,7 @@ export namespace Prisma {
   interface BlogFieldRefs {
     readonly id: FieldRef<"Blog", 'String'>
     readonly userId: FieldRef<"Blog", 'String'>
+    readonly views: FieldRef<"Blog", 'Int'>
     readonly title: FieldRef<"Blog", 'String'>
     readonly excerpt: FieldRef<"Blog", 'String'>
     readonly image: FieldRef<"Blog", 'String'>
@@ -9997,6 +10044,7 @@ export namespace Prisma {
   export const BlogScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    views: 'views',
     title: 'title',
     excerpt: 'excerpt',
     image: 'image',
@@ -10421,6 +10469,7 @@ export namespace Prisma {
     NOT?: BlogWhereInput | BlogWhereInput[]
     id?: StringFilter<"Blog"> | string
     userId?: StringFilter<"Blog"> | string
+    views?: IntFilter<"Blog"> | number
     title?: StringFilter<"Blog"> | string
     excerpt?: StringFilter<"Blog"> | string
     image?: StringFilter<"Blog"> | string
@@ -10439,6 +10488,7 @@ export namespace Prisma {
   export type BlogOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    views?: SortOrder
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
@@ -10460,6 +10510,7 @@ export namespace Prisma {
     OR?: BlogWhereInput[]
     NOT?: BlogWhereInput | BlogWhereInput[]
     userId?: StringFilter<"Blog"> | string
+    views?: IntFilter<"Blog"> | number
     title?: StringFilter<"Blog"> | string
     excerpt?: StringFilter<"Blog"> | string
     image?: StringFilter<"Blog"> | string
@@ -10478,6 +10529,7 @@ export namespace Prisma {
   export type BlogOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    views?: SortOrder
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
@@ -10489,8 +10541,10 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BlogCountOrderByAggregateInput
+    _avg?: BlogAvgOrderByAggregateInput
     _max?: BlogMaxOrderByAggregateInput
     _min?: BlogMinOrderByAggregateInput
+    _sum?: BlogSumOrderByAggregateInput
   }
 
   export type BlogScalarWhereWithAggregatesInput = {
@@ -10499,6 +10553,7 @@ export namespace Prisma {
     NOT?: BlogScalarWhereWithAggregatesInput | BlogScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Blog"> | string
     userId?: StringWithAggregatesFilter<"Blog"> | string
+    views?: IntWithAggregatesFilter<"Blog"> | number
     title?: StringWithAggregatesFilter<"Blog"> | string
     excerpt?: StringWithAggregatesFilter<"Blog"> | string
     image?: StringWithAggregatesFilter<"Blog"> | string
@@ -11179,6 +11234,7 @@ export namespace Prisma {
 
   export type BlogCreateInput = {
     id?: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -11197,6 +11253,7 @@ export namespace Prisma {
   export type BlogUncheckedCreateInput = {
     id?: string
     userId: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -11213,6 +11270,7 @@ export namespace Prisma {
 
   export type BlogUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -11231,6 +11289,7 @@ export namespace Prisma {
   export type BlogUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -11248,6 +11307,7 @@ export namespace Prisma {
   export type BlogCreateManyInput = {
     id?: string
     userId: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -11262,6 +11322,7 @@ export namespace Prisma {
 
   export type BlogUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -11277,6 +11338,7 @@ export namespace Prisma {
   export type BlogUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -12131,6 +12193,7 @@ export namespace Prisma {
   export type BlogCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    views?: SortOrder
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
@@ -12143,9 +12206,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type BlogAvgOrderByAggregateInput = {
+    views?: SortOrder
+  }
+
   export type BlogMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    views?: SortOrder
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
@@ -12160,6 +12228,7 @@ export namespace Prisma {
   export type BlogMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    views?: SortOrder
     title?: SortOrder
     excerpt?: SortOrder
     image?: SortOrder
@@ -12169,6 +12238,10 @@ export namespace Prisma {
     contactInfo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BlogSumOrderByAggregateInput = {
+    views?: SortOrder
   }
 
   export type BlogScalarRelationFilter = {
@@ -13246,6 +13319,7 @@ export namespace Prisma {
 
   export type BlogCreateWithoutUserInput = {
     id?: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -13262,6 +13336,7 @@ export namespace Prisma {
 
   export type BlogUncheckedCreateWithoutUserInput = {
     id?: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -13486,6 +13561,7 @@ export namespace Prisma {
     NOT?: BlogScalarWhereInput | BlogScalarWhereInput[]
     id?: StringFilter<"Blog"> | string
     userId?: StringFilter<"Blog"> | string
+    views?: IntFilter<"Blog"> | number
     title?: StringFilter<"Blog"> | string
     excerpt?: StringFilter<"Blog"> | string
     image?: StringFilter<"Blog"> | string
@@ -13872,6 +13948,7 @@ export namespace Prisma {
 
   export type BlogCreateWithoutLikesInput = {
     id?: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -13889,6 +13966,7 @@ export namespace Prisma {
   export type BlogUncheckedCreateWithoutLikesInput = {
     id?: string
     userId: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -13971,6 +14049,7 @@ export namespace Prisma {
 
   export type BlogUpdateWithoutLikesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -13988,6 +14067,7 @@ export namespace Prisma {
   export type BlogUncheckedUpdateWithoutLikesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -14048,6 +14128,7 @@ export namespace Prisma {
 
   export type BlogCreateWithoutCommentsInput = {
     id?: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -14065,6 +14146,7 @@ export namespace Prisma {
   export type BlogUncheckedCreateWithoutCommentsInput = {
     id?: string
     userId: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -14147,6 +14229,7 @@ export namespace Prisma {
 
   export type BlogUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -14164,6 +14247,7 @@ export namespace Prisma {
   export type BlogUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -14371,6 +14455,7 @@ export namespace Prisma {
 
   export type BlogCreateManyUserInput = {
     id?: string
+    views?: number
     title: string
     excerpt: string
     image?: string
@@ -14454,6 +14539,7 @@ export namespace Prisma {
 
   export type BlogUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -14470,6 +14556,7 @@ export namespace Prisma {
 
   export type BlogUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
@@ -14486,6 +14573,7 @@ export namespace Prisma {
 
   export type BlogUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     excerpt?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
