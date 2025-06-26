@@ -26,8 +26,6 @@ services:
       - planetx
     depends_on:
       - postgres
-    volumes:
-      - .:/app
     tty: true
     develop:
       watch:
