@@ -6,13 +6,14 @@ import blogService from "../services/blog.service";
 // create blog
 const createBlog = async (req: Request, res: Response, next: NextFunction) => {
     const {
-        blogType,
-        title,
-        description,
-        longitude,
-        latitude,
         contactInfo,
-        images,
+        title,
+        excerpt,
+        location,
+        content,
+        tags,
+        category,
+        image
     } = req.body;
 
     try {
@@ -25,13 +26,14 @@ const createBlog = async (req: Request, res: Response, next: NextFunction) => {
 
         const blog = await blogService.createBlog({
             userId,
-            blogType,
             title,
-            description,
-            longitude,
-            latitude,
+            excerpt,
+            location,
+            content,
             contactInfo,
-            images,
+            tags,
+            category,
+            image
         });
 
         logger.info("Blog created successfully", { blogId: blog.id, userId });

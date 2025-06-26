@@ -1,13 +1,14 @@
 import { z } from "zod";
 
 export const blogSchema = z.object({
-    blogType: z.string(),
-    title: z.string(),
-    description: z.string(),
-    latitude: z.number(),
-    longitude: z.number(),
-    contactInfo: z.string().optional(),
-    images: z.array(z.string()).optional(),
+  title:         z.string(),
+  excerpt:       z.string(),
+  image:         z.string(),
+  tags:          z.array(z.string()),
+  category:      z.string(),
+  content:       z.string(),
+  location:      z.string().optional(),
+  contactInfo:   z.string().optional(),
 });
 
 export const commentSchema = z.object({

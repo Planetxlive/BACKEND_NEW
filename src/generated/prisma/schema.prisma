@@ -1,0 +1,162 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id
+  name           String?
+  isSubscribed   Boolean   @default(false) @map("is_subscribed")
+  created_at     DateTime  @default(now())
+  whatsappMobile String    @default("") @map("whatsapp_no")
+  mobile         String?   @unique
+  role           String    @default("user")
+  state          String    @default("")
+  city           String    @default("")
+  latitude       Float?
+  longitude      Float?
+  coverURL       String?   @map("cover_url")
+  isDeleted      Boolean   @default(false) @map("is_deleted")
+  blogs          Blog[]
+  likes          Like[]
+  comments       Comment[]
+  gyms           Gym[]
+  parkings       Parking[]
+
+  @@index([mobile])
+}
+
+model Payment {
+  id                String   @id @default(uuid())
+  userId            String   @map("user_id")
+  razorpayOrderId   String   @unique @map("razorpay_order_id")
+  razorpayPaymentId String?  @map("razorpay_payment_id")
+  razorpaySignature String?  @map("razorpay_signature")
+  amount            Int
+  currency          String   @default("INR")
+  status            String   @default("created")
+  method            String?
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+}
+
+model Blog {
+  id          String    @id @default(uuid())
+  userId      String
+  title       String
+  excerpt     String
+  image       String    @default("")
+  tags        String[]
+  category    String
+  content     String
+  location    String?
+  contactInfo String?
+  user        User      @relation(fields: [userId], references: [id])
+  comments    Comment[]
+  likes       Like[]
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([userId])
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  userId    String
+  blogId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([userId, blogId])
+  @@index([userId])
+  @@index([blogId])
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  blogId    String
+  comment   String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  blog      Blog     @relation(fields: [blogId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([blogId])
+  @@index([userId])
+}
+
+model Gym {
+  id                  String   @id @default(uuid()) @map("id")
+  userId              String   @map("user_id")
+  gymName             String   @map("gym_name")
+  locationLatitude    Float    @map("location_latitude")
+  locationLongitude   Float    @map("location_longitude")
+  yearOfGym           Int      @map("year_of_gym")
+  description         String
+  photos              String[] @default([])
+  videos              String[] @default([])
+  lockerFacility      Boolean  @map("locker_facility")
+  timing              Json     @map("timing")
+  categories          String[]
+  rateCard            String?  @map("rate_card")
+  website             String?
+  services            String[]
+  benefits            String[]
+  pricing             Json
+  amenities           String[]
+  availableSports     String[] @map("available_sports")
+  strengthEquipments  String[] @map("strength_equipments")
+  cardioEquipments    String[] @map("cardio_equipments")
+  rules               String[]
+  gender              String
+  counsellingServices Json     @map("counselling_services")
+  socialMediaLinks    Json     @map("social_media_links")
+  isDeleted           Boolean  @default(false) @map("is_deleted")
+  user                User     @relation(fields: [userId], references: [id])
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+}
+
+model Parking {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  name           String   @map("name_of_parking")
+  description    String
+  latitude       Float
+  longitude      Float
+  price          Json     @map("price")
+  yearOfParking  Int      @map("year_of_parking")
+  parkingType    String   @map("parking_type")
+  vacancies      Int
+  size           String
+  photos         String[] @default([])
+  videos         String[] @default([])
+  amenities      String[] @default([])
+  accessibility  String
+  capacity       Int
+  security       String[] @default([])
+  operatingHours Json     @map("operating_hours")
+  booking        Json
+  isDeleted      Boolean  @default(false) @map("is_deleted")
+  user           User     @relation(fields: [userId], references: [id])
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+}

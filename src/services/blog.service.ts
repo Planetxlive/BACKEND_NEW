@@ -1,4 +1,5 @@
 import prisma from "../db/db.config";
+import { Blog } from "../generated/prisma";
 import { BlogCreate } from "../interfaces/blogInterface";
 import { buildBlogQueryOptions } from "../utils/blogQueryBuilder";
 import RedisCache from "../utils/RedisCache";
@@ -16,13 +17,14 @@ class BlogService {
             const blog = await prisma.blog.create({
                 data: {
                     userId: data.userId,
-                    blogType: data.blogType,
+                    category: data.category,
                     title: data.title,
-                    description: data.description,
-                    longitude: data.longitude,
-                    latitude: data.latitude,
+                    excerpt: data.excerpt,
+                    location: data.location,
+                    image: data.image,
+                    content: data.content,
                     contactInfo: data.contactInfo,
-                    images: data.images,
+                    tags: data.tags,
                 },
             });
             await this.invalidateBlogCaches(blog.userId, blog.blogType);
@@ -121,8 +123,32 @@ class BlogService {
             if (cachedBlog) return cachedBlog;
 
             const blog = await prisma.blog.findUnique({
-                where: { id },
-                include: { likes: true, comments: true },
+                where: { id: id },
+                select: {
+                    likes: true,
+                    comments: true,
+                    category: true,
+                    contactInfo: true,
+                    content: true,
+                    title: true,
+                    updatedAt: true,
+                    location: true,
+                    image: true,
+                    id: true,
+                    excerpt: true,
+                    tags: true,
+                    user: {
+                        select: {
+                            id: true,
+                            name: true,
+                            coverURL: true,
+                            whatsappMobile: true,
+                            mobile: true,
+                            state: true,
+                            city: true,
+                        }
+                    }
+                }
             });
 
             if (blog) {
@@ -180,7 +206,15 @@ class BlogService {
             data: { blogId, userId, comment },
             include: {
                 user: {
-                    select: { id: true, name: true, coverURL: true },
+
+                    select: {
+                        id: true,
+                        name: true,
+                        coverURL: true,
+                        state: true,
+                        city: true,
+                    },
+>>>>>>> main
                 },
             },
         });
@@ -203,7 +237,17 @@ class BlogService {
             where: { blogId },
             include: {
                 user: {
+<<<<<<< 2506/sa
                     select: { id: true, name: true, coverURL: true },
+=======
+                    select: {
+                        id: true,
+                        name: true,
+                        coverURL: true,
+                        state: true,
+                        city: true,
+                    },
+>>>>>>> main
                 },
             },
         });
