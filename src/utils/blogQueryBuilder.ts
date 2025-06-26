@@ -7,7 +7,7 @@ export function buildBlogQueryOptions(
 
     const where: any = {
         ...(filters.userId && { userId: filters.userId }),
-        ...(filters.blogType && { blogType: filters.blogType }),
+        ...(filters.blogType && { category: filters.blogType }),
         ...(filters.search && {
             OR: [
                 { title: { contains: filters.search, mode: "insensitive" } },
@@ -30,7 +30,7 @@ export function buildBlogQueryOptions(
                 select: {
                     id: true,
                     name: true,
-                    imageURL: true,
+                    coverURL: true,
                 },
             },
         },

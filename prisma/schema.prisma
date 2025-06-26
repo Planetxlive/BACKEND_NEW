@@ -17,11 +17,8 @@ datasource db {
 model User {
   id             String    @id
   name           String?
-  // email          String?   @unique
   isSubscribed   Boolean   @default(false) @map("is_subscribed")
   created_at     DateTime  @default(now())
-  // otp            String?
-  // otpExpiry      DateTime?
   whatsappMobile String    @default("") @map("whatsapp_no")
   mobile         String?   @unique
   role           String    @default("user")
@@ -29,7 +26,6 @@ model User {
   city           String    @default("")
   latitude       Float?
   longitude      Float?
-  // imageURL       String?   @map("image_url")
   coverURL       String?   @map("cover_url")
   isDeleted      Boolean   @default(false) @map("is_deleted")
   blogs          Blog[]
@@ -38,7 +34,6 @@ model User {
   gyms           Gym[]
   parkings       Parking[]
 
-  // @@index([email])
   @@index([mobile])
 }
 
@@ -57,20 +52,21 @@ model Payment {
 }
 
 model Blog {
-  id          String    @id @default(uuid())
-  userId      String
-  blogType    String
-  images      String[]  @default([])
-  title       String
-  description String
-  longitude   Float
-  latitude    Float
-  contactInfo String?
-  comments    Comment[]
-  likes       Like[]
-  user        User      @relation(fields: [userId], references: [id])
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+  id            String    @id @default(uuid())
+  userId        String    
+  title         String
+  excerpt       String
+  image         String    @default("")
+  tags          String[]
+  category      String
+  content       String
+  location      String?
+  contactInfo   String?
+  user          User      @relation(fields: [userId], references: [id])
+  comments      Comment[]
+  likes         Like[]
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
 
   @@index([userId])
 }

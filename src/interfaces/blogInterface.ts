@@ -1,10 +1,11 @@
 export interface BlogCreate {
-    userId: string;
-    blogType: string;
-    title: string;
-    description: string;
-    longitude: number;
-    latitude: number;
-    contactInfo?: string;
-    images?: string[];
+  userId:        string    
+  title:         string
+  excerpt:       string
+  image:         string   
+  tags:          string[]
+  category:      string
+  content:       string
+  location?:      string
+  contactInfo?:   string
 }
