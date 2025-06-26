@@ -59,7 +59,12 @@ const getAllBlogs = async (req: Request, res: Response, next: NextFunction) => {
             search,
         });
 
-        const data = await blogService.getBlogs(page, limit, blogType, search);
+        const data = (await blogService.getBlogs(
+            page,
+            limit,
+            blogType,
+            search
+        )) as { blogs: any[]; pagination?: any; };
 
         logger.info("Blogs fetched successfully", {
             totalBlogs: data?.blogs?.length,
@@ -102,13 +107,13 @@ const getUserBlogs = async (
             userId,
         });
 
-        const data = await blogService.getUserBlogs(
+        const data = (await blogService.getUserBlogs(
             userId,
             page,
             limit,
             blogType,
             search
-        );
+        )) as { blogs: any[]; pagination?: any; };
 
         logger.info("Blogs fetched successfully", {
             totalBlogs: data?.blogs?.length,
@@ -222,7 +227,6 @@ const getComments = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { blogId } = req.params;
 
-
         const blog = await blogService.checkBlogExists(blogId);
 
         if (!blog) {
@@ -230,7 +234,8 @@ const getComments = async (req: Request, res: Response, next: NextFunction) => {
             return;
         }
 
-        const comments = await blogService.getComments(blogId);
+        const commentsResult = await blogService.getComments(blogId);
+        const comments: any[] = Array.isArray(commentsResult) ? commentsResult : [];
         logger.info("Fetched comments", {
             blogId,
             commentCount: comments.length,
