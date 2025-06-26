@@ -2,8 +2,15 @@ import prisma from "../db/db.config";
 import { Blog } from "../generated/prisma";
 import { BlogCreate } from "../interfaces/blogInterface";
 import { buildBlogQueryOptions } from "../utils/blogQueryBuilder";
+import RedisCache from "../utils/RedisCache";
 
 class BlogService {
+    private readonly CACHE_TTL = {
+        BLOG: 3600,
+        BLOGS_LIST: 300,
+        COMMENTS: 600,
+    };
+
     // create blog
     async createBlog(data: BlogCreate) {
         try {
@@ -20,6 +27,7 @@ class BlogService {
                     tags: data.tags,
                 },
             });
+            await this.invalidateBlogCaches(blog.userId, blog.blogType);
 
             return blog;
         } catch (error) {
@@ -35,11 +43,15 @@ class BlogService {
         search?: string
     ) {
         try {
+            const cacheKey = `blogs:all:${page}:${limit}:${blogType || "all"}:${search || "none"
+                }`;
+            const cachedData = await RedisCache.get(cacheKey);
+            if (cachedData) return cachedData;
+
             const queryOptions = buildBlogQueryOptions(page, limit, {
                 blogType,
                 search,
             });
-
             const [blogs, totalCount] = await Promise.all([
                 prisma.blog.findMany(queryOptions),
                 prisma.blog.count({ where: queryOptions.where }),
@@ -55,6 +67,7 @@ class BlogService {
                 },
             };
 
+            await RedisCache.set(cacheKey, data, this.CACHE_TTL.BLOGS_LIST);
             return data;
         } catch (error) {
             throw error;
@@ -70,18 +83,22 @@ class BlogService {
         search?: string
     ) {
         try {
+            const cacheKey = `blogs:user:${userId}:${page}:${limit}:${blogType || "all"
+                }:${search || "none"}`;
+            const cachedData = await RedisCache.get(cacheKey);
+            if (cachedData) return cachedData;
+
             const queryOptions = buildBlogQueryOptions(page, limit, {
                 userId,
                 blogType,
                 search,
             });
-
             const [blogs, totalCount] = await Promise.all([
                 prisma.blog.findMany(queryOptions),
                 prisma.blog.count({ where: queryOptions.where }),
             ]);
 
-            return {
+            const data = {
                 blogs,
                 pagination: {
                     total: totalCount,
@@ -90,6 +107,9 @@ class BlogService {
                     totalPages: Math.ceil(totalCount / limit),
                 },
             };
+
+            await RedisCache.set(cacheKey, data, this.CACHE_TTL.BLOGS_LIST);
+            return data;
         } catch (error) {
             throw error;
         }
@@ -98,6 +118,10 @@ class BlogService {
     // get blog by id
     async getBlogById(id: string) {
         try {
+            const cacheKey = `blog:${id}`;
+            const cachedBlog = await RedisCache.get(cacheKey);
+            if (cachedBlog) return cachedBlog;
+
             const blog = await prisma.blog.findUnique({
                 where: { id: id },
                 select: {
@@ -127,6 +151,10 @@ class BlogService {
                 }
             });
 
+            if (blog) {
+                await RedisCache.set(cacheKey, blog, this.CACHE_TTL.BLOG);
+            }
+
             return blog;
         } catch (error) {
             throw error;
@@ -135,44 +163,50 @@ class BlogService {
 
     // check blog exists
     async checkBlogExists(blogId: string): Promise<boolean> {
+        const cacheKey = `blog:exists:${blogId}`;
+        const cachedExists = await RedisCache.get<boolean>(cacheKey);
+        if (cachedExists !== null) return cachedExists;
+
         const blog = await prisma.blog.findUnique({
             where: { id: blogId },
             select: { id: true },
         });
-        return !!blog;
+
+        const exists = !!blog;
+        await RedisCache.set(cacheKey, exists, this.CACHE_TTL.BLOG);
+        return exists;
     }
 
     // toggle like
     async toggleLike(userId: string, blogId: string) {
         const existing = await prisma.like.findUnique({
-            where: {
-                userId_blogId: { userId, blogId },
-            },
+            where: { userId_blogId: { userId, blogId } },
         });
 
+        let result;
         if (existing) {
             await prisma.like.delete({
                 where: { userId_blogId: { userId, blogId } },
             });
-            return { liked: false };
+            result = { liked: false };
+        } else {
+            await prisma.like.create({
+                data: { userId, blogId },
+            });
+            result = { liked: true };
         }
 
-        await prisma.like.create({
-            data: { userId, blogId },
-        });
-        return { liked: true };
+        await RedisCache.del(`blog:${blogId}`);
+        return result;
     }
 
     // add comment
     async addComment(userId: string, blogId: string, comment: string) {
-        return await prisma.comment.create({
-            data: {
-                blogId,
-                userId,
-                comment,
-            },
+        const newComment = await prisma.comment.create({
+            data: { blogId, userId, comment },
             include: {
                 user: {
+
                     select: {
                         id: true,
                         name: true,
@@ -180,17 +214,32 @@ class BlogService {
                         state: true,
                         city: true,
                     },
+>>>>>>> main
                 },
             },
         });
+
+        await Promise.all([
+            RedisCache.del(`blog:${blogId}`),
+            RedisCache.del(`comments:${blogId}`),
+        ]);
+
+        return newComment;
     }
 
     // get comments
     async getComments(blogId: string) {
-        return await prisma.comment.findMany({
+        const cacheKey = `comments:${blogId}`;
+        const cachedComments = await RedisCache.get(cacheKey);
+        if (cachedComments) return cachedComments;
+
+        const comments = await prisma.comment.findMany({
             where: { blogId },
             include: {
                 user: {
+<<<<<<< 2506/sa
+                    select: { id: true, name: true, coverURL: true },
+=======
                     select: {
                         id: true,
                         name: true,
@@ -198,9 +247,24 @@ class BlogService {
                         state: true,
                         city: true,
                     },
+>>>>>>> main
                 },
             },
         });
+
+        await RedisCache.set(cacheKey, comments, this.CACHE_TTL.COMMENTS);
+        return comments;
+    }
+
+    private async invalidateBlogCaches(userId?: string, blogType?: string) {
+        const commonKeys = [
+            "blogs:all:1:10:all:none",
+            "blogs:all:1:10:all:",
+            ...(userId ? [`blogs:user:${userId}:1:10:all:none`] : []),
+            ...(blogType ? [`blogs:all:1:10:${blogType}:none`] : []),
+        ];
+
+        await Promise.all(commonKeys.map((key) => RedisCache.del(key)));
     }
 }
 

@@ -83,7 +83,9 @@ const updateParking = async (
             return;
         }
 
-        const parking = await parkingService.getParkingById(id);
+        const parking = (await parkingService.getParkingById(id)) as {
+            userId?: string;
+        } | null;
         if (!parking || parking.userId !== userId) {
             res
                 .status(403)
@@ -113,7 +115,9 @@ const deleteParking = async (
             return;
         }
 
-        const parking = await parkingService.getParkingById(id);
+        const parking = (await parkingService.getParkingById(id)) as {
+            userId?: string;
+        } | null;
         if (!parking || parking.userId !== userId) {
             res
                 .status(403)

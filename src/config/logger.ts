@@ -1,12 +1,15 @@
-import { createLogger, format, transports, Logger } from 'winston';
-import path from 'path';
-import type Transport from 'winston-transport';
-import { config } from './config';
+import { createLogger, format, transports, Logger } from "winston";
+import path from "path";
+import moment from "moment-timezone";
+import type Transport from "winston-transport";
+import { config } from "./config";
 
-const isProduction = config.node_env === 'production';
+const isProduction = config.node_env === "production";
 
 const logFormat = format.combine(
-    format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    format.timestamp({
+        format: () => moment().tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss"),
+    }),
     format.errors({ stack: true }),
     format.printf(({ timestamp, level, message, stack }) => {
         return `[${timestamp}] ${level.toUpperCase()}: ${stack || message}`;
@@ -27,17 +30,17 @@ const loggerTransports: Transport[] = [
 if (isProduction) {
     loggerTransports.push(
         new transports.File({
-            filename: path.join('logs', 'error.log'),
-            level: 'error',
+            filename: path.join("logs", "error.log"),
+            level: "error",
         }),
         new transports.File({
-            filename: path.join('logs', 'combined.log'),
+            filename: path.join("logs", "combined.log"),
         })
     );
 }
 
 const logger: Logger = createLogger({
-    level: isProduction ? 'info' : 'debug',
+    level: isProduction ? "info" : "debug",
     format: logFormat,
     transports: loggerTransports,
     exitOnError: false,

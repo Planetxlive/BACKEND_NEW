@@ -10,4 +10,9 @@ export const config = {
     // razorpay
     razorpay_key_id: process.env.RAZORPAY_KEY_ID,
     razorpay_key_secret: process.env.RAZORPAY_KEY_SECRET,
+
+    // Redis
+    redis_port: process.env.REDIS_PORT,
+    redis_host: process.env.REDIS_HOST,
+    redis_password: process.env.REDIS_PASSWORD,
 };
