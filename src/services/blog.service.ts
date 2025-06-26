@@ -27,7 +27,7 @@ class BlogService {
                     tags: data.tags,
                 },
             });
-            await this.invalidateBlogCaches(blog.userId, blog.blogType);
+            await this.invalidateBlogCaches(blog.userId, blog.category);
 
             return blog;
         } catch (error) {
@@ -214,7 +214,6 @@ class BlogService {
                         state: true,
                         city: true,
                     },
->>>>>>> main
                 },
             },
         });
@@ -237,9 +236,7 @@ class BlogService {
             where: { blogId },
             include: {
                 user: {
-<<<<<<< 2506/sa
-                    select: { id: true, name: true, coverURL: true },
-=======
+
                     select: {
                         id: true,
                         name: true,
@@ -247,7 +244,6 @@ class BlogService {
                         state: true,
                         city: true,
                     },
->>>>>>> main
                 },
             },
         });
