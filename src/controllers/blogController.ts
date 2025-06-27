@@ -36,7 +36,6 @@ const createBlog = async (req: Request, res: Response, next: NextFunction) => {
             image
         });
 
-        logger.info("Blog created successfully", { blogId: blog.id, userId });
         res.status(201).json({ success: true, blog });
     } catch (error: any) {
         logger.error("Error while creating blog", {
@@ -54,12 +53,7 @@ const getAllBlogs = async (req: Request, res: Response, next: NextFunction) => {
         const blogType = req.query.blogType as string | undefined;
         const search = req.query.search as string | undefined;
 
-        logger.info("Fetching blogs with filters", {
-            page,
-            limit,
-            blogType,
-            search,
-        });
+       
 
         const data = (await blogService.getBlogs(
             page,
@@ -68,10 +62,7 @@ const getAllBlogs = async (req: Request, res: Response, next: NextFunction) => {
             search
         )) as { blogs: any[]; pagination?: any; };
 
-        logger.info("Blogs fetched successfully", {
-            totalBlogs: data?.blogs?.length,
-            pagination: data?.pagination,
-        });
+       
 
         res.status(200).json({ success: true, data });
     } catch (error: any) {
@@ -138,13 +129,16 @@ const getBlogById = async (req: Request, res: Response, next: NextFunction) => {
         logger.info("Fetching blog by ID", { blogId: id });
 
         const blog = await blogService.getBlogById(id);
+        
         if (!blog) {
             logger.warn("Blog not found", { blogId: id });
             res.status(404).json({ success: false, message: "Blog not found" });
+            return;
         }
 
-        logger.info("Blog fetched successfully", { blogId: id });
-        res.status(200).json({ success: true, blog });
+        const views = await blogService.incrementViews(id);
+
+        res.status(200).json({ success: true, blog, views });
     } catch (error: any) {
         logger.error("Failed to process blog fetch", {
             error: error.message || error,
@@ -250,6 +244,37 @@ const getComments = async (req: Request, res: Response, next: NextFunction) => {
         return next(error);
     }
 };
+const deleteBlog = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { id } = req.params;
+        const { userId } = getAuth(req);
+ 
+
+        if (!userId) {
+            logger.warn("Unauthorized blog deletion attempt");
+            res.status(401).json({ success: false, message: "Unauthorized request" });
+            return;
+        }
+      
+
+        const blog = await blogService.checkBlogExists(id);
+        if (!blog) {
+            res.status(404).json({ success: false, message: "Blog not found" });
+            return;
+        }
+
+        await blogService.deleteBlog(id);
+
+        
+        
+        res.status(200).json({ success: true, message: "Blog deleted successfully" });
+    } catch (error: any) {
+        logger.error("Failed to delete blog", {
+            error: error.message || error,
+        });
+        return next(error);
+    }
+};
 
 export {
     createBlog,
@@ -259,4 +284,5 @@ export {
     toggleLike,
     addComment,
     getComments,
+    deleteBlog,
 };

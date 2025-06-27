@@ -153,6 +153,7 @@ exports.Prisma.PaymentScalarFieldEnum = {
 exports.Prisma.BlogScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  views: 'views',
   title: 'title',
   excerpt: 'excerpt',
   image: 'image',
@@ -238,12 +239,55 @@ exports.Prisma.ParkingScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PayingGuestsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  subCategory: 'subCategory',
+  roomDetails: 'roomDetails',
+  mealDetails: 'mealDetails',
+  availabilityStatus: 'availabilityStatus',
+  availableFrom: 'availableFrom',
+  ageOfProperty: 'ageOfProperty',
+  description: 'description',
+  amenities: 'amenities',
+  rules: 'rules',
+  otherFeatures: 'otherFeatures',
+  societyBuildingFeatures: 'societyBuildingFeatures',
+  nearbyPlaces: 'nearbyPlaces',
+  pricing: 'pricing',
+  safetyFeatures: 'safetyFeatures',
+  communityFeatures: 'communityFeatures',
+  images: 'images',
+  videos: 'videos',
+  verification: 'verification',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  gymId: 'gymId',
+  parkingId: 'parkingId',
+  pgId: 'pgId',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
 exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
@@ -271,7 +315,9 @@ exports.Prisma.ModelName = {
   Like: 'Like',
   Comment: 'Comment',
   Gym: 'Gym',
-  Parking: 'Parking'
+  Parking: 'Parking',
+  PayingGuests: 'PayingGuests',
+  Review: 'Review'
 };
 
 /**
