@@ -25,7 +25,7 @@ userRouter.get("/", requireAuth(), getUser);
 /**
  * @openapi
  * /api/v1/user:
- *   put:
+ *   patch:
  *     summary: Update the authenticated user's profile
  *     tags:
  *       - User
