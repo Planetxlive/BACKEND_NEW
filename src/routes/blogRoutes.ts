@@ -11,6 +11,7 @@ import {
     getComments,
     getUserBlogs,
     toggleLike,
+    updateBlog,
 } from "../controllers/blogController";
 
 const blogRouter = Router();
@@ -80,6 +81,9 @@ const blogRouter = Router();
  *         description: Invalid input
  */
 blogRouter.post("/", requireAuth(), validateBody(blogSchema), createBlog);
+
+blogRouter.patch("/:id", requireAuth(), updateBlog)
+
 /**
  * @openapi
  * /api/v1/blog:
@@ -248,7 +252,5 @@ blogRouter.post(
  *                     type: string
  */
 blogRouter.get("/comment/:blogId", validateId("blogId"), getComments);
-
-
 
 export default blogRouter;

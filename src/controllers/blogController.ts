@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import logger from "../config/logger";
 import { getAuth } from "@clerk/express";
 import blogService from "../services/blog.service";
+import { BlogUpdate } from "../interfaces/blogInterface";
+import { findPackageJSON } from "module";
 
 // create blog
 const createBlog = async (req: Request, res: Response, next: NextFunction) => {
@@ -44,6 +46,24 @@ const createBlog = async (req: Request, res: Response, next: NextFunction) => {
         return next(error);
     }
 };
+
+const updateBlog = async (req: Request, res: Response, next: NextFunction) => {
+    try{
+        const { userId } = getAuth(req);
+        const { id } = req.params;
+        const {...fields} = req.body as BlogUpdate;
+        fields.userId = userId!;
+        fields.id = id;
+
+        const data = await blogService.updateBlog(fields);
+        res.status(200).json({ success: true, data})
+    } catch (error: any){
+        logger.error("Error while updating blog", {
+            error: error.message || error,
+        })
+        return next(error)
+    }
+}
 
 // all blogs
 const getAllBlogs = async (req: Request, res: Response, next: NextFunction) => {
@@ -277,6 +297,7 @@ const deleteBlog = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 export {
+    updateBlog,
     createBlog,
     getBlogById,
     getAllBlogs,

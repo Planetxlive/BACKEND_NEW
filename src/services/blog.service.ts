@@ -1,6 +1,6 @@
 import prisma from "../db/db.config";
 import { Blog } from "../generated/prisma";
-import { BlogCreate } from "../interfaces/blogInterface";
+import { BlogCreate, BlogUpdate } from "../interfaces/blogInterface";
 import { buildBlogQueryOptions } from "../utils/blogQueryBuilder";
 import RedisCache from "../utils/RedisCache";
 
@@ -10,6 +10,20 @@ class BlogService {
         BLOGS_LIST: 300,
         COMMENTS: 600,
     };
+
+    async updateBlog(data: BlogUpdate){
+        try {
+            const {id, userId, ...fieldsToUpdate } = data;
+            const blog = await prisma.blog.update({
+                where: { id, userId},
+                data: fieldsToUpdate
+            })
+            await this.invalidateBlogCaches(data.userId, data.category);
+            return blog;
+        } catch (error) {
+            throw error;
+        }
+    }
 
     // create blog
     async createBlog(data: BlogCreate) {
