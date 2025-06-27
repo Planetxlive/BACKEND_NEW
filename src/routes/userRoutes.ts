@@ -37,7 +37,7 @@ userRouter.get("/", requireAuth(), getUser);
  *       401:
  *         description: Unauthorized
  */
-userRouter.put("/", requireAuth(), updateProfile);
+userRouter.patch("/", requireAuth(), updateProfile);
 /**
  * @openapi
  * /api/v1/user:
