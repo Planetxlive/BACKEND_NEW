@@ -286,7 +286,35 @@ class BlogService {
 
     // delete blog
     async deleteBlog(id: string) {
+        // First get the blog to know its userId and category for cache invalidation
+        const blog = await prisma.blog.findUnique({
+            where: { id },
+            select: { userId: true, category: true }
+        });
+
+        // Delete the blog from database
         await prisma.blog.delete({ where: { id } });
+
+        // Clear all relevant cache entries
+        if (blog) {
+            await Promise.all([
+                // Clear individual blog cache
+                RedisCache.del(`blog:${id}`),
+                // Clear blog existence cache
+                RedisCache.del(`blog:exists:${id}`),
+                // Clear comments cache
+                RedisCache.del(`comments:${id}`),
+                // Clear user blogs cache for this user
+                RedisCache.del(`blogs:user:${blog.userId}:1:10:all:none`),
+                RedisCache.del(`blogs:user:${blog.userId}:1:10:all:`),
+                // Clear all blogs cache
+                RedisCache.del(`blogs:all:1:10:all:none`),
+                RedisCache.del(`blogs:all:1:10:all:`),
+                // Clear category-specific cache
+                RedisCache.del(`blogs:all:1:10:${blog.category}:none`),
+                RedisCache.del(`blogs:user:${blog.userId}:1:10:${blog.category}:none`),
+            ]);
+        }
     }
 }   
 
