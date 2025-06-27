@@ -48,6 +48,16 @@ export type Gym = $Result.DefaultSelection<Prisma.$GymPayload>
  * 
  */
 export type Parking = $Result.DefaultSelection<Prisma.$ParkingPayload>
+/**
+ * Model PayingGuests
+ * 
+ */
+export type PayingGuests = $Result.DefaultSelection<Prisma.$PayingGuestsPayload>
+/**
+ * Model Review
+ * 
+ */
+export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -243,6 +253,26 @@ export class PrismaClient<
     * ```
     */
   get parking(): Prisma.ParkingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.payingGuests`: Exposes CRUD operations for the **PayingGuests** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PayingGuests
+    * const payingGuests = await prisma.payingGuests.findMany()
+    * ```
+    */
+  get payingGuests(): Prisma.PayingGuestsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.review`: Exposes CRUD operations for the **Review** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Reviews
+    * const reviews = await prisma.review.findMany()
+    * ```
+    */
+  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -689,7 +719,9 @@ export namespace Prisma {
     Like: 'Like',
     Comment: 'Comment',
     Gym: 'Gym',
-    Parking: 'Parking'
+    Parking: 'Parking',
+    PayingGuests: 'PayingGuests',
+    Review: 'Review'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -708,7 +740,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "payment" | "blog" | "like" | "comment" | "gym" | "parking"
+      modelProps: "user" | "payment" | "blog" | "like" | "comment" | "gym" | "parking" | "payingGuests" | "review"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1230,6 +1262,154 @@ export namespace Prisma {
           }
         }
       }
+      PayingGuests: {
+        payload: Prisma.$PayingGuestsPayload<ExtArgs>
+        fields: Prisma.PayingGuestsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PayingGuestsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PayingGuestsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>
+          }
+          findFirst: {
+            args: Prisma.PayingGuestsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PayingGuestsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>
+          }
+          findMany: {
+            args: Prisma.PayingGuestsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>[]
+          }
+          create: {
+            args: Prisma.PayingGuestsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>
+          }
+          createMany: {
+            args: Prisma.PayingGuestsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PayingGuestsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>[]
+          }
+          delete: {
+            args: Prisma.PayingGuestsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>
+          }
+          update: {
+            args: Prisma.PayingGuestsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>
+          }
+          deleteMany: {
+            args: Prisma.PayingGuestsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PayingGuestsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PayingGuestsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>[]
+          }
+          upsert: {
+            args: Prisma.PayingGuestsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PayingGuestsPayload>
+          }
+          aggregate: {
+            args: Prisma.PayingGuestsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePayingGuests>
+          }
+          groupBy: {
+            args: Prisma.PayingGuestsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PayingGuestsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PayingGuestsCountArgs<ExtArgs>
+            result: $Utils.Optional<PayingGuestsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Review: {
+        payload: Prisma.$ReviewPayload<ExtArgs>
+        fields: Prisma.ReviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findFirst: {
+            args: Prisma.ReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findMany: {
+            args: Prisma.ReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          create: {
+            args: Prisma.ReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          createMany: {
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          delete: {
+            args: Prisma.ReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          update: {
+            args: Prisma.ReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.ReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          aggregate: {
+            args: Prisma.ReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReview>
+          }
+          groupBy: {
+            args: Prisma.ReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1321,6 +1501,8 @@ export namespace Prisma {
     comment?: CommentOmit
     gym?: GymOmit
     parking?: ParkingOmit
+    payingGuests?: PayingGuestsOmit
+    review?: ReviewOmit
   }
 
   /* Types for Logging */
@@ -1420,6 +1602,8 @@ export namespace Prisma {
     comments: number
     gyms: number
     parkings: number
+    payingGuests: number
+    reviews: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1428,6 +1612,8 @@ export namespace Prisma {
     comments?: boolean | UserCountOutputTypeCountCommentsArgs
     gyms?: boolean | UserCountOutputTypeCountGymsArgs
     parkings?: boolean | UserCountOutputTypeCountParkingsArgs
+    payingGuests?: boolean | UserCountOutputTypeCountPayingGuestsArgs
+    reviews?: boolean | UserCountOutputTypeCountReviewsArgs
   }
 
   // Custom InputTypes
@@ -1476,6 +1662,20 @@ export namespace Prisma {
     where?: ParkingWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPayingGuestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PayingGuestsWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
 
   /**
    * Count Type BlogCountOutputType
@@ -1514,6 +1714,99 @@ export namespace Prisma {
    */
   export type BlogCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LikeWhereInput
+  }
+
+
+  /**
+   * Count Type GymCountOutputType
+   */
+
+  export type GymCountOutputType = {
+    reviews: number
+  }
+
+  export type GymCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews?: boolean | GymCountOutputTypeCountReviewsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GymCountOutputType without action
+   */
+  export type GymCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GymCountOutputType
+     */
+    select?: GymCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GymCountOutputType without action
+   */
+  export type GymCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
+
+  /**
+   * Count Type ParkingCountOutputType
+   */
+
+  export type ParkingCountOutputType = {
+    reviews: number
+  }
+
+  export type ParkingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews?: boolean | ParkingCountOutputTypeCountReviewsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ParkingCountOutputType without action
+   */
+  export type ParkingCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParkingCountOutputType
+     */
+    select?: ParkingCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ParkingCountOutputType without action
+   */
+  export type ParkingCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
+
+  /**
+   * Count Type PayingGuestsCountOutputType
+   */
+
+  export type PayingGuestsCountOutputType = {
+    reviews: number
+  }
+
+  export type PayingGuestsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews?: boolean | PayingGuestsCountOutputTypeCountReviewsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PayingGuestsCountOutputType without action
+   */
+  export type PayingGuestsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuestsCountOutputType
+     */
+    select?: PayingGuestsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PayingGuestsCountOutputType without action
+   */
+  export type PayingGuestsCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
   }
 
 
@@ -1792,6 +2085,8 @@ export namespace Prisma {
     comments?: boolean | User$commentsArgs<ExtArgs>
     gyms?: boolean | User$gymsArgs<ExtArgs>
     parkings?: boolean | User$parkingsArgs<ExtArgs>
+    payingGuests?: boolean | User$payingGuestsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1850,6 +2145,8 @@ export namespace Prisma {
     comments?: boolean | User$commentsArgs<ExtArgs>
     gyms?: boolean | User$gymsArgs<ExtArgs>
     parkings?: boolean | User$parkingsArgs<ExtArgs>
+    payingGuests?: boolean | User$payingGuestsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1863,6 +2160,8 @@ export namespace Prisma {
       comments: Prisma.$CommentPayload<ExtArgs>[]
       gyms: Prisma.$GymPayload<ExtArgs>[]
       parkings: Prisma.$ParkingPayload<ExtArgs>[]
+      payingGuests: Prisma.$PayingGuestsPayload<ExtArgs>[]
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2277,6 +2576,8 @@ export namespace Prisma {
     comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     gyms<T extends User$gymsArgs<ExtArgs> = {}>(args?: Subset<T, User$gymsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GymPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     parkings<T extends User$parkingsArgs<ExtArgs> = {}>(args?: Subset<T, User$parkingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParkingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    payingGuests<T extends User$payingGuestsArgs<ExtArgs> = {}>(args?: Subset<T, User$payingGuestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2824,6 +3125,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ParkingScalarFieldEnum | ParkingScalarFieldEnum[]
+  }
+
+  /**
+   * User.payingGuests
+   */
+  export type User$payingGuestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    where?: PayingGuestsWhereInput
+    orderBy?: PayingGuestsOrderByWithRelationInput | PayingGuestsOrderByWithRelationInput[]
+    cursor?: PayingGuestsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PayingGuestsScalarFieldEnum | PayingGuestsScalarFieldEnum[]
+  }
+
+  /**
+   * User.reviews
+   */
+  export type User$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
@@ -7682,6 +8031,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | Gym$reviewsArgs<ExtArgs>
+    _count?: boolean | GymCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gym"]>
 
   export type GymSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7782,6 +8133,8 @@ export namespace Prisma {
   export type GymOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "gymName" | "locationLatitude" | "locationLongitude" | "yearOfGym" | "description" | "photos" | "videos" | "lockerFacility" | "timing" | "categories" | "rateCard" | "website" | "services" | "benefits" | "pricing" | "amenities" | "availableSports" | "strengthEquipments" | "cardioEquipments" | "rules" | "gender" | "counsellingServices" | "socialMediaLinks" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["gym"]>
   export type GymInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | Gym$reviewsArgs<ExtArgs>
+    _count?: boolean | GymCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GymIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -7794,6 +8147,7 @@ export namespace Prisma {
     name: "Gym"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8219,6 +8573,7 @@ export namespace Prisma {
   export interface Prisma__GymClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviews<T extends Gym$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Gym$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8672,6 +9027,30 @@ export namespace Prisma {
   }
 
   /**
+   * Gym.reviews
+   */
+  export type Gym$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
    * Gym without action
    */
   export type GymDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9013,6 +9392,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | Parking$reviewsArgs<ExtArgs>
+    _count?: boolean | ParkingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["parking"]>
 
   export type ParkingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9095,6 +9476,8 @@ export namespace Prisma {
   export type ParkingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "description" | "latitude" | "longitude" | "price" | "yearOfParking" | "parkingType" | "vacancies" | "size" | "photos" | "videos" | "amenities" | "accessibility" | "capacity" | "security" | "operatingHours" | "booking" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["parking"]>
   export type ParkingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | Parking$reviewsArgs<ExtArgs>
+    _count?: boolean | ParkingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ParkingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -9107,6 +9490,7 @@ export namespace Prisma {
     name: "Parking"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9526,6 +9910,7 @@ export namespace Prisma {
   export interface Prisma__ParkingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviews<T extends Parking$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, Parking$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9973,6 +10358,30 @@ export namespace Prisma {
   }
 
   /**
+   * Parking.reviews
+   */
+  export type Parking$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
    * Parking without action
    */
   export type ParkingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9988,6 +10397,2531 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ParkingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PayingGuests
+   */
+
+  export type AggregatePayingGuests = {
+    _count: PayingGuestsCountAggregateOutputType | null
+    _avg: PayingGuestsAvgAggregateOutputType | null
+    _sum: PayingGuestsSumAggregateOutputType | null
+    _min: PayingGuestsMinAggregateOutputType | null
+    _max: PayingGuestsMaxAggregateOutputType | null
+  }
+
+  export type PayingGuestsAvgAggregateOutputType = {
+    ageOfProperty: number | null
+  }
+
+  export type PayingGuestsSumAggregateOutputType = {
+    ageOfProperty: number | null
+  }
+
+  export type PayingGuestsMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    availabilityStatus: string | null
+    availableFrom: Date | null
+    ageOfProperty: number | null
+    description: string | null
+    isDeleted: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PayingGuestsMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    availabilityStatus: string | null
+    availableFrom: Date | null
+    ageOfProperty: number | null
+    description: string | null
+    isDeleted: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PayingGuestsCountAggregateOutputType = {
+    id: number
+    userId: number
+    subCategory: number
+    roomDetails: number
+    mealDetails: number
+    availabilityStatus: number
+    availableFrom: number
+    ageOfProperty: number
+    description: number
+    amenities: number
+    rules: number
+    otherFeatures: number
+    societyBuildingFeatures: number
+    nearbyPlaces: number
+    pricing: number
+    safetyFeatures: number
+    communityFeatures: number
+    images: number
+    videos: number
+    verification: number
+    isDeleted: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PayingGuestsAvgAggregateInputType = {
+    ageOfProperty?: true
+  }
+
+  export type PayingGuestsSumAggregateInputType = {
+    ageOfProperty?: true
+  }
+
+  export type PayingGuestsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    availabilityStatus?: true
+    availableFrom?: true
+    ageOfProperty?: true
+    description?: true
+    isDeleted?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PayingGuestsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    availabilityStatus?: true
+    availableFrom?: true
+    ageOfProperty?: true
+    description?: true
+    isDeleted?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PayingGuestsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    subCategory?: true
+    roomDetails?: true
+    mealDetails?: true
+    availabilityStatus?: true
+    availableFrom?: true
+    ageOfProperty?: true
+    description?: true
+    amenities?: true
+    rules?: true
+    otherFeatures?: true
+    societyBuildingFeatures?: true
+    nearbyPlaces?: true
+    pricing?: true
+    safetyFeatures?: true
+    communityFeatures?: true
+    images?: true
+    videos?: true
+    verification?: true
+    isDeleted?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PayingGuestsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PayingGuests to aggregate.
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PayingGuests to fetch.
+     */
+    orderBy?: PayingGuestsOrderByWithRelationInput | PayingGuestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PayingGuestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PayingGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PayingGuests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PayingGuests
+    **/
+    _count?: true | PayingGuestsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PayingGuestsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PayingGuestsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PayingGuestsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PayingGuestsMaxAggregateInputType
+  }
+
+  export type GetPayingGuestsAggregateType<T extends PayingGuestsAggregateArgs> = {
+        [P in keyof T & keyof AggregatePayingGuests]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePayingGuests[P]>
+      : GetScalarType<T[P], AggregatePayingGuests[P]>
+  }
+
+
+
+
+  export type PayingGuestsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PayingGuestsWhereInput
+    orderBy?: PayingGuestsOrderByWithAggregationInput | PayingGuestsOrderByWithAggregationInput[]
+    by: PayingGuestsScalarFieldEnum[] | PayingGuestsScalarFieldEnum
+    having?: PayingGuestsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PayingGuestsCountAggregateInputType | true
+    _avg?: PayingGuestsAvgAggregateInputType
+    _sum?: PayingGuestsSumAggregateInputType
+    _min?: PayingGuestsMinAggregateInputType
+    _max?: PayingGuestsMaxAggregateInputType
+  }
+
+  export type PayingGuestsGroupByOutputType = {
+    id: string
+    userId: string
+    subCategory: string[]
+    roomDetails: JsonValue | null
+    mealDetails: JsonValue | null
+    availabilityStatus: string | null
+    availableFrom: Date | null
+    ageOfProperty: number | null
+    description: string | null
+    amenities: JsonValue | null
+    rules: JsonValue | null
+    otherFeatures: JsonValue | null
+    societyBuildingFeatures: JsonValue | null
+    nearbyPlaces: JsonValue | null
+    pricing: JsonValue | null
+    safetyFeatures: JsonValue | null
+    communityFeatures: JsonValue | null
+    images: string[]
+    videos: string[]
+    verification: JsonValue | null
+    isDeleted: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: PayingGuestsCountAggregateOutputType | null
+    _avg: PayingGuestsAvgAggregateOutputType | null
+    _sum: PayingGuestsSumAggregateOutputType | null
+    _min: PayingGuestsMinAggregateOutputType | null
+    _max: PayingGuestsMaxAggregateOutputType | null
+  }
+
+  type GetPayingGuestsGroupByPayload<T extends PayingGuestsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PayingGuestsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PayingGuestsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PayingGuestsGroupByOutputType[P]>
+            : GetScalarType<T[P], PayingGuestsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PayingGuestsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    roomDetails?: boolean
+    mealDetails?: boolean
+    availabilityStatus?: boolean
+    availableFrom?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    amenities?: boolean
+    rules?: boolean
+    otherFeatures?: boolean
+    societyBuildingFeatures?: boolean
+    nearbyPlaces?: boolean
+    pricing?: boolean
+    safetyFeatures?: boolean
+    communityFeatures?: boolean
+    images?: boolean
+    videos?: boolean
+    verification?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | PayingGuests$reviewsArgs<ExtArgs>
+    _count?: boolean | PayingGuestsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payingGuests"]>
+
+  export type PayingGuestsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    roomDetails?: boolean
+    mealDetails?: boolean
+    availabilityStatus?: boolean
+    availableFrom?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    amenities?: boolean
+    rules?: boolean
+    otherFeatures?: boolean
+    societyBuildingFeatures?: boolean
+    nearbyPlaces?: boolean
+    pricing?: boolean
+    safetyFeatures?: boolean
+    communityFeatures?: boolean
+    images?: boolean
+    videos?: boolean
+    verification?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payingGuests"]>
+
+  export type PayingGuestsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    roomDetails?: boolean
+    mealDetails?: boolean
+    availabilityStatus?: boolean
+    availableFrom?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    amenities?: boolean
+    rules?: boolean
+    otherFeatures?: boolean
+    societyBuildingFeatures?: boolean
+    nearbyPlaces?: boolean
+    pricing?: boolean
+    safetyFeatures?: boolean
+    communityFeatures?: boolean
+    images?: boolean
+    videos?: boolean
+    verification?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["payingGuests"]>
+
+  export type PayingGuestsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    roomDetails?: boolean
+    mealDetails?: boolean
+    availabilityStatus?: boolean
+    availableFrom?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    amenities?: boolean
+    rules?: boolean
+    otherFeatures?: boolean
+    societyBuildingFeatures?: boolean
+    nearbyPlaces?: boolean
+    pricing?: boolean
+    safetyFeatures?: boolean
+    communityFeatures?: boolean
+    images?: boolean
+    videos?: boolean
+    verification?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PayingGuestsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "subCategory" | "roomDetails" | "mealDetails" | "availabilityStatus" | "availableFrom" | "ageOfProperty" | "description" | "amenities" | "rules" | "otherFeatures" | "societyBuildingFeatures" | "nearbyPlaces" | "pricing" | "safetyFeatures" | "communityFeatures" | "images" | "videos" | "verification" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["payingGuests"]>
+  export type PayingGuestsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | PayingGuests$reviewsArgs<ExtArgs>
+    _count?: boolean | PayingGuestsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PayingGuestsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PayingGuestsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $PayingGuestsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PayingGuests"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      subCategory: string[]
+      roomDetails: Prisma.JsonValue | null
+      mealDetails: Prisma.JsonValue | null
+      availabilityStatus: string | null
+      availableFrom: Date | null
+      ageOfProperty: number | null
+      description: string | null
+      amenities: Prisma.JsonValue | null
+      rules: Prisma.JsonValue | null
+      otherFeatures: Prisma.JsonValue | null
+      societyBuildingFeatures: Prisma.JsonValue | null
+      nearbyPlaces: Prisma.JsonValue | null
+      pricing: Prisma.JsonValue | null
+      safetyFeatures: Prisma.JsonValue | null
+      communityFeatures: Prisma.JsonValue | null
+      images: string[]
+      videos: string[]
+      verification: Prisma.JsonValue | null
+      isDeleted: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["payingGuests"]>
+    composites: {}
+  }
+
+  type PayingGuestsGetPayload<S extends boolean | null | undefined | PayingGuestsDefaultArgs> = $Result.GetResult<Prisma.$PayingGuestsPayload, S>
+
+  type PayingGuestsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PayingGuestsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PayingGuestsCountAggregateInputType | true
+    }
+
+  export interface PayingGuestsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PayingGuests'], meta: { name: 'PayingGuests' } }
+    /**
+     * Find zero or one PayingGuests that matches the filter.
+     * @param {PayingGuestsFindUniqueArgs} args - Arguments to find a PayingGuests
+     * @example
+     * // Get one PayingGuests
+     * const payingGuests = await prisma.payingGuests.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PayingGuestsFindUniqueArgs>(args: SelectSubset<T, PayingGuestsFindUniqueArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PayingGuests that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PayingGuestsFindUniqueOrThrowArgs} args - Arguments to find a PayingGuests
+     * @example
+     * // Get one PayingGuests
+     * const payingGuests = await prisma.payingGuests.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PayingGuestsFindUniqueOrThrowArgs>(args: SelectSubset<T, PayingGuestsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PayingGuests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsFindFirstArgs} args - Arguments to find a PayingGuests
+     * @example
+     * // Get one PayingGuests
+     * const payingGuests = await prisma.payingGuests.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PayingGuestsFindFirstArgs>(args?: SelectSubset<T, PayingGuestsFindFirstArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PayingGuests that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsFindFirstOrThrowArgs} args - Arguments to find a PayingGuests
+     * @example
+     * // Get one PayingGuests
+     * const payingGuests = await prisma.payingGuests.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PayingGuestsFindFirstOrThrowArgs>(args?: SelectSubset<T, PayingGuestsFindFirstOrThrowArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PayingGuests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PayingGuests
+     * const payingGuests = await prisma.payingGuests.findMany()
+     * 
+     * // Get first 10 PayingGuests
+     * const payingGuests = await prisma.payingGuests.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const payingGuestsWithIdOnly = await prisma.payingGuests.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PayingGuestsFindManyArgs>(args?: SelectSubset<T, PayingGuestsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PayingGuests.
+     * @param {PayingGuestsCreateArgs} args - Arguments to create a PayingGuests.
+     * @example
+     * // Create one PayingGuests
+     * const PayingGuests = await prisma.payingGuests.create({
+     *   data: {
+     *     // ... data to create a PayingGuests
+     *   }
+     * })
+     * 
+     */
+    create<T extends PayingGuestsCreateArgs>(args: SelectSubset<T, PayingGuestsCreateArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PayingGuests.
+     * @param {PayingGuestsCreateManyArgs} args - Arguments to create many PayingGuests.
+     * @example
+     * // Create many PayingGuests
+     * const payingGuests = await prisma.payingGuests.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PayingGuestsCreateManyArgs>(args?: SelectSubset<T, PayingGuestsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PayingGuests and returns the data saved in the database.
+     * @param {PayingGuestsCreateManyAndReturnArgs} args - Arguments to create many PayingGuests.
+     * @example
+     * // Create many PayingGuests
+     * const payingGuests = await prisma.payingGuests.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PayingGuests and only return the `id`
+     * const payingGuestsWithIdOnly = await prisma.payingGuests.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PayingGuestsCreateManyAndReturnArgs>(args?: SelectSubset<T, PayingGuestsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PayingGuests.
+     * @param {PayingGuestsDeleteArgs} args - Arguments to delete one PayingGuests.
+     * @example
+     * // Delete one PayingGuests
+     * const PayingGuests = await prisma.payingGuests.delete({
+     *   where: {
+     *     // ... filter to delete one PayingGuests
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PayingGuestsDeleteArgs>(args: SelectSubset<T, PayingGuestsDeleteArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PayingGuests.
+     * @param {PayingGuestsUpdateArgs} args - Arguments to update one PayingGuests.
+     * @example
+     * // Update one PayingGuests
+     * const payingGuests = await prisma.payingGuests.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PayingGuestsUpdateArgs>(args: SelectSubset<T, PayingGuestsUpdateArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PayingGuests.
+     * @param {PayingGuestsDeleteManyArgs} args - Arguments to filter PayingGuests to delete.
+     * @example
+     * // Delete a few PayingGuests
+     * const { count } = await prisma.payingGuests.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PayingGuestsDeleteManyArgs>(args?: SelectSubset<T, PayingGuestsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PayingGuests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PayingGuests
+     * const payingGuests = await prisma.payingGuests.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PayingGuestsUpdateManyArgs>(args: SelectSubset<T, PayingGuestsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PayingGuests and returns the data updated in the database.
+     * @param {PayingGuestsUpdateManyAndReturnArgs} args - Arguments to update many PayingGuests.
+     * @example
+     * // Update many PayingGuests
+     * const payingGuests = await prisma.payingGuests.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PayingGuests and only return the `id`
+     * const payingGuestsWithIdOnly = await prisma.payingGuests.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PayingGuestsUpdateManyAndReturnArgs>(args: SelectSubset<T, PayingGuestsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PayingGuests.
+     * @param {PayingGuestsUpsertArgs} args - Arguments to update or create a PayingGuests.
+     * @example
+     * // Update or create a PayingGuests
+     * const payingGuests = await prisma.payingGuests.upsert({
+     *   create: {
+     *     // ... data to create a PayingGuests
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PayingGuests we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PayingGuestsUpsertArgs>(args: SelectSubset<T, PayingGuestsUpsertArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PayingGuests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsCountArgs} args - Arguments to filter PayingGuests to count.
+     * @example
+     * // Count the number of PayingGuests
+     * const count = await prisma.payingGuests.count({
+     *   where: {
+     *     // ... the filter for the PayingGuests we want to count
+     *   }
+     * })
+    **/
+    count<T extends PayingGuestsCountArgs>(
+      args?: Subset<T, PayingGuestsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PayingGuestsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PayingGuests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PayingGuestsAggregateArgs>(args: Subset<T, PayingGuestsAggregateArgs>): Prisma.PrismaPromise<GetPayingGuestsAggregateType<T>>
+
+    /**
+     * Group by PayingGuests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PayingGuestsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PayingGuestsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PayingGuestsGroupByArgs['orderBy'] }
+        : { orderBy?: PayingGuestsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PayingGuestsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPayingGuestsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PayingGuests model
+   */
+  readonly fields: PayingGuestsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PayingGuests.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PayingGuestsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviews<T extends PayingGuests$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, PayingGuests$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PayingGuests model
+   */
+  interface PayingGuestsFieldRefs {
+    readonly id: FieldRef<"PayingGuests", 'String'>
+    readonly userId: FieldRef<"PayingGuests", 'String'>
+    readonly subCategory: FieldRef<"PayingGuests", 'String[]'>
+    readonly roomDetails: FieldRef<"PayingGuests", 'Json'>
+    readonly mealDetails: FieldRef<"PayingGuests", 'Json'>
+    readonly availabilityStatus: FieldRef<"PayingGuests", 'String'>
+    readonly availableFrom: FieldRef<"PayingGuests", 'DateTime'>
+    readonly ageOfProperty: FieldRef<"PayingGuests", 'Int'>
+    readonly description: FieldRef<"PayingGuests", 'String'>
+    readonly amenities: FieldRef<"PayingGuests", 'Json'>
+    readonly rules: FieldRef<"PayingGuests", 'Json'>
+    readonly otherFeatures: FieldRef<"PayingGuests", 'Json'>
+    readonly societyBuildingFeatures: FieldRef<"PayingGuests", 'Json'>
+    readonly nearbyPlaces: FieldRef<"PayingGuests", 'Json'>
+    readonly pricing: FieldRef<"PayingGuests", 'Json'>
+    readonly safetyFeatures: FieldRef<"PayingGuests", 'Json'>
+    readonly communityFeatures: FieldRef<"PayingGuests", 'Json'>
+    readonly images: FieldRef<"PayingGuests", 'String[]'>
+    readonly videos: FieldRef<"PayingGuests", 'String[]'>
+    readonly verification: FieldRef<"PayingGuests", 'Json'>
+    readonly isDeleted: FieldRef<"PayingGuests", 'Boolean'>
+    readonly createdAt: FieldRef<"PayingGuests", 'DateTime'>
+    readonly updatedAt: FieldRef<"PayingGuests", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PayingGuests findUnique
+   */
+  export type PayingGuestsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * Filter, which PayingGuests to fetch.
+     */
+    where: PayingGuestsWhereUniqueInput
+  }
+
+  /**
+   * PayingGuests findUniqueOrThrow
+   */
+  export type PayingGuestsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * Filter, which PayingGuests to fetch.
+     */
+    where: PayingGuestsWhereUniqueInput
+  }
+
+  /**
+   * PayingGuests findFirst
+   */
+  export type PayingGuestsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * Filter, which PayingGuests to fetch.
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PayingGuests to fetch.
+     */
+    orderBy?: PayingGuestsOrderByWithRelationInput | PayingGuestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PayingGuests.
+     */
+    cursor?: PayingGuestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PayingGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PayingGuests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PayingGuests.
+     */
+    distinct?: PayingGuestsScalarFieldEnum | PayingGuestsScalarFieldEnum[]
+  }
+
+  /**
+   * PayingGuests findFirstOrThrow
+   */
+  export type PayingGuestsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * Filter, which PayingGuests to fetch.
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PayingGuests to fetch.
+     */
+    orderBy?: PayingGuestsOrderByWithRelationInput | PayingGuestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PayingGuests.
+     */
+    cursor?: PayingGuestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PayingGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PayingGuests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PayingGuests.
+     */
+    distinct?: PayingGuestsScalarFieldEnum | PayingGuestsScalarFieldEnum[]
+  }
+
+  /**
+   * PayingGuests findMany
+   */
+  export type PayingGuestsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * Filter, which PayingGuests to fetch.
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PayingGuests to fetch.
+     */
+    orderBy?: PayingGuestsOrderByWithRelationInput | PayingGuestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PayingGuests.
+     */
+    cursor?: PayingGuestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PayingGuests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PayingGuests.
+     */
+    skip?: number
+    distinct?: PayingGuestsScalarFieldEnum | PayingGuestsScalarFieldEnum[]
+  }
+
+  /**
+   * PayingGuests create
+   */
+  export type PayingGuestsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PayingGuests.
+     */
+    data: XOR<PayingGuestsCreateInput, PayingGuestsUncheckedCreateInput>
+  }
+
+  /**
+   * PayingGuests createMany
+   */
+  export type PayingGuestsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PayingGuests.
+     */
+    data: PayingGuestsCreateManyInput | PayingGuestsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PayingGuests createManyAndReturn
+   */
+  export type PayingGuestsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * The data used to create many PayingGuests.
+     */
+    data: PayingGuestsCreateManyInput | PayingGuestsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PayingGuests update
+   */
+  export type PayingGuestsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PayingGuests.
+     */
+    data: XOR<PayingGuestsUpdateInput, PayingGuestsUncheckedUpdateInput>
+    /**
+     * Choose, which PayingGuests to update.
+     */
+    where: PayingGuestsWhereUniqueInput
+  }
+
+  /**
+   * PayingGuests updateMany
+   */
+  export type PayingGuestsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PayingGuests.
+     */
+    data: XOR<PayingGuestsUpdateManyMutationInput, PayingGuestsUncheckedUpdateManyInput>
+    /**
+     * Filter which PayingGuests to update
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * Limit how many PayingGuests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PayingGuests updateManyAndReturn
+   */
+  export type PayingGuestsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * The data used to update PayingGuests.
+     */
+    data: XOR<PayingGuestsUpdateManyMutationInput, PayingGuestsUncheckedUpdateManyInput>
+    /**
+     * Filter which PayingGuests to update
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * Limit how many PayingGuests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PayingGuests upsert
+   */
+  export type PayingGuestsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PayingGuests to update in case it exists.
+     */
+    where: PayingGuestsWhereUniqueInput
+    /**
+     * In case the PayingGuests found by the `where` argument doesn't exist, create a new PayingGuests with this data.
+     */
+    create: XOR<PayingGuestsCreateInput, PayingGuestsUncheckedCreateInput>
+    /**
+     * In case the PayingGuests was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PayingGuestsUpdateInput, PayingGuestsUncheckedUpdateInput>
+  }
+
+  /**
+   * PayingGuests delete
+   */
+  export type PayingGuestsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    /**
+     * Filter which PayingGuests to delete.
+     */
+    where: PayingGuestsWhereUniqueInput
+  }
+
+  /**
+   * PayingGuests deleteMany
+   */
+  export type PayingGuestsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PayingGuests to delete
+     */
+    where?: PayingGuestsWhereInput
+    /**
+     * Limit how many PayingGuests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PayingGuests.reviews
+   */
+  export type PayingGuests$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * PayingGuests without action
+   */
+  export type PayingGuestsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Review
+   */
+
+  export type AggregateReview = {
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  export type ReviewAvgAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type ReviewSumAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type ReviewMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    gymId: string | null
+    parkingId: string | null
+    pgId: string | null
+    rating: number | null
+    comment: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ReviewMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    gymId: string | null
+    parkingId: string | null
+    pgId: string | null
+    rating: number | null
+    comment: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ReviewCountAggregateOutputType = {
+    id: number
+    userId: number
+    gymId: number
+    parkingId: number
+    pgId: number
+    rating: number
+    comment: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ReviewAvgAggregateInputType = {
+    rating?: true
+  }
+
+  export type ReviewSumAggregateInputType = {
+    rating?: true
+  }
+
+  export type ReviewMinAggregateInputType = {
+    id?: true
+    userId?: true
+    gymId?: true
+    parkingId?: true
+    pgId?: true
+    rating?: true
+    comment?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ReviewMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    gymId?: true
+    parkingId?: true
+    pgId?: true
+    rating?: true
+    comment?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ReviewCountAggregateInputType = {
+    id?: true
+    userId?: true
+    gymId?: true
+    parkingId?: true
+    pgId?: true
+    rating?: true
+    comment?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Review to aggregate.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Reviews
+    **/
+    _count?: true | ReviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReviewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReviewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReview[P]>
+      : GetScalarType<T[P], AggregateReview[P]>
+  }
+
+
+
+
+  export type ReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithAggregationInput | ReviewOrderByWithAggregationInput[]
+    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum
+    having?: ReviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReviewCountAggregateInputType | true
+    _avg?: ReviewAvgAggregateInputType
+    _sum?: ReviewSumAggregateInputType
+    _min?: ReviewMinAggregateInputType
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type ReviewGroupByOutputType = {
+    id: string
+    userId: string
+    gymId: string | null
+    parkingId: string | null
+    pgId: string | null
+    rating: number | null
+    comment: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    gymId?: boolean
+    parkingId?: boolean
+    pgId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    gym?: boolean | Review$gymArgs<ExtArgs>
+    parking?: boolean | Review$parkingArgs<ExtArgs>
+    pg?: boolean | Review$pgArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    gymId?: boolean
+    parkingId?: boolean
+    pgId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    gym?: boolean | Review$gymArgs<ExtArgs>
+    parking?: boolean | Review$parkingArgs<ExtArgs>
+    pg?: boolean | Review$pgArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    gymId?: boolean
+    parkingId?: boolean
+    pgId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    gym?: boolean | Review$gymArgs<ExtArgs>
+    parking?: boolean | Review$parkingArgs<ExtArgs>
+    pg?: boolean | Review$pgArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    gymId?: boolean
+    parkingId?: boolean
+    pgId?: boolean
+    rating?: boolean
+    comment?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "gymId" | "parkingId" | "pgId" | "rating" | "comment" | "createdAt" | "updatedAt", ExtArgs["result"]["review"]>
+  export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    gym?: boolean | Review$gymArgs<ExtArgs>
+    parking?: boolean | Review$parkingArgs<ExtArgs>
+    pg?: boolean | Review$pgArgs<ExtArgs>
+  }
+  export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    gym?: boolean | Review$gymArgs<ExtArgs>
+    parking?: boolean | Review$parkingArgs<ExtArgs>
+    pg?: boolean | Review$pgArgs<ExtArgs>
+  }
+  export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    gym?: boolean | Review$gymArgs<ExtArgs>
+    parking?: boolean | Review$parkingArgs<ExtArgs>
+    pg?: boolean | Review$pgArgs<ExtArgs>
+  }
+
+  export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Review"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      gym: Prisma.$GymPayload<ExtArgs> | null
+      parking: Prisma.$ParkingPayload<ExtArgs> | null
+      pg: Prisma.$PayingGuestsPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      gymId: string | null
+      parkingId: string | null
+      pgId: string | null
+      rating: number | null
+      comment: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["review"]>
+    composites: {}
+  }
+
+  type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
+
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewCountAggregateInputType | true
+    }
+
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
+    /**
+     * Find zero or one Review that matches the filter.
+     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Reviews
+     * const reviews = await prisma.review.findMany()
+     * 
+     * // Get first 10 Reviews
+     * const reviews = await prisma.review.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Review.
+     * @param {ReviewCreateArgs} args - Arguments to create a Review.
+     * @example
+     * // Create one Review
+     * const Review = await prisma.review.create({
+     *   data: {
+     *     // ... data to create a Review
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Reviews.
+     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReviewCreateManyArgs>(args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Reviews and returns the data saved in the database.
+     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Review.
+     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
+     * @example
+     * // Delete one Review
+     * const Review = await prisma.review.delete({
+     *   where: {
+     *     // ... filter to delete one Review
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Review.
+     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
+     * @example
+     * // Update one Review
+     * const review = await prisma.review.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Reviews.
+     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
+     * @example
+     * // Delete a few Reviews
+     * const { count } = await prisma.review.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReviewDeleteManyArgs>(args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews and returns the data updated in the database.
+     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Review.
+     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
+     * @example
+     * // Update or create a Review
+     * const review = await prisma.review.upsert({
+     *   create: {
+     *     // ... data to create a Review
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Review we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
+     * @example
+     * // Count the number of Reviews
+     * const count = await prisma.review.count({
+     *   where: {
+     *     // ... the filter for the Reviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReviewCountArgs>(
+      args?: Subset<T, ReviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReviewAggregateArgs>(args: Subset<T, ReviewAggregateArgs>): Prisma.PrismaPromise<GetReviewAggregateType<T>>
+
+    /**
+     * Group by Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReviewGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Review model
+   */
+  readonly fields: ReviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Review.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    gym<T extends Review$gymArgs<ExtArgs> = {}>(args?: Subset<T, Review$gymArgs<ExtArgs>>): Prisma__GymClient<$Result.GetResult<Prisma.$GymPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    parking<T extends Review$parkingArgs<ExtArgs> = {}>(args?: Subset<T, Review$parkingArgs<ExtArgs>>): Prisma__ParkingClient<$Result.GetResult<Prisma.$ParkingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    pg<T extends Review$pgArgs<ExtArgs> = {}>(args?: Subset<T, Review$pgArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Review model
+   */
+  interface ReviewFieldRefs {
+    readonly id: FieldRef<"Review", 'String'>
+    readonly userId: FieldRef<"Review", 'String'>
+    readonly gymId: FieldRef<"Review", 'String'>
+    readonly parkingId: FieldRef<"Review", 'String'>
+    readonly pgId: FieldRef<"Review", 'String'>
+    readonly rating: FieldRef<"Review", 'Int'>
+    readonly comment: FieldRef<"Review", 'String'>
+    readonly createdAt: FieldRef<"Review", 'DateTime'>
+    readonly updatedAt: FieldRef<"Review", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Review findUnique
+   */
+  export type ReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findUniqueOrThrow
+   */
+  export type ReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findFirst
+   */
+  export type ReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findFirstOrThrow
+   */
+  export type ReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findMany
+   */
+  export type ReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Reviews to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review create
+   */
+  export type ReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Review.
+     */
+    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+  }
+
+  /**
+   * Review createMany
+   */
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Review createManyAndReturn
+   */
+  export type ReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review update
+   */
+  export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Review.
+     */
+    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+    /**
+     * Choose, which Review to update.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review updateMany
+   */
+  export type ReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review updateManyAndReturn
+   */
+  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review upsert
+   */
+  export type ReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Review to update in case it exists.
+     */
+    where: ReviewWhereUniqueInput
+    /**
+     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
+     */
+    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+    /**
+     * In case the Review was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * Review delete
+   */
+  export type ReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter which Review to delete.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review deleteMany
+   */
+  export type ReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Reviews to delete
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review.gym
+   */
+  export type Review$gymArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Gym
+     */
+    select?: GymSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Gym
+     */
+    omit?: GymOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GymInclude<ExtArgs> | null
+    where?: GymWhereInput
+  }
+
+  /**
+   * Review.parking
+   */
+  export type Review$parkingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Parking
+     */
+    select?: ParkingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Parking
+     */
+    omit?: ParkingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParkingInclude<ExtArgs> | null
+    where?: ParkingWhereInput
+  }
+
+  /**
+   * Review.pg
+   */
+  export type Review$pgArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PayingGuests
+     */
+    select?: PayingGuestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PayingGuests
+     */
+    omit?: PayingGuestsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PayingGuestsInclude<ExtArgs> | null
+    where?: PayingGuestsWhereInput
+  }
+
+  /**
+   * Review without action
+   */
+  export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
   }
 
 
@@ -10145,6 +13079,50 @@ export namespace Prisma {
   export type ParkingScalarFieldEnum = (typeof ParkingScalarFieldEnum)[keyof typeof ParkingScalarFieldEnum]
 
 
+  export const PayingGuestsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    subCategory: 'subCategory',
+    roomDetails: 'roomDetails',
+    mealDetails: 'mealDetails',
+    availabilityStatus: 'availabilityStatus',
+    availableFrom: 'availableFrom',
+    ageOfProperty: 'ageOfProperty',
+    description: 'description',
+    amenities: 'amenities',
+    rules: 'rules',
+    otherFeatures: 'otherFeatures',
+    societyBuildingFeatures: 'societyBuildingFeatures',
+    nearbyPlaces: 'nearbyPlaces',
+    pricing: 'pricing',
+    safetyFeatures: 'safetyFeatures',
+    communityFeatures: 'communityFeatures',
+    images: 'images',
+    videos: 'videos',
+    verification: 'verification',
+    isDeleted: 'isDeleted',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PayingGuestsScalarFieldEnum = (typeof PayingGuestsScalarFieldEnum)[keyof typeof PayingGuestsScalarFieldEnum]
+
+
+  export const ReviewScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    gymId: 'gymId',
+    parkingId: 'parkingId',
+    pgId: 'pgId',
+    rating: 'rating',
+    comment: 'comment',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -10158,6 +13136,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -10292,6 +13278,8 @@ export namespace Prisma {
     comments?: CommentListRelationFilter
     gyms?: GymListRelationFilter
     parkings?: ParkingListRelationFilter
+    payingGuests?: PayingGuestsListRelationFilter
+    reviews?: ReviewListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -10313,6 +13301,8 @@ export namespace Prisma {
     comments?: CommentOrderByRelationAggregateInput
     gyms?: GymOrderByRelationAggregateInput
     parkings?: ParkingOrderByRelationAggregateInput
+    payingGuests?: PayingGuestsOrderByRelationAggregateInput
+    reviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -10337,6 +13327,8 @@ export namespace Prisma {
     comments?: CommentListRelationFilter
     gyms?: GymListRelationFilter
     parkings?: ParkingListRelationFilter
+    payingGuests?: PayingGuestsListRelationFilter
+    reviews?: ReviewListRelationFilter
   }, "id" | "mobile">
 
   export type UserOrderByWithAggregationInput = {
@@ -10721,6 +13713,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Gym"> | Date | string
     updatedAt?: DateTimeFilter<"Gym"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
   }
 
   export type GymOrderByWithRelationInput = {
@@ -10753,6 +13746,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    reviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type GymWhereUniqueInput = Prisma.AtLeast<{
@@ -10788,6 +13782,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Gym"> | Date | string
     updatedAt?: DateTimeFilter<"Gym"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
   }, "id">
 
   export type GymOrderByWithAggregationInput = {
@@ -10887,6 +13882,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Parking"> | Date | string
     updatedAt?: DateTimeFilter<"Parking"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
   }
 
   export type ParkingOrderByWithRelationInput = {
@@ -10913,6 +13909,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    reviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type ParkingWhereUniqueInput = Prisma.AtLeast<{
@@ -10942,6 +13939,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Parking"> | Date | string
     updatedAt?: DateTimeFilter<"Parking"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
   }, "id">
 
   export type ParkingOrderByWithAggregationInput = {
@@ -11002,6 +14000,242 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Parking"> | Date | string
   }
 
+  export type PayingGuestsWhereInput = {
+    AND?: PayingGuestsWhereInput | PayingGuestsWhereInput[]
+    OR?: PayingGuestsWhereInput[]
+    NOT?: PayingGuestsWhereInput | PayingGuestsWhereInput[]
+    id?: StringFilter<"PayingGuests"> | string
+    userId?: StringFilter<"PayingGuests"> | string
+    subCategory?: StringNullableListFilter<"PayingGuests">
+    roomDetails?: JsonNullableFilter<"PayingGuests">
+    mealDetails?: JsonNullableFilter<"PayingGuests">
+    availabilityStatus?: StringNullableFilter<"PayingGuests"> | string | null
+    availableFrom?: DateTimeNullableFilter<"PayingGuests"> | Date | string | null
+    ageOfProperty?: IntNullableFilter<"PayingGuests"> | number | null
+    description?: StringNullableFilter<"PayingGuests"> | string | null
+    amenities?: JsonNullableFilter<"PayingGuests">
+    rules?: JsonNullableFilter<"PayingGuests">
+    otherFeatures?: JsonNullableFilter<"PayingGuests">
+    societyBuildingFeatures?: JsonNullableFilter<"PayingGuests">
+    nearbyPlaces?: JsonNullableFilter<"PayingGuests">
+    pricing?: JsonNullableFilter<"PayingGuests">
+    safetyFeatures?: JsonNullableFilter<"PayingGuests">
+    communityFeatures?: JsonNullableFilter<"PayingGuests">
+    images?: StringNullableListFilter<"PayingGuests">
+    videos?: StringNullableListFilter<"PayingGuests">
+    verification?: JsonNullableFilter<"PayingGuests">
+    isDeleted?: BoolFilter<"PayingGuests"> | boolean
+    createdAt?: DateTimeFilter<"PayingGuests"> | Date | string
+    updatedAt?: DateTimeFilter<"PayingGuests"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
+  }
+
+  export type PayingGuestsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrder
+    roomDetails?: SortOrderInput | SortOrder
+    mealDetails?: SortOrderInput | SortOrder
+    availabilityStatus?: SortOrderInput | SortOrder
+    availableFrom?: SortOrderInput | SortOrder
+    ageOfProperty?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    amenities?: SortOrderInput | SortOrder
+    rules?: SortOrderInput | SortOrder
+    otherFeatures?: SortOrderInput | SortOrder
+    societyBuildingFeatures?: SortOrderInput | SortOrder
+    nearbyPlaces?: SortOrderInput | SortOrder
+    pricing?: SortOrderInput | SortOrder
+    safetyFeatures?: SortOrderInput | SortOrder
+    communityFeatures?: SortOrderInput | SortOrder
+    images?: SortOrder
+    videos?: SortOrder
+    verification?: SortOrderInput | SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    reviews?: ReviewOrderByRelationAggregateInput
+  }
+
+  export type PayingGuestsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PayingGuestsWhereInput | PayingGuestsWhereInput[]
+    OR?: PayingGuestsWhereInput[]
+    NOT?: PayingGuestsWhereInput | PayingGuestsWhereInput[]
+    userId?: StringFilter<"PayingGuests"> | string
+    subCategory?: StringNullableListFilter<"PayingGuests">
+    roomDetails?: JsonNullableFilter<"PayingGuests">
+    mealDetails?: JsonNullableFilter<"PayingGuests">
+    availabilityStatus?: StringNullableFilter<"PayingGuests"> | string | null
+    availableFrom?: DateTimeNullableFilter<"PayingGuests"> | Date | string | null
+    ageOfProperty?: IntNullableFilter<"PayingGuests"> | number | null
+    description?: StringNullableFilter<"PayingGuests"> | string | null
+    amenities?: JsonNullableFilter<"PayingGuests">
+    rules?: JsonNullableFilter<"PayingGuests">
+    otherFeatures?: JsonNullableFilter<"PayingGuests">
+    societyBuildingFeatures?: JsonNullableFilter<"PayingGuests">
+    nearbyPlaces?: JsonNullableFilter<"PayingGuests">
+    pricing?: JsonNullableFilter<"PayingGuests">
+    safetyFeatures?: JsonNullableFilter<"PayingGuests">
+    communityFeatures?: JsonNullableFilter<"PayingGuests">
+    images?: StringNullableListFilter<"PayingGuests">
+    videos?: StringNullableListFilter<"PayingGuests">
+    verification?: JsonNullableFilter<"PayingGuests">
+    isDeleted?: BoolFilter<"PayingGuests"> | boolean
+    createdAt?: DateTimeFilter<"PayingGuests"> | Date | string
+    updatedAt?: DateTimeFilter<"PayingGuests"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
+  }, "id">
+
+  export type PayingGuestsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrder
+    roomDetails?: SortOrderInput | SortOrder
+    mealDetails?: SortOrderInput | SortOrder
+    availabilityStatus?: SortOrderInput | SortOrder
+    availableFrom?: SortOrderInput | SortOrder
+    ageOfProperty?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    amenities?: SortOrderInput | SortOrder
+    rules?: SortOrderInput | SortOrder
+    otherFeatures?: SortOrderInput | SortOrder
+    societyBuildingFeatures?: SortOrderInput | SortOrder
+    nearbyPlaces?: SortOrderInput | SortOrder
+    pricing?: SortOrderInput | SortOrder
+    safetyFeatures?: SortOrderInput | SortOrder
+    communityFeatures?: SortOrderInput | SortOrder
+    images?: SortOrder
+    videos?: SortOrder
+    verification?: SortOrderInput | SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PayingGuestsCountOrderByAggregateInput
+    _avg?: PayingGuestsAvgOrderByAggregateInput
+    _max?: PayingGuestsMaxOrderByAggregateInput
+    _min?: PayingGuestsMinOrderByAggregateInput
+    _sum?: PayingGuestsSumOrderByAggregateInput
+  }
+
+  export type PayingGuestsScalarWhereWithAggregatesInput = {
+    AND?: PayingGuestsScalarWhereWithAggregatesInput | PayingGuestsScalarWhereWithAggregatesInput[]
+    OR?: PayingGuestsScalarWhereWithAggregatesInput[]
+    NOT?: PayingGuestsScalarWhereWithAggregatesInput | PayingGuestsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PayingGuests"> | string
+    userId?: StringWithAggregatesFilter<"PayingGuests"> | string
+    subCategory?: StringNullableListFilter<"PayingGuests">
+    roomDetails?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    mealDetails?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    availabilityStatus?: StringNullableWithAggregatesFilter<"PayingGuests"> | string | null
+    availableFrom?: DateTimeNullableWithAggregatesFilter<"PayingGuests"> | Date | string | null
+    ageOfProperty?: IntNullableWithAggregatesFilter<"PayingGuests"> | number | null
+    description?: StringNullableWithAggregatesFilter<"PayingGuests"> | string | null
+    amenities?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    rules?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    otherFeatures?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    societyBuildingFeatures?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    nearbyPlaces?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    pricing?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    safetyFeatures?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    communityFeatures?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    images?: StringNullableListFilter<"PayingGuests">
+    videos?: StringNullableListFilter<"PayingGuests">
+    verification?: JsonNullableWithAggregatesFilter<"PayingGuests">
+    isDeleted?: BoolWithAggregatesFilter<"PayingGuests"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"PayingGuests"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PayingGuests"> | Date | string
+  }
+
+  export type ReviewWhereInput = {
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    id?: StringFilter<"Review"> | string
+    userId?: StringFilter<"Review"> | string
+    gymId?: StringNullableFilter<"Review"> | string | null
+    parkingId?: StringNullableFilter<"Review"> | string | null
+    pgId?: StringNullableFilter<"Review"> | string | null
+    rating?: IntNullableFilter<"Review"> | number | null
+    comment?: StringNullableFilter<"Review"> | string | null
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    gym?: XOR<GymNullableScalarRelationFilter, GymWhereInput> | null
+    parking?: XOR<ParkingNullableScalarRelationFilter, ParkingWhereInput> | null
+    pg?: XOR<PayingGuestsNullableScalarRelationFilter, PayingGuestsWhereInput> | null
+  }
+
+  export type ReviewOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    gymId?: SortOrderInput | SortOrder
+    parkingId?: SortOrderInput | SortOrder
+    pgId?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    gym?: GymOrderByWithRelationInput
+    parking?: ParkingOrderByWithRelationInput
+    pg?: PayingGuestsOrderByWithRelationInput
+  }
+
+  export type ReviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    userId?: StringFilter<"Review"> | string
+    gymId?: StringNullableFilter<"Review"> | string | null
+    parkingId?: StringNullableFilter<"Review"> | string | null
+    pgId?: StringNullableFilter<"Review"> | string | null
+    rating?: IntNullableFilter<"Review"> | number | null
+    comment?: StringNullableFilter<"Review"> | string | null
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    gym?: XOR<GymNullableScalarRelationFilter, GymWhereInput> | null
+    parking?: XOR<ParkingNullableScalarRelationFilter, ParkingWhereInput> | null
+    pg?: XOR<PayingGuestsNullableScalarRelationFilter, PayingGuestsWhereInput> | null
+  }, "id">
+
+  export type ReviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    gymId?: SortOrderInput | SortOrder
+    parkingId?: SortOrderInput | SortOrder
+    pgId?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
+    comment?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ReviewCountOrderByAggregateInput
+    _avg?: ReviewAvgOrderByAggregateInput
+    _max?: ReviewMaxOrderByAggregateInput
+    _min?: ReviewMinOrderByAggregateInput
+    _sum?: ReviewSumOrderByAggregateInput
+  }
+
+  export type ReviewScalarWhereWithAggregatesInput = {
+    AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    OR?: ReviewScalarWhereWithAggregatesInput[]
+    NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Review"> | string
+    userId?: StringWithAggregatesFilter<"Review"> | string
+    gymId?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    parkingId?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    pgId?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    rating?: IntNullableWithAggregatesFilter<"Review"> | number | null
+    comment?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+  }
+
   export type UserCreateInput = {
     id: string
     name?: string | null
@@ -11021,6 +14255,8 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     gyms?: GymCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -11042,6 +14278,8 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -11063,6 +14301,8 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     gyms?: GymUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -11084,6 +14324,8 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -11495,6 +14737,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutGymsInput
+    reviews?: ReviewCreateNestedManyWithoutGymInput
   }
 
   export type GymUncheckedCreateInput = {
@@ -11526,6 +14769,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutGymInput
   }
 
   export type GymUpdateInput = {
@@ -11557,6 +14801,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutGymsNestedInput
+    reviews?: ReviewUpdateManyWithoutGymNestedInput
   }
 
   export type GymUncheckedUpdateInput = {
@@ -11588,6 +14833,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutGymNestedInput
   }
 
   export type GymCreateManyInput = {
@@ -11705,6 +14951,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutParkingsInput
+    reviews?: ReviewCreateNestedManyWithoutParkingInput
   }
 
   export type ParkingUncheckedCreateInput = {
@@ -11730,6 +14977,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutParkingInput
   }
 
   export type ParkingUpdateInput = {
@@ -11755,6 +15003,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutParkingsNestedInput
+    reviews?: ReviewUpdateManyWithoutParkingNestedInput
   }
 
   export type ParkingUncheckedUpdateInput = {
@@ -11780,6 +15029,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutParkingNestedInput
   }
 
   export type ParkingCreateManyInput = {
@@ -11852,6 +15102,271 @@ export namespace Prisma {
     operatingHours?: JsonNullValueInput | InputJsonValue
     booking?: JsonNullValueInput | InputJsonValue
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PayingGuestsCreateInput = {
+    id?: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutPayingGuestsInput
+    reviews?: ReviewCreateNestedManyWithoutPgInput
+  }
+
+  export type PayingGuestsUncheckedCreateInput = {
+    id?: string
+    userId: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutPgInput
+  }
+
+  export type PayingGuestsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutPayingGuestsNestedInput
+    reviews?: ReviewUpdateManyWithoutPgNestedInput
+  }
+
+  export type PayingGuestsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutPgNestedInput
+  }
+
+  export type PayingGuestsCreateManyInput = {
+    id?: string
+    userId: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PayingGuestsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PayingGuestsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateInput = {
+    id?: string
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    gym?: GymCreateNestedOneWithoutReviewsInput
+    parking?: ParkingCreateNestedOneWithoutReviewsInput
+    pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    gym?: GymUpdateOneWithoutReviewsNestedInput
+    parking?: ParkingUpdateOneWithoutReviewsNestedInput
+    pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11943,6 +15458,18 @@ export namespace Prisma {
     none?: ParkingWhereInput
   }
 
+  export type PayingGuestsListRelationFilter = {
+    every?: PayingGuestsWhereInput
+    some?: PayingGuestsWhereInput
+    none?: PayingGuestsWhereInput
+  }
+
+  export type ReviewListRelationFilter = {
+    every?: ReviewWhereInput
+    some?: ReviewWhereInput
+    none?: ReviewWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -11965,6 +15492,14 @@ export namespace Prisma {
   }
 
   export type ParkingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PayingGuestsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReviewOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12534,6 +16069,224 @@ export namespace Prisma {
     vacancies?: SortOrder
     capacity?: SortOrder
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type PayingGuestsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrder
+    roomDetails?: SortOrder
+    mealDetails?: SortOrder
+    availabilityStatus?: SortOrder
+    availableFrom?: SortOrder
+    ageOfProperty?: SortOrder
+    description?: SortOrder
+    amenities?: SortOrder
+    rules?: SortOrder
+    otherFeatures?: SortOrder
+    societyBuildingFeatures?: SortOrder
+    nearbyPlaces?: SortOrder
+    pricing?: SortOrder
+    safetyFeatures?: SortOrder
+    communityFeatures?: SortOrder
+    images?: SortOrder
+    videos?: SortOrder
+    verification?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PayingGuestsAvgOrderByAggregateInput = {
+    ageOfProperty?: SortOrder
+  }
+
+  export type PayingGuestsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    availabilityStatus?: SortOrder
+    availableFrom?: SortOrder
+    ageOfProperty?: SortOrder
+    description?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PayingGuestsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    availabilityStatus?: SortOrder
+    availableFrom?: SortOrder
+    ageOfProperty?: SortOrder
+    description?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PayingGuestsSumOrderByAggregateInput = {
+    ageOfProperty?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type GymNullableScalarRelationFilter = {
+    is?: GymWhereInput | null
+    isNot?: GymWhereInput | null
+  }
+
+  export type ParkingNullableScalarRelationFilter = {
+    is?: ParkingWhereInput | null
+    isNot?: ParkingWhereInput | null
+  }
+
+  export type PayingGuestsNullableScalarRelationFilter = {
+    is?: PayingGuestsWhereInput | null
+    isNot?: PayingGuestsWhereInput | null
+  }
+
+  export type ReviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    gymId?: SortOrder
+    parkingId?: SortOrder
+    pgId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReviewAvgOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type ReviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    gymId?: SortOrder
+    parkingId?: SortOrder
+    pgId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    gymId?: SortOrder
+    parkingId?: SortOrder
+    pgId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ReviewSumOrderByAggregateInput = {
+    rating?: SortOrder
+  }
 
   export type BlogCreateNestedManyWithoutUserInput = {
     create?: XOR<BlogCreateWithoutUserInput, BlogUncheckedCreateWithoutUserInput> | BlogCreateWithoutUserInput[] | BlogUncheckedCreateWithoutUserInput[]
@@ -12570,6 +16323,20 @@ export namespace Prisma {
     connect?: ParkingWhereUniqueInput | ParkingWhereUniqueInput[]
   }
 
+  export type PayingGuestsCreateNestedManyWithoutUserInput = {
+    create?: XOR<PayingGuestsCreateWithoutUserInput, PayingGuestsUncheckedCreateWithoutUserInput> | PayingGuestsCreateWithoutUserInput[] | PayingGuestsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PayingGuestsCreateOrConnectWithoutUserInput | PayingGuestsCreateOrConnectWithoutUserInput[]
+    createMany?: PayingGuestsCreateManyUserInputEnvelope
+    connect?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+  }
+
+  export type ReviewCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
   export type BlogUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<BlogCreateWithoutUserInput, BlogUncheckedCreateWithoutUserInput> | BlogCreateWithoutUserInput[] | BlogUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BlogCreateOrConnectWithoutUserInput | BlogCreateOrConnectWithoutUserInput[]
@@ -12603,6 +16370,20 @@ export namespace Prisma {
     connectOrCreate?: ParkingCreateOrConnectWithoutUserInput | ParkingCreateOrConnectWithoutUserInput[]
     createMany?: ParkingCreateManyUserInputEnvelope
     connect?: ParkingWhereUniqueInput | ParkingWhereUniqueInput[]
+  }
+
+  export type PayingGuestsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<PayingGuestsCreateWithoutUserInput, PayingGuestsUncheckedCreateWithoutUserInput> | PayingGuestsCreateWithoutUserInput[] | PayingGuestsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PayingGuestsCreateOrConnectWithoutUserInput | PayingGuestsCreateOrConnectWithoutUserInput[]
+    createMany?: PayingGuestsCreateManyUserInputEnvelope
+    connect?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -12699,6 +16480,34 @@ export namespace Prisma {
     deleteMany?: ParkingScalarWhereInput | ParkingScalarWhereInput[]
   }
 
+  export type PayingGuestsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PayingGuestsCreateWithoutUserInput, PayingGuestsUncheckedCreateWithoutUserInput> | PayingGuestsCreateWithoutUserInput[] | PayingGuestsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PayingGuestsCreateOrConnectWithoutUserInput | PayingGuestsCreateOrConnectWithoutUserInput[]
+    upsert?: PayingGuestsUpsertWithWhereUniqueWithoutUserInput | PayingGuestsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PayingGuestsCreateManyUserInputEnvelope
+    set?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    disconnect?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    delete?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    connect?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    update?: PayingGuestsUpdateWithWhereUniqueWithoutUserInput | PayingGuestsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PayingGuestsUpdateManyWithWhereWithoutUserInput | PayingGuestsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PayingGuestsScalarWhereInput | PayingGuestsScalarWhereInput[]
+  }
+
+  export type ReviewUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
   export type BlogUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<BlogCreateWithoutUserInput, BlogUncheckedCreateWithoutUserInput> | BlogCreateWithoutUserInput[] | BlogUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BlogCreateOrConnectWithoutUserInput | BlogCreateOrConnectWithoutUserInput[]
@@ -12767,6 +16576,34 @@ export namespace Prisma {
     update?: ParkingUpdateWithWhereUniqueWithoutUserInput | ParkingUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ParkingUpdateManyWithWhereWithoutUserInput | ParkingUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ParkingScalarWhereInput | ParkingScalarWhereInput[]
+  }
+
+  export type PayingGuestsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PayingGuestsCreateWithoutUserInput, PayingGuestsUncheckedCreateWithoutUserInput> | PayingGuestsCreateWithoutUserInput[] | PayingGuestsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PayingGuestsCreateOrConnectWithoutUserInput | PayingGuestsCreateOrConnectWithoutUserInput[]
+    upsert?: PayingGuestsUpsertWithWhereUniqueWithoutUserInput | PayingGuestsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PayingGuestsCreateManyUserInputEnvelope
+    set?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    disconnect?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    delete?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    connect?: PayingGuestsWhereUniqueInput | PayingGuestsWhereUniqueInput[]
+    update?: PayingGuestsUpdateWithWhereUniqueWithoutUserInput | PayingGuestsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PayingGuestsUpdateManyWithWhereWithoutUserInput | PayingGuestsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PayingGuestsScalarWhereInput | PayingGuestsScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -12986,6 +16823,20 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type ReviewCreateNestedManyWithoutGymInput = {
+    create?: XOR<ReviewCreateWithoutGymInput, ReviewUncheckedCreateWithoutGymInput> | ReviewCreateWithoutGymInput[] | ReviewUncheckedCreateWithoutGymInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutGymInput | ReviewCreateOrConnectWithoutGymInput[]
+    createMany?: ReviewCreateManyGymInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutGymInput = {
+    create?: XOR<ReviewCreateWithoutGymInput, ReviewUncheckedCreateWithoutGymInput> | ReviewCreateWithoutGymInput[] | ReviewUncheckedCreateWithoutGymInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutGymInput | ReviewCreateOrConnectWithoutGymInput[]
+    createMany?: ReviewCreateManyGymInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -13052,6 +16903,34 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGymsInput, UserUpdateWithoutGymsInput>, UserUncheckedUpdateWithoutGymsInput>
   }
 
+  export type ReviewUpdateManyWithoutGymNestedInput = {
+    create?: XOR<ReviewCreateWithoutGymInput, ReviewUncheckedCreateWithoutGymInput> | ReviewCreateWithoutGymInput[] | ReviewUncheckedCreateWithoutGymInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutGymInput | ReviewCreateOrConnectWithoutGymInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutGymInput | ReviewUpsertWithWhereUniqueWithoutGymInput[]
+    createMany?: ReviewCreateManyGymInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutGymInput | ReviewUpdateWithWhereUniqueWithoutGymInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutGymInput | ReviewUpdateManyWithWhereWithoutGymInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutGymNestedInput = {
+    create?: XOR<ReviewCreateWithoutGymInput, ReviewUncheckedCreateWithoutGymInput> | ReviewCreateWithoutGymInput[] | ReviewUncheckedCreateWithoutGymInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutGymInput | ReviewCreateOrConnectWithoutGymInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutGymInput | ReviewUpsertWithWhereUniqueWithoutGymInput[]
+    createMany?: ReviewCreateManyGymInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutGymInput | ReviewUpdateWithWhereUniqueWithoutGymInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutGymInput | ReviewUpdateManyWithWhereWithoutGymInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
   export type ParkingCreatephotosInput = {
     set: string[]
   }
@@ -13072,6 +16951,20 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutParkingsInput, UserUncheckedCreateWithoutParkingsInput>
     connectOrCreate?: UserCreateOrConnectWithoutParkingsInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type ReviewCreateNestedManyWithoutParkingInput = {
+    create?: XOR<ReviewCreateWithoutParkingInput, ReviewUncheckedCreateWithoutParkingInput> | ReviewCreateWithoutParkingInput[] | ReviewUncheckedCreateWithoutParkingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParkingInput | ReviewCreateOrConnectWithoutParkingInput[]
+    createMany?: ReviewCreateManyParkingInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutParkingInput = {
+    create?: XOR<ReviewCreateWithoutParkingInput, ReviewUncheckedCreateWithoutParkingInput> | ReviewCreateWithoutParkingInput[] | ReviewUncheckedCreateWithoutParkingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParkingInput | ReviewCreateOrConnectWithoutParkingInput[]
+    createMany?: ReviewCreateManyParkingInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type ParkingUpdatephotosInput = {
@@ -13100,6 +16993,191 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutParkingsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutParkingsInput, UserUpdateWithoutParkingsInput>, UserUncheckedUpdateWithoutParkingsInput>
+  }
+
+  export type ReviewUpdateManyWithoutParkingNestedInput = {
+    create?: XOR<ReviewCreateWithoutParkingInput, ReviewUncheckedCreateWithoutParkingInput> | ReviewCreateWithoutParkingInput[] | ReviewUncheckedCreateWithoutParkingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParkingInput | ReviewCreateOrConnectWithoutParkingInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutParkingInput | ReviewUpsertWithWhereUniqueWithoutParkingInput[]
+    createMany?: ReviewCreateManyParkingInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutParkingInput | ReviewUpdateWithWhereUniqueWithoutParkingInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutParkingInput | ReviewUpdateManyWithWhereWithoutParkingInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutParkingNestedInput = {
+    create?: XOR<ReviewCreateWithoutParkingInput, ReviewUncheckedCreateWithoutParkingInput> | ReviewCreateWithoutParkingInput[] | ReviewUncheckedCreateWithoutParkingInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutParkingInput | ReviewCreateOrConnectWithoutParkingInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutParkingInput | ReviewUpsertWithWhereUniqueWithoutParkingInput[]
+    createMany?: ReviewCreateManyParkingInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutParkingInput | ReviewUpdateWithWhereUniqueWithoutParkingInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutParkingInput | ReviewUpdateManyWithWhereWithoutParkingInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type PayingGuestsCreatesubCategoryInput = {
+    set: string[]
+  }
+
+  export type PayingGuestsCreateimagesInput = {
+    set: string[]
+  }
+
+  export type PayingGuestsCreatevideosInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutPayingGuestsInput = {
+    create?: XOR<UserCreateWithoutPayingGuestsInput, UserUncheckedCreateWithoutPayingGuestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPayingGuestsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ReviewCreateNestedManyWithoutPgInput = {
+    create?: XOR<ReviewCreateWithoutPgInput, ReviewUncheckedCreateWithoutPgInput> | ReviewCreateWithoutPgInput[] | ReviewUncheckedCreateWithoutPgInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutPgInput | ReviewCreateOrConnectWithoutPgInput[]
+    createMany?: ReviewCreateManyPgInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutPgInput = {
+    create?: XOR<ReviewCreateWithoutPgInput, ReviewUncheckedCreateWithoutPgInput> | ReviewCreateWithoutPgInput[] | ReviewUncheckedCreateWithoutPgInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutPgInput | ReviewCreateOrConnectWithoutPgInput[]
+    createMany?: ReviewCreateManyPgInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type PayingGuestsUpdatesubCategoryInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type PayingGuestsUpdateimagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type PayingGuestsUpdatevideosInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutPayingGuestsNestedInput = {
+    create?: XOR<UserCreateWithoutPayingGuestsInput, UserUncheckedCreateWithoutPayingGuestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPayingGuestsInput
+    upsert?: UserUpsertWithoutPayingGuestsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPayingGuestsInput, UserUpdateWithoutPayingGuestsInput>, UserUncheckedUpdateWithoutPayingGuestsInput>
+  }
+
+  export type ReviewUpdateManyWithoutPgNestedInput = {
+    create?: XOR<ReviewCreateWithoutPgInput, ReviewUncheckedCreateWithoutPgInput> | ReviewCreateWithoutPgInput[] | ReviewUncheckedCreateWithoutPgInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutPgInput | ReviewCreateOrConnectWithoutPgInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutPgInput | ReviewUpsertWithWhereUniqueWithoutPgInput[]
+    createMany?: ReviewCreateManyPgInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutPgInput | ReviewUpdateWithWhereUniqueWithoutPgInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutPgInput | ReviewUpdateManyWithWhereWithoutPgInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutPgNestedInput = {
+    create?: XOR<ReviewCreateWithoutPgInput, ReviewUncheckedCreateWithoutPgInput> | ReviewCreateWithoutPgInput[] | ReviewUncheckedCreateWithoutPgInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutPgInput | ReviewCreateOrConnectWithoutPgInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutPgInput | ReviewUpsertWithWhereUniqueWithoutPgInput[]
+    createMany?: ReviewCreateManyPgInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutPgInput | ReviewUpdateWithWhereUniqueWithoutPgInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutPgInput | ReviewUpdateManyWithWhereWithoutPgInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type GymCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<GymCreateWithoutReviewsInput, GymUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: GymCreateOrConnectWithoutReviewsInput
+    connect?: GymWhereUniqueInput
+  }
+
+  export type ParkingCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<ParkingCreateWithoutReviewsInput, ParkingUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: ParkingCreateOrConnectWithoutReviewsInput
+    connect?: ParkingWhereUniqueInput
+  }
+
+  export type PayingGuestsCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<PayingGuestsCreateWithoutReviewsInput, PayingGuestsUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: PayingGuestsCreateOrConnectWithoutReviewsInput
+    connect?: PayingGuestsWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    upsert?: UserUpsertWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReviewsInput, UserUpdateWithoutReviewsInput>, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type GymUpdateOneWithoutReviewsNestedInput = {
+    create?: XOR<GymCreateWithoutReviewsInput, GymUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: GymCreateOrConnectWithoutReviewsInput
+    upsert?: GymUpsertWithoutReviewsInput
+    disconnect?: GymWhereInput | boolean
+    delete?: GymWhereInput | boolean
+    connect?: GymWhereUniqueInput
+    update?: XOR<XOR<GymUpdateToOneWithWhereWithoutReviewsInput, GymUpdateWithoutReviewsInput>, GymUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type ParkingUpdateOneWithoutReviewsNestedInput = {
+    create?: XOR<ParkingCreateWithoutReviewsInput, ParkingUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: ParkingCreateOrConnectWithoutReviewsInput
+    upsert?: ParkingUpsertWithoutReviewsInput
+    disconnect?: ParkingWhereInput | boolean
+    delete?: ParkingWhereInput | boolean
+    connect?: ParkingWhereUniqueInput
+    update?: XOR<XOR<ParkingUpdateToOneWithWhereWithoutReviewsInput, ParkingUpdateWithoutReviewsInput>, ParkingUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type PayingGuestsUpdateOneWithoutReviewsNestedInput = {
+    create?: XOR<PayingGuestsCreateWithoutReviewsInput, PayingGuestsUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: PayingGuestsCreateOrConnectWithoutReviewsInput
+    upsert?: PayingGuestsUpsertWithoutReviewsInput
+    disconnect?: PayingGuestsWhereInput | boolean
+    delete?: PayingGuestsWhereInput | boolean
+    connect?: PayingGuestsWhereUniqueInput
+    update?: XOR<XOR<PayingGuestsUpdateToOneWithWhereWithoutReviewsInput, PayingGuestsUpdateWithoutReviewsInput>, PayingGuestsUncheckedUpdateWithoutReviewsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13317,6 +17395,70 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type BlogCreateWithoutUserInput = {
     id?: string
     views?: number
@@ -13439,6 +17581,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewCreateNestedManyWithoutGymInput
   }
 
   export type GymUncheckedCreateWithoutUserInput = {
@@ -13469,6 +17612,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutGymInput
   }
 
   export type GymCreateOrConnectWithoutUserInput = {
@@ -13503,6 +17647,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewCreateNestedManyWithoutParkingInput
   }
 
   export type ParkingUncheckedCreateWithoutUserInput = {
@@ -13527,6 +17672,7 @@ export namespace Prisma {
     isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutParkingInput
   }
 
   export type ParkingCreateOrConnectWithoutUserInput = {
@@ -13536,6 +17682,100 @@ export namespace Prisma {
 
   export type ParkingCreateManyUserInputEnvelope = {
     data: ParkingCreateManyUserInput | ParkingCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PayingGuestsCreateWithoutUserInput = {
+    id?: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewCreateNestedManyWithoutPgInput
+  }
+
+  export type PayingGuestsUncheckedCreateWithoutUserInput = {
+    id?: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutPgInput
+  }
+
+  export type PayingGuestsCreateOrConnectWithoutUserInput = {
+    where: PayingGuestsWhereUniqueInput
+    create: XOR<PayingGuestsCreateWithoutUserInput, PayingGuestsUncheckedCreateWithoutUserInput>
+  }
+
+  export type PayingGuestsCreateManyUserInputEnvelope = {
+    data: PayingGuestsCreateManyUserInput | PayingGuestsCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReviewCreateWithoutUserInput = {
+    id?: string
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gym?: GymCreateNestedOneWithoutReviewsInput
+    parking?: ParkingCreateNestedOneWithoutReviewsInput
+    pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutUserInput = {
+    id?: string
+    gymId?: string | null
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -13723,6 +17963,82 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Parking"> | Date | string
   }
 
+  export type PayingGuestsUpsertWithWhereUniqueWithoutUserInput = {
+    where: PayingGuestsWhereUniqueInput
+    update: XOR<PayingGuestsUpdateWithoutUserInput, PayingGuestsUncheckedUpdateWithoutUserInput>
+    create: XOR<PayingGuestsCreateWithoutUserInput, PayingGuestsUncheckedCreateWithoutUserInput>
+  }
+
+  export type PayingGuestsUpdateWithWhereUniqueWithoutUserInput = {
+    where: PayingGuestsWhereUniqueInput
+    data: XOR<PayingGuestsUpdateWithoutUserInput, PayingGuestsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PayingGuestsUpdateManyWithWhereWithoutUserInput = {
+    where: PayingGuestsScalarWhereInput
+    data: XOR<PayingGuestsUpdateManyMutationInput, PayingGuestsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type PayingGuestsScalarWhereInput = {
+    AND?: PayingGuestsScalarWhereInput | PayingGuestsScalarWhereInput[]
+    OR?: PayingGuestsScalarWhereInput[]
+    NOT?: PayingGuestsScalarWhereInput | PayingGuestsScalarWhereInput[]
+    id?: StringFilter<"PayingGuests"> | string
+    userId?: StringFilter<"PayingGuests"> | string
+    subCategory?: StringNullableListFilter<"PayingGuests">
+    roomDetails?: JsonNullableFilter<"PayingGuests">
+    mealDetails?: JsonNullableFilter<"PayingGuests">
+    availabilityStatus?: StringNullableFilter<"PayingGuests"> | string | null
+    availableFrom?: DateTimeNullableFilter<"PayingGuests"> | Date | string | null
+    ageOfProperty?: IntNullableFilter<"PayingGuests"> | number | null
+    description?: StringNullableFilter<"PayingGuests"> | string | null
+    amenities?: JsonNullableFilter<"PayingGuests">
+    rules?: JsonNullableFilter<"PayingGuests">
+    otherFeatures?: JsonNullableFilter<"PayingGuests">
+    societyBuildingFeatures?: JsonNullableFilter<"PayingGuests">
+    nearbyPlaces?: JsonNullableFilter<"PayingGuests">
+    pricing?: JsonNullableFilter<"PayingGuests">
+    safetyFeatures?: JsonNullableFilter<"PayingGuests">
+    communityFeatures?: JsonNullableFilter<"PayingGuests">
+    images?: StringNullableListFilter<"PayingGuests">
+    videos?: StringNullableListFilter<"PayingGuests">
+    verification?: JsonNullableFilter<"PayingGuests">
+    isDeleted?: BoolFilter<"PayingGuests"> | boolean
+    createdAt?: DateTimeFilter<"PayingGuests"> | Date | string
+    updatedAt?: DateTimeFilter<"PayingGuests"> | Date | string
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewScalarWhereInput = {
+    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    OR?: ReviewScalarWhereInput[]
+    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    id?: StringFilter<"Review"> | string
+    userId?: StringFilter<"Review"> | string
+    gymId?: StringNullableFilter<"Review"> | string | null
+    parkingId?: StringNullableFilter<"Review"> | string | null
+    pgId?: StringNullableFilter<"Review"> | string | null
+    rating?: IntNullableFilter<"Review"> | number | null
+    comment?: StringNullableFilter<"Review"> | string | null
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    updatedAt?: DateTimeFilter<"Review"> | Date | string
+  }
+
   export type UserCreateWithoutBlogsInput = {
     id: string
     name?: string | null
@@ -13741,6 +18057,8 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     gyms?: GymCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBlogsInput = {
@@ -13761,6 +18079,8 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBlogsInput = {
@@ -13847,6 +18167,8 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     gyms?: GymUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBlogsInput = {
@@ -13867,6 +18189,8 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CommentUpsertWithWhereUniqueWithoutBlogInput = {
@@ -13919,6 +18243,8 @@ export namespace Prisma {
     comments?: CommentCreateNestedManyWithoutUserInput
     gyms?: GymCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLikesInput = {
@@ -13939,6 +18265,8 @@ export namespace Prisma {
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLikesInput = {
@@ -14014,6 +18342,8 @@ export namespace Prisma {
     comments?: CommentUpdateManyWithoutUserNestedInput
     gyms?: GymUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLikesInput = {
@@ -14034,6 +18364,8 @@ export namespace Prisma {
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BlogUpsertWithoutLikesInput = {
@@ -14099,6 +18431,8 @@ export namespace Prisma {
     likes?: LikeCreateNestedManyWithoutUserInput
     gyms?: GymCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
@@ -14119,6 +18453,8 @@ export namespace Prisma {
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -14194,6 +18530,8 @@ export namespace Prisma {
     likes?: LikeUpdateManyWithoutUserNestedInput
     gyms?: GymUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -14214,6 +18552,8 @@ export namespace Prisma {
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BlogUpsertWithoutCommentsInput = {
@@ -14279,6 +18619,8 @@ export namespace Prisma {
     likes?: LikeCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGymsInput = {
@@ -14299,11 +18641,45 @@ export namespace Prisma {
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGymsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutGymsInput, UserUncheckedCreateWithoutGymsInput>
+  }
+
+  export type ReviewCreateWithoutGymInput = {
+    id?: string
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    parking?: ParkingCreateNestedOneWithoutReviewsInput
+    pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutGymInput = {
+    id?: string
+    userId: string
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutGymInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutGymInput, ReviewUncheckedCreateWithoutGymInput>
+  }
+
+  export type ReviewCreateManyGymInputEnvelope = {
+    data: ReviewCreateManyGymInput | ReviewCreateManyGymInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutGymsInput = {
@@ -14335,6 +18711,8 @@ export namespace Prisma {
     likes?: LikeUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGymsInput = {
@@ -14355,6 +18733,24 @@ export namespace Prisma {
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutGymInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutGymInput, ReviewUncheckedUpdateWithoutGymInput>
+    create: XOR<ReviewCreateWithoutGymInput, ReviewUncheckedCreateWithoutGymInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutGymInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutGymInput, ReviewUncheckedUpdateWithoutGymInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutGymInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutGymInput>
   }
 
   export type UserCreateWithoutParkingsInput = {
@@ -14375,6 +18771,8 @@ export namespace Prisma {
     likes?: LikeCreateNestedManyWithoutUserInput
     comments?: CommentCreateNestedManyWithoutUserInput
     gyms?: GymCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutParkingsInput = {
@@ -14395,11 +18793,45 @@ export namespace Prisma {
     likes?: LikeUncheckedCreateNestedManyWithoutUserInput
     comments?: CommentUncheckedCreateNestedManyWithoutUserInput
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutParkingsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutParkingsInput, UserUncheckedCreateWithoutParkingsInput>
+  }
+
+  export type ReviewCreateWithoutParkingInput = {
+    id?: string
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    gym?: GymCreateNestedOneWithoutReviewsInput
+    pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutParkingInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutParkingInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutParkingInput, ReviewUncheckedCreateWithoutParkingInput>
+  }
+
+  export type ReviewCreateManyParkingInputEnvelope = {
+    data: ReviewCreateManyParkingInput | ReviewCreateManyParkingInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutParkingsInput = {
@@ -14431,6 +18863,8 @@ export namespace Prisma {
     likes?: LikeUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutUserNestedInput
     gyms?: GymUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutParkingsInput = {
@@ -14451,6 +18885,656 @@ export namespace Prisma {
     likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutParkingInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutParkingInput, ReviewUncheckedUpdateWithoutParkingInput>
+    create: XOR<ReviewCreateWithoutParkingInput, ReviewUncheckedCreateWithoutParkingInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutParkingInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutParkingInput, ReviewUncheckedUpdateWithoutParkingInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutParkingInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutParkingInput>
+  }
+
+  export type UserCreateWithoutPayingGuestsInput = {
+    id: string
+    name?: string | null
+    isSubscribed?: boolean
+    created_at?: Date | string
+    whatsappMobile?: string
+    mobile?: string | null
+    role?: string
+    state?: string
+    city?: string
+    latitude?: number | null
+    longitude?: number | null
+    coverURL?: string | null
+    isDeleted?: boolean
+    blogs?: BlogCreateNestedManyWithoutUserInput
+    likes?: LikeCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
+    gyms?: GymCreateNestedManyWithoutUserInput
+    parkings?: ParkingCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPayingGuestsInput = {
+    id: string
+    name?: string | null
+    isSubscribed?: boolean
+    created_at?: Date | string
+    whatsappMobile?: string
+    mobile?: string | null
+    role?: string
+    state?: string
+    city?: string
+    latitude?: number | null
+    longitude?: number | null
+    coverURL?: string | null
+    isDeleted?: boolean
+    blogs?: BlogUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikeUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    gyms?: GymUncheckedCreateNestedManyWithoutUserInput
+    parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPayingGuestsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPayingGuestsInput, UserUncheckedCreateWithoutPayingGuestsInput>
+  }
+
+  export type ReviewCreateWithoutPgInput = {
+    id?: string
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    gym?: GymCreateNestedOneWithoutReviewsInput
+    parking?: ParkingCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutPgInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    parkingId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutPgInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutPgInput, ReviewUncheckedCreateWithoutPgInput>
+  }
+
+  export type ReviewCreateManyPgInputEnvelope = {
+    data: ReviewCreateManyPgInput | ReviewCreateManyPgInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutPayingGuestsInput = {
+    update: XOR<UserUpdateWithoutPayingGuestsInput, UserUncheckedUpdateWithoutPayingGuestsInput>
+    create: XOR<UserCreateWithoutPayingGuestsInput, UserUncheckedCreateWithoutPayingGuestsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPayingGuestsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPayingGuestsInput, UserUncheckedUpdateWithoutPayingGuestsInput>
+  }
+
+  export type UserUpdateWithoutPayingGuestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    isSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    whatsappMobile?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    coverURL?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    blogs?: BlogUpdateManyWithoutUserNestedInput
+    likes?: LikeUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    gyms?: GymUpdateManyWithoutUserNestedInput
+    parkings?: ParkingUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPayingGuestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    isSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    whatsappMobile?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    coverURL?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    blogs?: BlogUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
+    parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutPgInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutPgInput, ReviewUncheckedUpdateWithoutPgInput>
+    create: XOR<ReviewCreateWithoutPgInput, ReviewUncheckedCreateWithoutPgInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutPgInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutPgInput, ReviewUncheckedUpdateWithoutPgInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutPgInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutPgInput>
+  }
+
+  export type UserCreateWithoutReviewsInput = {
+    id: string
+    name?: string | null
+    isSubscribed?: boolean
+    created_at?: Date | string
+    whatsappMobile?: string
+    mobile?: string | null
+    role?: string
+    state?: string
+    city?: string
+    latitude?: number | null
+    longitude?: number | null
+    coverURL?: string | null
+    isDeleted?: boolean
+    blogs?: BlogCreateNestedManyWithoutUserInput
+    likes?: LikeCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
+    gyms?: GymCreateNestedManyWithoutUserInput
+    parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReviewsInput = {
+    id: string
+    name?: string | null
+    isSubscribed?: boolean
+    created_at?: Date | string
+    whatsappMobile?: string
+    mobile?: string | null
+    role?: string
+    state?: string
+    city?: string
+    latitude?: number | null
+    longitude?: number | null
+    coverURL?: string | null
+    isDeleted?: boolean
+    blogs?: BlogUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikeUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    gyms?: GymUncheckedCreateNestedManyWithoutUserInput
+    parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReviewsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type GymCreateWithoutReviewsInput = {
+    id?: string
+    gymName: string
+    locationLatitude: number
+    locationLongitude: number
+    yearOfGym: number
+    description: string
+    photos?: GymCreatephotosInput | string[]
+    videos?: GymCreatevideosInput | string[]
+    lockerFacility: boolean
+    timing: JsonNullValueInput | InputJsonValue
+    categories?: GymCreatecategoriesInput | string[]
+    rateCard?: string | null
+    website?: string | null
+    services?: GymCreateservicesInput | string[]
+    benefits?: GymCreatebenefitsInput | string[]
+    pricing: JsonNullValueInput | InputJsonValue
+    amenities?: GymCreateamenitiesInput | string[]
+    availableSports?: GymCreateavailableSportsInput | string[]
+    strengthEquipments?: GymCreatestrengthEquipmentsInput | string[]
+    cardioEquipments?: GymCreatecardioEquipmentsInput | string[]
+    rules?: GymCreaterulesInput | string[]
+    gender: string
+    counsellingServices: JsonNullValueInput | InputJsonValue
+    socialMediaLinks: JsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutGymsInput
+  }
+
+  export type GymUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    userId: string
+    gymName: string
+    locationLatitude: number
+    locationLongitude: number
+    yearOfGym: number
+    description: string
+    photos?: GymCreatephotosInput | string[]
+    videos?: GymCreatevideosInput | string[]
+    lockerFacility: boolean
+    timing: JsonNullValueInput | InputJsonValue
+    categories?: GymCreatecategoriesInput | string[]
+    rateCard?: string | null
+    website?: string | null
+    services?: GymCreateservicesInput | string[]
+    benefits?: GymCreatebenefitsInput | string[]
+    pricing: JsonNullValueInput | InputJsonValue
+    amenities?: GymCreateamenitiesInput | string[]
+    availableSports?: GymCreateavailableSportsInput | string[]
+    strengthEquipments?: GymCreatestrengthEquipmentsInput | string[]
+    cardioEquipments?: GymCreatecardioEquipmentsInput | string[]
+    rules?: GymCreaterulesInput | string[]
+    gender: string
+    counsellingServices: JsonNullValueInput | InputJsonValue
+    socialMediaLinks: JsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GymCreateOrConnectWithoutReviewsInput = {
+    where: GymWhereUniqueInput
+    create: XOR<GymCreateWithoutReviewsInput, GymUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type ParkingCreateWithoutReviewsInput = {
+    id?: string
+    name: string
+    description: string
+    latitude: number
+    longitude: number
+    price: JsonNullValueInput | InputJsonValue
+    yearOfParking: number
+    parkingType: string
+    vacancies: number
+    size: string
+    photos?: ParkingCreatephotosInput | string[]
+    videos?: ParkingCreatevideosInput | string[]
+    amenities?: ParkingCreateamenitiesInput | string[]
+    accessibility: string
+    capacity: number
+    security?: ParkingCreatesecurityInput | string[]
+    operatingHours: JsonNullValueInput | InputJsonValue
+    booking: JsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutParkingsInput
+  }
+
+  export type ParkingUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    userId: string
+    name: string
+    description: string
+    latitude: number
+    longitude: number
+    price: JsonNullValueInput | InputJsonValue
+    yearOfParking: number
+    parkingType: string
+    vacancies: number
+    size: string
+    photos?: ParkingCreatephotosInput | string[]
+    videos?: ParkingCreatevideosInput | string[]
+    amenities?: ParkingCreateamenitiesInput | string[]
+    accessibility: string
+    capacity: number
+    security?: ParkingCreatesecurityInput | string[]
+    operatingHours: JsonNullValueInput | InputJsonValue
+    booking: JsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ParkingCreateOrConnectWithoutReviewsInput = {
+    where: ParkingWhereUniqueInput
+    create: XOR<ParkingCreateWithoutReviewsInput, ParkingUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type PayingGuestsCreateWithoutReviewsInput = {
+    id?: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutPayingGuestsInput
+  }
+
+  export type PayingGuestsUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    userId: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PayingGuestsCreateOrConnectWithoutReviewsInput = {
+    where: PayingGuestsWhereUniqueInput
+    create: XOR<PayingGuestsCreateWithoutReviewsInput, PayingGuestsUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type UserUpsertWithoutReviewsInput = {
+    update: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type UserUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    isSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    whatsappMobile?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    coverURL?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    blogs?: BlogUpdateManyWithoutUserNestedInput
+    likes?: LikeUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    gyms?: GymUpdateManyWithoutUserNestedInput
+    parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    isSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    whatsappMobile?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    coverURL?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    blogs?: BlogUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
+    parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type GymUpsertWithoutReviewsInput = {
+    update: XOR<GymUpdateWithoutReviewsInput, GymUncheckedUpdateWithoutReviewsInput>
+    create: XOR<GymCreateWithoutReviewsInput, GymUncheckedCreateWithoutReviewsInput>
+    where?: GymWhereInput
+  }
+
+  export type GymUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: GymWhereInput
+    data: XOR<GymUpdateWithoutReviewsInput, GymUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type GymUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gymName?: StringFieldUpdateOperationsInput | string
+    locationLatitude?: FloatFieldUpdateOperationsInput | number
+    locationLongitude?: FloatFieldUpdateOperationsInput | number
+    yearOfGym?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    photos?: GymUpdatephotosInput | string[]
+    videos?: GymUpdatevideosInput | string[]
+    lockerFacility?: BoolFieldUpdateOperationsInput | boolean
+    timing?: JsonNullValueInput | InputJsonValue
+    categories?: GymUpdatecategoriesInput | string[]
+    rateCard?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    services?: GymUpdateservicesInput | string[]
+    benefits?: GymUpdatebenefitsInput | string[]
+    pricing?: JsonNullValueInput | InputJsonValue
+    amenities?: GymUpdateamenitiesInput | string[]
+    availableSports?: GymUpdateavailableSportsInput | string[]
+    strengthEquipments?: GymUpdatestrengthEquipmentsInput | string[]
+    cardioEquipments?: GymUpdatecardioEquipmentsInput | string[]
+    rules?: GymUpdaterulesInput | string[]
+    gender?: StringFieldUpdateOperationsInput | string
+    counsellingServices?: JsonNullValueInput | InputJsonValue
+    socialMediaLinks?: JsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutGymsNestedInput
+  }
+
+  export type GymUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymName?: StringFieldUpdateOperationsInput | string
+    locationLatitude?: FloatFieldUpdateOperationsInput | number
+    locationLongitude?: FloatFieldUpdateOperationsInput | number
+    yearOfGym?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    photos?: GymUpdatephotosInput | string[]
+    videos?: GymUpdatevideosInput | string[]
+    lockerFacility?: BoolFieldUpdateOperationsInput | boolean
+    timing?: JsonNullValueInput | InputJsonValue
+    categories?: GymUpdatecategoriesInput | string[]
+    rateCard?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    services?: GymUpdateservicesInput | string[]
+    benefits?: GymUpdatebenefitsInput | string[]
+    pricing?: JsonNullValueInput | InputJsonValue
+    amenities?: GymUpdateamenitiesInput | string[]
+    availableSports?: GymUpdateavailableSportsInput | string[]
+    strengthEquipments?: GymUpdatestrengthEquipmentsInput | string[]
+    cardioEquipments?: GymUpdatecardioEquipmentsInput | string[]
+    rules?: GymUpdaterulesInput | string[]
+    gender?: StringFieldUpdateOperationsInput | string
+    counsellingServices?: JsonNullValueInput | InputJsonValue
+    socialMediaLinks?: JsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParkingUpsertWithoutReviewsInput = {
+    update: XOR<ParkingUpdateWithoutReviewsInput, ParkingUncheckedUpdateWithoutReviewsInput>
+    create: XOR<ParkingCreateWithoutReviewsInput, ParkingUncheckedCreateWithoutReviewsInput>
+    where?: ParkingWhereInput
+  }
+
+  export type ParkingUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: ParkingWhereInput
+    data: XOR<ParkingUpdateWithoutReviewsInput, ParkingUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type ParkingUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    price?: JsonNullValueInput | InputJsonValue
+    yearOfParking?: IntFieldUpdateOperationsInput | number
+    parkingType?: StringFieldUpdateOperationsInput | string
+    vacancies?: IntFieldUpdateOperationsInput | number
+    size?: StringFieldUpdateOperationsInput | string
+    photos?: ParkingUpdatephotosInput | string[]
+    videos?: ParkingUpdatevideosInput | string[]
+    amenities?: ParkingUpdateamenitiesInput | string[]
+    accessibility?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    security?: ParkingUpdatesecurityInput | string[]
+    operatingHours?: JsonNullValueInput | InputJsonValue
+    booking?: JsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutParkingsNestedInput
+  }
+
+  export type ParkingUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    price?: JsonNullValueInput | InputJsonValue
+    yearOfParking?: IntFieldUpdateOperationsInput | number
+    parkingType?: StringFieldUpdateOperationsInput | string
+    vacancies?: IntFieldUpdateOperationsInput | number
+    size?: StringFieldUpdateOperationsInput | string
+    photos?: ParkingUpdatephotosInput | string[]
+    videos?: ParkingUpdatevideosInput | string[]
+    amenities?: ParkingUpdateamenitiesInput | string[]
+    accessibility?: StringFieldUpdateOperationsInput | string
+    capacity?: IntFieldUpdateOperationsInput | number
+    security?: ParkingUpdatesecurityInput | string[]
+    operatingHours?: JsonNullValueInput | InputJsonValue
+    booking?: JsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PayingGuestsUpsertWithoutReviewsInput = {
+    update: XOR<PayingGuestsUpdateWithoutReviewsInput, PayingGuestsUncheckedUpdateWithoutReviewsInput>
+    create: XOR<PayingGuestsCreateWithoutReviewsInput, PayingGuestsUncheckedCreateWithoutReviewsInput>
+    where?: PayingGuestsWhereInput
+  }
+
+  export type PayingGuestsUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: PayingGuestsWhereInput
+    data: XOR<PayingGuestsUpdateWithoutReviewsInput, PayingGuestsUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type PayingGuestsUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutPayingGuestsNestedInput
+  }
+
+  export type PayingGuestsUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BlogCreateManyUserInput = {
@@ -14533,6 +19617,42 @@ export namespace Prisma {
     operatingHours: JsonNullValueInput | InputJsonValue
     booking: JsonNullValueInput | InputJsonValue
     isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PayingGuestsCreateManyUserInput = {
+    id?: string
+    subCategory?: PayingGuestsCreatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    availableFrom?: Date | string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsCreateimagesInput | string[]
+    videos?: PayingGuestsCreatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateManyUserInput = {
+    id?: string
+    gymId?: string | null
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14659,6 +19779,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUpdateManyWithoutGymNestedInput
   }
 
   export type GymUncheckedUpdateWithoutUserInput = {
@@ -14689,6 +19810,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutGymNestedInput
   }
 
   export type GymUncheckedUpdateManyWithoutUserInput = {
@@ -14743,6 +19865,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUpdateManyWithoutParkingNestedInput
   }
 
   export type ParkingUncheckedUpdateWithoutUserInput = {
@@ -14767,6 +19890,7 @@ export namespace Prisma {
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutParkingNestedInput
   }
 
   export type ParkingUncheckedUpdateManyWithoutUserInput = {
@@ -14789,6 +19913,116 @@ export namespace Prisma {
     operatingHours?: JsonNullValueInput | InputJsonValue
     booking?: JsonNullValueInput | InputJsonValue
     isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PayingGuestsUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUpdateManyWithoutPgNestedInput
+  }
+
+  export type PayingGuestsUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutPgNestedInput
+  }
+
+  export type PayingGuestsUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: PayingGuestsUpdatesubCategoryInput | string[]
+    roomDetails?: NullableJsonNullValueInput | InputJsonValue
+    mealDetails?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    availableFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    otherFeatures?: NullableJsonNullValueInput | InputJsonValue
+    societyBuildingFeatures?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    safetyFeatures?: NullableJsonNullValueInput | InputJsonValue
+    communityFeatures?: NullableJsonNullValueInput | InputJsonValue
+    images?: PayingGuestsUpdateimagesInput | string[]
+    videos?: PayingGuestsUpdatevideosInput | string[]
+    verification?: NullableJsonNullValueInput | InputJsonValue
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gym?: GymUpdateOneWithoutReviewsNestedInput
+    parking?: ParkingUpdateOneWithoutReviewsNestedInput
+    pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14849,6 +20083,138 @@ export namespace Prisma {
   export type LikeUncheckedUpdateManyWithoutBlogInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyGymInput = {
+    id?: string
+    userId: string
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateWithoutGymInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    parking?: ParkingUpdateOneWithoutReviewsNestedInput
+    pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutGymInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutGymInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyParkingInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateWithoutParkingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    gym?: GymUpdateOneWithoutReviewsNestedInput
+    pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutParkingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutParkingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyPgInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    parkingId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateWithoutPgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    gym?: GymUpdateOneWithoutReviewsNestedInput
+    parking?: ParkingUpdateOneWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutPgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutPgInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
