@@ -244,6 +244,37 @@ const getComments = async (req: Request, res: Response, next: NextFunction) => {
         return next(error);
     }
 };
+const deleteBlog = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { id } = req.params;
+        const { userId } = getAuth(req);
+ 
+
+        if (!userId) {
+            logger.warn("Unauthorized blog deletion attempt");
+            res.status(401).json({ success: false, message: "Unauthorized request" });
+            return;
+        }
+      
+
+        const blog = await blogService.checkBlogExists(id);
+        if (!blog) {
+            res.status(404).json({ success: false, message: "Blog not found" });
+            return;
+        }
+
+        await blogService.deleteBlog(id);
+
+        
+        
+        res.status(200).json({ success: true, message: "Blog deleted successfully" });
+    } catch (error: any) {
+        logger.error("Failed to delete blog", {
+            error: error.message || error,
+        });
+        return next(error);
+    }
+};
 
 export {
     createBlog,
@@ -253,4 +284,5 @@ export {
     toggleLike,
     addComment,
     getComments,
+    deleteBlog,
 };

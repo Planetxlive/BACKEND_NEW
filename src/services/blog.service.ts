@@ -283,6 +283,11 @@ class BlogService {
 
         await Promise.all(commonKeys.map((key) => RedisCache.del(key)));
     }
-}
+
+    // delete blog
+    async deleteBlog(id: string) {
+        await prisma.blog.delete({ where: { id } });
+    }
+}   
 
 export default new BlogService();

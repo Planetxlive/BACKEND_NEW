@@ -5,6 +5,7 @@ import { blogSchema, commentSchema } from "../validators/blog.validator";
 import {
     addComment,
     createBlog,
+    deleteBlog,
     getAllBlogs,
     getBlogById,
     getComments,
@@ -139,6 +140,27 @@ blogRouter.get("/user", requireAuth(), getUserBlogs);
  *         description: Blog not found
  */
 blogRouter.get("/:id", validateId("id"), getBlogById);
+
+/**
+ * @openapi
+ * /api/v1/blog/{id}:
+ *   delete:
+ *     summary: Delete a blog
+ *     tags:
+ *       - Blog
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:   
+ *       200:
+ *         description: Blog deleted
+ *       404:
+ *         description: Blog not found
+ */
+blogRouter.delete("/:id", requireAuth(), validateId("id"), deleteBlog);
 /**
  * @openapi
  * /api/v1/blog/toggleLike/{blogId}:
@@ -226,5 +248,7 @@ blogRouter.post(
  *                     type: string
  */
 blogRouter.get("/comment/:blogId", validateId("blogId"), getComments);
+
+
 
 export default blogRouter;
