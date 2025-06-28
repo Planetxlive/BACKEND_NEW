@@ -55,7 +55,6 @@ const updateProfile = async (
             "city",
             "state",
             "whatsappMobile",
-            "imageURL",
             "coverURL",
             "latitude",
             "longitude",

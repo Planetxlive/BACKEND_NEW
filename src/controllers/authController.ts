@@ -16,6 +16,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         const mobile = clerkUser.phoneNumbers?.[0]?.phoneNumber;
         const fullName = [clerkUser.firstName, clerkUser.lastName].filter(Boolean).join(" ") || undefined;
         const createdAt = clerkUser.createdAt ? new Date(clerkUser.createdAt) : new Date();
+        const { longitude, latitude, city, state, country } = req.body;
 
         // Check for existing user by email
         // if (email) {
@@ -38,6 +39,11 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         const newUser = await authService.createUser({
             id: clerkUser.id,
             // email,
+            longitude,
+            latitude,
+            city,
+            state,
+            country,
             mobile,
             name: fullName,
             created_at: createdAt,
