@@ -1,19 +1,19 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
- 
+
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
- 
+
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
- 
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
- 
+
 model User {
   id             String         @id
   name           String?
@@ -35,10 +35,11 @@ model User {
   parkings       Parking[]
   payingGuests   PayingGuests[]
   reviews        Review[]
- 
+  eventSpaces    EventSpace[]
+
   @@index([mobile])
 }
- 
+
 model Payment {
   id                String   @id @default(uuid())
   userId            String   @map("user_id")
@@ -52,7 +53,7 @@ model Payment {
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
 }
- 
+
 model Blog {
   id          String    @id @default(uuid())
   userId      String
@@ -70,10 +71,10 @@ model Blog {
   likes       Like[]
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
- 
+
   @@index([userId])
 }
- 
+
 model Like {
   id        String   @id @default(uuid())
   userId    String
@@ -82,12 +83,12 @@ model Like {
   blog      Blog     @relation(fields: [blogId], references: [id])
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
- 
+
   @@unique([userId, blogId])
   @@index([userId])
   @@index([blogId])
 }
- 
+
 model Comment {
   id        String   @id @default(uuid())
   blogId    String
@@ -97,11 +98,11 @@ model Comment {
   blog      Blog     @relation(fields: [blogId], references: [id])
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
- 
+
   @@index([blogId])
   @@index([userId])
 }
- 
+
 model Gym {
   id                  String   @id @default(uuid()) @map("id")
   userId              String   @map("user_id")
@@ -133,10 +134,10 @@ model Gym {
   reviews             Review[]
   createdAt           DateTime @default(now()) @map("created_at")
   updatedAt           DateTime @updatedAt @map("updated_at")
- 
+
   @@index([userId])
 }
- 
+
 model Parking {
   id             String   @id @default(uuid())
   userId         String   @map("user_id")
@@ -162,10 +163,10 @@ model Parking {
   reviews        Review[]
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
- 
+
   @@index([userId])
 }
- 
+
 model PayingGuests {
   id                      String    @id @default(uuid())
   userId                  String    @map("user_id")
@@ -192,29 +193,64 @@ model PayingGuests {
   reviews                 Review[]
   createdAt               DateTime  @default(now()) @map("created_at")
   updatedAt               DateTime  @updatedAt @map("updated_at")
- 
+
   @@index([userId])
 }
- 
+
 model Review {
-  id        String   @id @default(uuid())
-  userId    String   @map("user_id")
-  gymId     String?  @map("gym_id")
-  parkingId String?  @map("parking_id")
-  pgId      String?  @map("pg_id")
-  rating    Int?
-  comment   String?
+  id           String  @id @default(uuid())
+  userId       String  @map("user_id")
+  gymId        String? @map("gym_id")
+  parkingId    String? @map("parking_id")
+  pgId         String? @map("pg_id")
+  eventSpaceId String? @map("event_space_id")
+
+  rating  Int?
+  comment String?
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
- 
+
   // RELATIONS
-  user    User          @relation(fields: [userId], references: [id])
-  gym     Gym?          @relation(fields: [gymId], references: [id])
-  parking Parking?      @relation(fields: [parkingId], references: [id])
-  pg      PayingGuests? @relation(fields: [pgId], references: [id])
- 
+  user       User          @relation(fields: [userId], references: [id])
+  gym        Gym?          @relation(fields: [gymId], references: [id])
+  parking    Parking?      @relation(fields: [parkingId], references: [id])
+  pg         PayingGuests? @relation(fields: [pgId], references: [id])
+  eventSpace EventSpace?   @relation(fields: [eventSpaceId], references: [id])
+
   @@index([userId])
   @@index([gymId])
   @@index([parkingId])
   @@index([pgId])
+  @@index([eventSpaceId])
+}
+
+model EventSpace {
+  id                 String   @id @default(uuid())
+  userId             String   @map("user_id")
+  subCategory        String?  @map("sub_category")
+  type               String?  @map("type")
+  propertyDetails    Json?    @map("property_details")
+  pricing            Json?
+  amenities          Json?
+  facilities         Json?
+  availableSpaces    Json?    @map("available_spaces")
+  bookingDetails     Json?    @map("booking_details")
+  additionalServices Json?    @map("additional_services")
+  rules              Json?
+  nearbyPlaces       Json?    @map("nearby_places")
+  availabilityStatus String?  @map("availability_status")
+  ageOfProperty      Int?     @map("age_of_property")
+  description        String?  @db.VarChar(1000)
+  images             String[] @default([])
+  videos             String[] @default([])
+  isDeleted          Boolean  @default(false) @map("is_deleted")
+
+  user    User     @relation(fields: [userId], references: [id])
+  reviews Review[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
 }

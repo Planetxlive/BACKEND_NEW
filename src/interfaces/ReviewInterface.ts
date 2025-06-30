@@ -3,6 +3,7 @@ export interface Review {
     userId: string;
     gymId?: string | null;
     parkingId?: string | null;
+    eventSpaceId?: string | null;
     pgId?: string | null;
     rating?: number | null;
     comment?: string | null;

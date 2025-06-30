@@ -585,20 +585,26 @@ class PayingGuestsService {
         userId?: string,
         payingGuestId?: string
     ) {
-        const commonKeys = [
-            "payingGuests:all:1:10:all:none",
-            ...(userId ? [`payingGuests:user:${userId}:1:10`] : []),
-            ...(payingGuestId
-                ? [
-                    `payingGuest:${payingGuestId}`,
-                    `payingGuest:exists:${payingGuestId}`,
-                    `reviews:payingGuest:${payingGuestId}:1:10`,
-                    `payingGuest:rating:${payingGuestId}`,
-                ]
-                : []),
-        ];
+        const promises: Promise<any>[] = [];
 
-        await Promise.all(commonKeys.map((key) => RedisCache.del(key)));
+        promises.push(RedisCache.delPattern("payingGuests:all:*"));
+
+        if (userId) {
+            promises.push(RedisCache.delPattern(`payingGuests:user:${userId}:*`));
+        }
+
+        if (payingGuestId) {
+            promises.push(
+                ...[
+                    RedisCache.del(`payingGuest:${payingGuestId}`),
+                    RedisCache.del(`payingGuest:exists:${payingGuestId}`),
+                    RedisCache.delPattern(`reviews:payingGuest:${payingGuestId}:*`),
+                    RedisCache.del(`payingGuest:rating:${payingGuestId}`),
+                ]
+            );
+        }
+
+        await Promise.all(promises);
     }
 }
 

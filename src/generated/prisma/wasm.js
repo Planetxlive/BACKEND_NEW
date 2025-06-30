@@ -271,8 +271,33 @@ exports.Prisma.ReviewScalarFieldEnum = {
   gymId: 'gymId',
   parkingId: 'parkingId',
   pgId: 'pgId',
+  eventSpaceId: 'eventSpaceId',
   rating: 'rating',
   comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EventSpaceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  subCategory: 'subCategory',
+  type: 'type',
+  propertyDetails: 'propertyDetails',
+  pricing: 'pricing',
+  amenities: 'amenities',
+  facilities: 'facilities',
+  availableSpaces: 'availableSpaces',
+  bookingDetails: 'bookingDetails',
+  additionalServices: 'additionalServices',
+  rules: 'rules',
+  nearbyPlaces: 'nearbyPlaces',
+  availabilityStatus: 'availabilityStatus',
+  ageOfProperty: 'ageOfProperty',
+  description: 'description',
+  images: 'images',
+  videos: 'videos',
+  isDeleted: 'isDeleted',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -317,7 +342,8 @@ exports.Prisma.ModelName = {
   Gym: 'Gym',
   Parking: 'Parking',
   PayingGuests: 'PayingGuests',
-  Review: 'Review'
+  Review: 'Review',
+  EventSpace: 'EventSpace'
 };
 
 /**
