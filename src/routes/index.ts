@@ -5,6 +5,7 @@ import paymentRouter from "./paymentRoutes";
 import blogRouter from "./blogRoutes";
 import gymRouter from "./gymRoutes";
 import pgRouter from "./pgRoutes";
+import eventSpaceRouter from "./eventSpaceRoutes";
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use("/payment", paymentRouter);
 router.use("/blog", blogRouter);
 router.use("/gym", gymRouter);
 router.use("/pg", pgRouter);
+router.use("/event-space", eventSpaceRouter);
 
 export default router;

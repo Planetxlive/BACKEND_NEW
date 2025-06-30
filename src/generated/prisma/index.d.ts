@@ -58,6 +58,11 @@ export type PayingGuests = $Result.DefaultSelection<Prisma.$PayingGuestsPayload>
  * 
  */
 export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
+/**
+ * Model EventSpace
+ * 
+ */
+export type EventSpace = $Result.DefaultSelection<Prisma.$EventSpacePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -273,6 +278,16 @@ export class PrismaClient<
     * ```
     */
   get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.eventSpace`: Exposes CRUD operations for the **EventSpace** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EventSpaces
+    * const eventSpaces = await prisma.eventSpace.findMany()
+    * ```
+    */
+  get eventSpace(): Prisma.EventSpaceDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -721,7 +736,8 @@ export namespace Prisma {
     Gym: 'Gym',
     Parking: 'Parking',
     PayingGuests: 'PayingGuests',
-    Review: 'Review'
+    Review: 'Review',
+    EventSpace: 'EventSpace'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +756,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "payment" | "blog" | "like" | "comment" | "gym" | "parking" | "payingGuests" | "review"
+      modelProps: "user" | "payment" | "blog" | "like" | "comment" | "gym" | "parking" | "payingGuests" | "review" | "eventSpace"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1410,6 +1426,80 @@ export namespace Prisma {
           }
         }
       }
+      EventSpace: {
+        payload: Prisma.$EventSpacePayload<ExtArgs>
+        fields: Prisma.EventSpaceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EventSpaceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EventSpaceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>
+          }
+          findFirst: {
+            args: Prisma.EventSpaceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EventSpaceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>
+          }
+          findMany: {
+            args: Prisma.EventSpaceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>[]
+          }
+          create: {
+            args: Prisma.EventSpaceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>
+          }
+          createMany: {
+            args: Prisma.EventSpaceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EventSpaceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>[]
+          }
+          delete: {
+            args: Prisma.EventSpaceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>
+          }
+          update: {
+            args: Prisma.EventSpaceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>
+          }
+          deleteMany: {
+            args: Prisma.EventSpaceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EventSpaceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EventSpaceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>[]
+          }
+          upsert: {
+            args: Prisma.EventSpaceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventSpacePayload>
+          }
+          aggregate: {
+            args: Prisma.EventSpaceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEventSpace>
+          }
+          groupBy: {
+            args: Prisma.EventSpaceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EventSpaceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EventSpaceCountArgs<ExtArgs>
+            result: $Utils.Optional<EventSpaceCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1503,6 +1593,7 @@ export namespace Prisma {
     parking?: ParkingOmit
     payingGuests?: PayingGuestsOmit
     review?: ReviewOmit
+    eventSpace?: EventSpaceOmit
   }
 
   /* Types for Logging */
@@ -1604,6 +1695,7 @@ export namespace Prisma {
     parkings: number
     payingGuests: number
     reviews: number
+    eventSpaces: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1614,6 +1706,7 @@ export namespace Prisma {
     parkings?: boolean | UserCountOutputTypeCountParkingsArgs
     payingGuests?: boolean | UserCountOutputTypeCountPayingGuestsArgs
     reviews?: boolean | UserCountOutputTypeCountReviewsArgs
+    eventSpaces?: boolean | UserCountOutputTypeCountEventSpacesArgs
   }
 
   // Custom InputTypes
@@ -1674,6 +1767,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReviewWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountEventSpacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventSpaceWhereInput
   }
 
 
@@ -1806,6 +1906,37 @@ export namespace Prisma {
    * PayingGuestsCountOutputType without action
    */
   export type PayingGuestsCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+  }
+
+
+  /**
+   * Count Type EventSpaceCountOutputType
+   */
+
+  export type EventSpaceCountOutputType = {
+    reviews: number
+  }
+
+  export type EventSpaceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reviews?: boolean | EventSpaceCountOutputTypeCountReviewsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EventSpaceCountOutputType without action
+   */
+  export type EventSpaceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpaceCountOutputType
+     */
+    select?: EventSpaceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EventSpaceCountOutputType without action
+   */
+  export type EventSpaceCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ReviewWhereInput
   }
 
@@ -2087,6 +2218,7 @@ export namespace Prisma {
     parkings?: boolean | User$parkingsArgs<ExtArgs>
     payingGuests?: boolean | User$payingGuestsArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
+    eventSpaces?: boolean | User$eventSpacesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2147,6 +2279,7 @@ export namespace Prisma {
     parkings?: boolean | User$parkingsArgs<ExtArgs>
     payingGuests?: boolean | User$payingGuestsArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
+    eventSpaces?: boolean | User$eventSpacesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2162,6 +2295,7 @@ export namespace Prisma {
       parkings: Prisma.$ParkingPayload<ExtArgs>[]
       payingGuests: Prisma.$PayingGuestsPayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
+      eventSpaces: Prisma.$EventSpacePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2578,6 +2712,7 @@ export namespace Prisma {
     parkings<T extends User$parkingsArgs<ExtArgs> = {}>(args?: Subset<T, User$parkingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParkingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     payingGuests<T extends User$payingGuestsArgs<ExtArgs> = {}>(args?: Subset<T, User$payingGuestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    eventSpaces<T extends User$eventSpacesArgs<ExtArgs> = {}>(args?: Subset<T, User$eventSpacesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3173,6 +3308,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * User.eventSpaces
+   */
+  export type User$eventSpacesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    where?: EventSpaceWhereInput
+    orderBy?: EventSpaceOrderByWithRelationInput | EventSpaceOrderByWithRelationInput[]
+    cursor?: EventSpaceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EventSpaceScalarFieldEnum | EventSpaceScalarFieldEnum[]
   }
 
   /**
@@ -11726,6 +11885,7 @@ export namespace Prisma {
     gymId: string | null
     parkingId: string | null
     pgId: string | null
+    eventSpaceId: string | null
     rating: number | null
     comment: string | null
     createdAt: Date | null
@@ -11738,6 +11898,7 @@ export namespace Prisma {
     gymId: string | null
     parkingId: string | null
     pgId: string | null
+    eventSpaceId: string | null
     rating: number | null
     comment: string | null
     createdAt: Date | null
@@ -11750,6 +11911,7 @@ export namespace Prisma {
     gymId: number
     parkingId: number
     pgId: number
+    eventSpaceId: number
     rating: number
     comment: number
     createdAt: number
@@ -11772,6 +11934,7 @@ export namespace Prisma {
     gymId?: true
     parkingId?: true
     pgId?: true
+    eventSpaceId?: true
     rating?: true
     comment?: true
     createdAt?: true
@@ -11784,6 +11947,7 @@ export namespace Prisma {
     gymId?: true
     parkingId?: true
     pgId?: true
+    eventSpaceId?: true
     rating?: true
     comment?: true
     createdAt?: true
@@ -11796,6 +11960,7 @@ export namespace Prisma {
     gymId?: true
     parkingId?: true
     pgId?: true
+    eventSpaceId?: true
     rating?: true
     comment?: true
     createdAt?: true
@@ -11895,6 +12060,7 @@ export namespace Prisma {
     gymId: string | null
     parkingId: string | null
     pgId: string | null
+    eventSpaceId: string | null
     rating: number | null
     comment: string | null
     createdAt: Date
@@ -11926,6 +12092,7 @@ export namespace Prisma {
     gymId?: boolean
     parkingId?: boolean
     pgId?: boolean
+    eventSpaceId?: boolean
     rating?: boolean
     comment?: boolean
     createdAt?: boolean
@@ -11934,6 +12101,7 @@ export namespace Prisma {
     gym?: boolean | Review$gymArgs<ExtArgs>
     parking?: boolean | Review$parkingArgs<ExtArgs>
     pg?: boolean | Review$pgArgs<ExtArgs>
+    eventSpace?: boolean | Review$eventSpaceArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11942,6 +12110,7 @@ export namespace Prisma {
     gymId?: boolean
     parkingId?: boolean
     pgId?: boolean
+    eventSpaceId?: boolean
     rating?: boolean
     comment?: boolean
     createdAt?: boolean
@@ -11950,6 +12119,7 @@ export namespace Prisma {
     gym?: boolean | Review$gymArgs<ExtArgs>
     parking?: boolean | Review$parkingArgs<ExtArgs>
     pg?: boolean | Review$pgArgs<ExtArgs>
+    eventSpace?: boolean | Review$eventSpaceArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11958,6 +12128,7 @@ export namespace Prisma {
     gymId?: boolean
     parkingId?: boolean
     pgId?: boolean
+    eventSpaceId?: boolean
     rating?: boolean
     comment?: boolean
     createdAt?: boolean
@@ -11966,6 +12137,7 @@ export namespace Prisma {
     gym?: boolean | Review$gymArgs<ExtArgs>
     parking?: boolean | Review$parkingArgs<ExtArgs>
     pg?: boolean | Review$pgArgs<ExtArgs>
+    eventSpace?: boolean | Review$eventSpaceArgs<ExtArgs>
   }, ExtArgs["result"]["review"]>
 
   export type ReviewSelectScalar = {
@@ -11974,30 +12146,34 @@ export namespace Prisma {
     gymId?: boolean
     parkingId?: boolean
     pgId?: boolean
+    eventSpaceId?: boolean
     rating?: boolean
     comment?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "gymId" | "parkingId" | "pgId" | "rating" | "comment" | "createdAt" | "updatedAt", ExtArgs["result"]["review"]>
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "gymId" | "parkingId" | "pgId" | "eventSpaceId" | "rating" | "comment" | "createdAt" | "updatedAt", ExtArgs["result"]["review"]>
   export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     gym?: boolean | Review$gymArgs<ExtArgs>
     parking?: boolean | Review$parkingArgs<ExtArgs>
     pg?: boolean | Review$pgArgs<ExtArgs>
+    eventSpace?: boolean | Review$eventSpaceArgs<ExtArgs>
   }
   export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     gym?: boolean | Review$gymArgs<ExtArgs>
     parking?: boolean | Review$parkingArgs<ExtArgs>
     pg?: boolean | Review$pgArgs<ExtArgs>
+    eventSpace?: boolean | Review$eventSpaceArgs<ExtArgs>
   }
   export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     gym?: boolean | Review$gymArgs<ExtArgs>
     parking?: boolean | Review$parkingArgs<ExtArgs>
     pg?: boolean | Review$pgArgs<ExtArgs>
+    eventSpace?: boolean | Review$eventSpaceArgs<ExtArgs>
   }
 
   export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12007,6 +12183,7 @@ export namespace Prisma {
       gym: Prisma.$GymPayload<ExtArgs> | null
       parking: Prisma.$ParkingPayload<ExtArgs> | null
       pg: Prisma.$PayingGuestsPayload<ExtArgs> | null
+      eventSpace: Prisma.$EventSpacePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12014,6 +12191,7 @@ export namespace Prisma {
       gymId: string | null
       parkingId: string | null
       pgId: string | null
+      eventSpaceId: string | null
       rating: number | null
       comment: string | null
       createdAt: Date
@@ -12416,6 +12594,7 @@ export namespace Prisma {
     gym<T extends Review$gymArgs<ExtArgs> = {}>(args?: Subset<T, Review$gymArgs<ExtArgs>>): Prisma__GymClient<$Result.GetResult<Prisma.$GymPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     parking<T extends Review$parkingArgs<ExtArgs> = {}>(args?: Subset<T, Review$parkingArgs<ExtArgs>>): Prisma__ParkingClient<$Result.GetResult<Prisma.$ParkingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     pg<T extends Review$pgArgs<ExtArgs> = {}>(args?: Subset<T, Review$pgArgs<ExtArgs>>): Prisma__PayingGuestsClient<$Result.GetResult<Prisma.$PayingGuestsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    eventSpace<T extends Review$eventSpaceArgs<ExtArgs> = {}>(args?: Subset<T, Review$eventSpaceArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12450,6 +12629,7 @@ export namespace Prisma {
     readonly gymId: FieldRef<"Review", 'String'>
     readonly parkingId: FieldRef<"Review", 'String'>
     readonly pgId: FieldRef<"Review", 'String'>
+    readonly eventSpaceId: FieldRef<"Review", 'String'>
     readonly rating: FieldRef<"Review", 'Int'>
     readonly comment: FieldRef<"Review", 'String'>
     readonly createdAt: FieldRef<"Review", 'DateTime'>
@@ -12907,6 +13087,25 @@ export namespace Prisma {
   }
 
   /**
+   * Review.eventSpace
+   */
+  export type Review$eventSpaceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    where?: EventSpaceWhereInput
+  }
+
+  /**
    * Review without action
    */
   export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12922,6 +13121,1292 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ReviewInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EventSpace
+   */
+
+  export type AggregateEventSpace = {
+    _count: EventSpaceCountAggregateOutputType | null
+    _avg: EventSpaceAvgAggregateOutputType | null
+    _sum: EventSpaceSumAggregateOutputType | null
+    _min: EventSpaceMinAggregateOutputType | null
+    _max: EventSpaceMaxAggregateOutputType | null
+  }
+
+  export type EventSpaceAvgAggregateOutputType = {
+    ageOfProperty: number | null
+  }
+
+  export type EventSpaceSumAggregateOutputType = {
+    ageOfProperty: number | null
+  }
+
+  export type EventSpaceMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    subCategory: string | null
+    type: string | null
+    availabilityStatus: string | null
+    ageOfProperty: number | null
+    description: string | null
+    isDeleted: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EventSpaceMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    subCategory: string | null
+    type: string | null
+    availabilityStatus: string | null
+    ageOfProperty: number | null
+    description: string | null
+    isDeleted: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EventSpaceCountAggregateOutputType = {
+    id: number
+    userId: number
+    subCategory: number
+    type: number
+    propertyDetails: number
+    pricing: number
+    amenities: number
+    facilities: number
+    availableSpaces: number
+    bookingDetails: number
+    additionalServices: number
+    rules: number
+    nearbyPlaces: number
+    availabilityStatus: number
+    ageOfProperty: number
+    description: number
+    images: number
+    videos: number
+    isDeleted: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EventSpaceAvgAggregateInputType = {
+    ageOfProperty?: true
+  }
+
+  export type EventSpaceSumAggregateInputType = {
+    ageOfProperty?: true
+  }
+
+  export type EventSpaceMinAggregateInputType = {
+    id?: true
+    userId?: true
+    subCategory?: true
+    type?: true
+    availabilityStatus?: true
+    ageOfProperty?: true
+    description?: true
+    isDeleted?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EventSpaceMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    subCategory?: true
+    type?: true
+    availabilityStatus?: true
+    ageOfProperty?: true
+    description?: true
+    isDeleted?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EventSpaceCountAggregateInputType = {
+    id?: true
+    userId?: true
+    subCategory?: true
+    type?: true
+    propertyDetails?: true
+    pricing?: true
+    amenities?: true
+    facilities?: true
+    availableSpaces?: true
+    bookingDetails?: true
+    additionalServices?: true
+    rules?: true
+    nearbyPlaces?: true
+    availabilityStatus?: true
+    ageOfProperty?: true
+    description?: true
+    images?: true
+    videos?: true
+    isDeleted?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EventSpaceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EventSpace to aggregate.
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventSpaces to fetch.
+     */
+    orderBy?: EventSpaceOrderByWithRelationInput | EventSpaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EventSpaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventSpaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventSpaces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EventSpaces
+    **/
+    _count?: true | EventSpaceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: EventSpaceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EventSpaceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EventSpaceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EventSpaceMaxAggregateInputType
+  }
+
+  export type GetEventSpaceAggregateType<T extends EventSpaceAggregateArgs> = {
+        [P in keyof T & keyof AggregateEventSpace]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEventSpace[P]>
+      : GetScalarType<T[P], AggregateEventSpace[P]>
+  }
+
+
+
+
+  export type EventSpaceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventSpaceWhereInput
+    orderBy?: EventSpaceOrderByWithAggregationInput | EventSpaceOrderByWithAggregationInput[]
+    by: EventSpaceScalarFieldEnum[] | EventSpaceScalarFieldEnum
+    having?: EventSpaceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EventSpaceCountAggregateInputType | true
+    _avg?: EventSpaceAvgAggregateInputType
+    _sum?: EventSpaceSumAggregateInputType
+    _min?: EventSpaceMinAggregateInputType
+    _max?: EventSpaceMaxAggregateInputType
+  }
+
+  export type EventSpaceGroupByOutputType = {
+    id: string
+    userId: string
+    subCategory: string | null
+    type: string | null
+    propertyDetails: JsonValue | null
+    pricing: JsonValue | null
+    amenities: JsonValue | null
+    facilities: JsonValue | null
+    availableSpaces: JsonValue | null
+    bookingDetails: JsonValue | null
+    additionalServices: JsonValue | null
+    rules: JsonValue | null
+    nearbyPlaces: JsonValue | null
+    availabilityStatus: string | null
+    ageOfProperty: number | null
+    description: string | null
+    images: string[]
+    videos: string[]
+    isDeleted: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: EventSpaceCountAggregateOutputType | null
+    _avg: EventSpaceAvgAggregateOutputType | null
+    _sum: EventSpaceSumAggregateOutputType | null
+    _min: EventSpaceMinAggregateOutputType | null
+    _max: EventSpaceMaxAggregateOutputType | null
+  }
+
+  type GetEventSpaceGroupByPayload<T extends EventSpaceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EventSpaceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EventSpaceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EventSpaceGroupByOutputType[P]>
+            : GetScalarType<T[P], EventSpaceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EventSpaceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    type?: boolean
+    propertyDetails?: boolean
+    pricing?: boolean
+    amenities?: boolean
+    facilities?: boolean
+    availableSpaces?: boolean
+    bookingDetails?: boolean
+    additionalServices?: boolean
+    rules?: boolean
+    nearbyPlaces?: boolean
+    availabilityStatus?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    images?: boolean
+    videos?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | EventSpace$reviewsArgs<ExtArgs>
+    _count?: boolean | EventSpaceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["eventSpace"]>
+
+  export type EventSpaceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    type?: boolean
+    propertyDetails?: boolean
+    pricing?: boolean
+    amenities?: boolean
+    facilities?: boolean
+    availableSpaces?: boolean
+    bookingDetails?: boolean
+    additionalServices?: boolean
+    rules?: boolean
+    nearbyPlaces?: boolean
+    availabilityStatus?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    images?: boolean
+    videos?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["eventSpace"]>
+
+  export type EventSpaceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    type?: boolean
+    propertyDetails?: boolean
+    pricing?: boolean
+    amenities?: boolean
+    facilities?: boolean
+    availableSpaces?: boolean
+    bookingDetails?: boolean
+    additionalServices?: boolean
+    rules?: boolean
+    nearbyPlaces?: boolean
+    availabilityStatus?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    images?: boolean
+    videos?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["eventSpace"]>
+
+  export type EventSpaceSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    subCategory?: boolean
+    type?: boolean
+    propertyDetails?: boolean
+    pricing?: boolean
+    amenities?: boolean
+    facilities?: boolean
+    availableSpaces?: boolean
+    bookingDetails?: boolean
+    additionalServices?: boolean
+    rules?: boolean
+    nearbyPlaces?: boolean
+    availabilityStatus?: boolean
+    ageOfProperty?: boolean
+    description?: boolean
+    images?: boolean
+    videos?: boolean
+    isDeleted?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EventSpaceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "subCategory" | "type" | "propertyDetails" | "pricing" | "amenities" | "facilities" | "availableSpaces" | "bookingDetails" | "additionalServices" | "rules" | "nearbyPlaces" | "availabilityStatus" | "ageOfProperty" | "description" | "images" | "videos" | "isDeleted" | "createdAt" | "updatedAt", ExtArgs["result"]["eventSpace"]>
+  export type EventSpaceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    reviews?: boolean | EventSpace$reviewsArgs<ExtArgs>
+    _count?: boolean | EventSpaceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type EventSpaceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type EventSpaceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $EventSpacePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EventSpace"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      subCategory: string | null
+      type: string | null
+      propertyDetails: Prisma.JsonValue | null
+      pricing: Prisma.JsonValue | null
+      amenities: Prisma.JsonValue | null
+      facilities: Prisma.JsonValue | null
+      availableSpaces: Prisma.JsonValue | null
+      bookingDetails: Prisma.JsonValue | null
+      additionalServices: Prisma.JsonValue | null
+      rules: Prisma.JsonValue | null
+      nearbyPlaces: Prisma.JsonValue | null
+      availabilityStatus: string | null
+      ageOfProperty: number | null
+      description: string | null
+      images: string[]
+      videos: string[]
+      isDeleted: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["eventSpace"]>
+    composites: {}
+  }
+
+  type EventSpaceGetPayload<S extends boolean | null | undefined | EventSpaceDefaultArgs> = $Result.GetResult<Prisma.$EventSpacePayload, S>
+
+  type EventSpaceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EventSpaceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EventSpaceCountAggregateInputType | true
+    }
+
+  export interface EventSpaceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EventSpace'], meta: { name: 'EventSpace' } }
+    /**
+     * Find zero or one EventSpace that matches the filter.
+     * @param {EventSpaceFindUniqueArgs} args - Arguments to find a EventSpace
+     * @example
+     * // Get one EventSpace
+     * const eventSpace = await prisma.eventSpace.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EventSpaceFindUniqueArgs>(args: SelectSubset<T, EventSpaceFindUniqueArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EventSpace that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EventSpaceFindUniqueOrThrowArgs} args - Arguments to find a EventSpace
+     * @example
+     * // Get one EventSpace
+     * const eventSpace = await prisma.eventSpace.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EventSpaceFindUniqueOrThrowArgs>(args: SelectSubset<T, EventSpaceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EventSpace that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceFindFirstArgs} args - Arguments to find a EventSpace
+     * @example
+     * // Get one EventSpace
+     * const eventSpace = await prisma.eventSpace.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EventSpaceFindFirstArgs>(args?: SelectSubset<T, EventSpaceFindFirstArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EventSpace that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceFindFirstOrThrowArgs} args - Arguments to find a EventSpace
+     * @example
+     * // Get one EventSpace
+     * const eventSpace = await prisma.eventSpace.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EventSpaceFindFirstOrThrowArgs>(args?: SelectSubset<T, EventSpaceFindFirstOrThrowArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EventSpaces that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EventSpaces
+     * const eventSpaces = await prisma.eventSpace.findMany()
+     * 
+     * // Get first 10 EventSpaces
+     * const eventSpaces = await prisma.eventSpace.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const eventSpaceWithIdOnly = await prisma.eventSpace.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EventSpaceFindManyArgs>(args?: SelectSubset<T, EventSpaceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EventSpace.
+     * @param {EventSpaceCreateArgs} args - Arguments to create a EventSpace.
+     * @example
+     * // Create one EventSpace
+     * const EventSpace = await prisma.eventSpace.create({
+     *   data: {
+     *     // ... data to create a EventSpace
+     *   }
+     * })
+     * 
+     */
+    create<T extends EventSpaceCreateArgs>(args: SelectSubset<T, EventSpaceCreateArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EventSpaces.
+     * @param {EventSpaceCreateManyArgs} args - Arguments to create many EventSpaces.
+     * @example
+     * // Create many EventSpaces
+     * const eventSpace = await prisma.eventSpace.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EventSpaceCreateManyArgs>(args?: SelectSubset<T, EventSpaceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EventSpaces and returns the data saved in the database.
+     * @param {EventSpaceCreateManyAndReturnArgs} args - Arguments to create many EventSpaces.
+     * @example
+     * // Create many EventSpaces
+     * const eventSpace = await prisma.eventSpace.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EventSpaces and only return the `id`
+     * const eventSpaceWithIdOnly = await prisma.eventSpace.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EventSpaceCreateManyAndReturnArgs>(args?: SelectSubset<T, EventSpaceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EventSpace.
+     * @param {EventSpaceDeleteArgs} args - Arguments to delete one EventSpace.
+     * @example
+     * // Delete one EventSpace
+     * const EventSpace = await prisma.eventSpace.delete({
+     *   where: {
+     *     // ... filter to delete one EventSpace
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EventSpaceDeleteArgs>(args: SelectSubset<T, EventSpaceDeleteArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EventSpace.
+     * @param {EventSpaceUpdateArgs} args - Arguments to update one EventSpace.
+     * @example
+     * // Update one EventSpace
+     * const eventSpace = await prisma.eventSpace.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EventSpaceUpdateArgs>(args: SelectSubset<T, EventSpaceUpdateArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EventSpaces.
+     * @param {EventSpaceDeleteManyArgs} args - Arguments to filter EventSpaces to delete.
+     * @example
+     * // Delete a few EventSpaces
+     * const { count } = await prisma.eventSpace.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EventSpaceDeleteManyArgs>(args?: SelectSubset<T, EventSpaceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EventSpaces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EventSpaces
+     * const eventSpace = await prisma.eventSpace.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EventSpaceUpdateManyArgs>(args: SelectSubset<T, EventSpaceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EventSpaces and returns the data updated in the database.
+     * @param {EventSpaceUpdateManyAndReturnArgs} args - Arguments to update many EventSpaces.
+     * @example
+     * // Update many EventSpaces
+     * const eventSpace = await prisma.eventSpace.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EventSpaces and only return the `id`
+     * const eventSpaceWithIdOnly = await prisma.eventSpace.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EventSpaceUpdateManyAndReturnArgs>(args: SelectSubset<T, EventSpaceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EventSpace.
+     * @param {EventSpaceUpsertArgs} args - Arguments to update or create a EventSpace.
+     * @example
+     * // Update or create a EventSpace
+     * const eventSpace = await prisma.eventSpace.upsert({
+     *   create: {
+     *     // ... data to create a EventSpace
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EventSpace we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EventSpaceUpsertArgs>(args: SelectSubset<T, EventSpaceUpsertArgs<ExtArgs>>): Prisma__EventSpaceClient<$Result.GetResult<Prisma.$EventSpacePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EventSpaces.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceCountArgs} args - Arguments to filter EventSpaces to count.
+     * @example
+     * // Count the number of EventSpaces
+     * const count = await prisma.eventSpace.count({
+     *   where: {
+     *     // ... the filter for the EventSpaces we want to count
+     *   }
+     * })
+    **/
+    count<T extends EventSpaceCountArgs>(
+      args?: Subset<T, EventSpaceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EventSpaceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EventSpace.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EventSpaceAggregateArgs>(args: Subset<T, EventSpaceAggregateArgs>): Prisma.PrismaPromise<GetEventSpaceAggregateType<T>>
+
+    /**
+     * Group by EventSpace.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventSpaceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EventSpaceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EventSpaceGroupByArgs['orderBy'] }
+        : { orderBy?: EventSpaceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EventSpaceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventSpaceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EventSpace model
+   */
+  readonly fields: EventSpaceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EventSpace.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EventSpaceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviews<T extends EventSpace$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, EventSpace$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EventSpace model
+   */
+  interface EventSpaceFieldRefs {
+    readonly id: FieldRef<"EventSpace", 'String'>
+    readonly userId: FieldRef<"EventSpace", 'String'>
+    readonly subCategory: FieldRef<"EventSpace", 'String'>
+    readonly type: FieldRef<"EventSpace", 'String'>
+    readonly propertyDetails: FieldRef<"EventSpace", 'Json'>
+    readonly pricing: FieldRef<"EventSpace", 'Json'>
+    readonly amenities: FieldRef<"EventSpace", 'Json'>
+    readonly facilities: FieldRef<"EventSpace", 'Json'>
+    readonly availableSpaces: FieldRef<"EventSpace", 'Json'>
+    readonly bookingDetails: FieldRef<"EventSpace", 'Json'>
+    readonly additionalServices: FieldRef<"EventSpace", 'Json'>
+    readonly rules: FieldRef<"EventSpace", 'Json'>
+    readonly nearbyPlaces: FieldRef<"EventSpace", 'Json'>
+    readonly availabilityStatus: FieldRef<"EventSpace", 'String'>
+    readonly ageOfProperty: FieldRef<"EventSpace", 'Int'>
+    readonly description: FieldRef<"EventSpace", 'String'>
+    readonly images: FieldRef<"EventSpace", 'String[]'>
+    readonly videos: FieldRef<"EventSpace", 'String[]'>
+    readonly isDeleted: FieldRef<"EventSpace", 'Boolean'>
+    readonly createdAt: FieldRef<"EventSpace", 'DateTime'>
+    readonly updatedAt: FieldRef<"EventSpace", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EventSpace findUnique
+   */
+  export type EventSpaceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * Filter, which EventSpace to fetch.
+     */
+    where: EventSpaceWhereUniqueInput
+  }
+
+  /**
+   * EventSpace findUniqueOrThrow
+   */
+  export type EventSpaceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * Filter, which EventSpace to fetch.
+     */
+    where: EventSpaceWhereUniqueInput
+  }
+
+  /**
+   * EventSpace findFirst
+   */
+  export type EventSpaceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * Filter, which EventSpace to fetch.
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventSpaces to fetch.
+     */
+    orderBy?: EventSpaceOrderByWithRelationInput | EventSpaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EventSpaces.
+     */
+    cursor?: EventSpaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventSpaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventSpaces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EventSpaces.
+     */
+    distinct?: EventSpaceScalarFieldEnum | EventSpaceScalarFieldEnum[]
+  }
+
+  /**
+   * EventSpace findFirstOrThrow
+   */
+  export type EventSpaceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * Filter, which EventSpace to fetch.
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventSpaces to fetch.
+     */
+    orderBy?: EventSpaceOrderByWithRelationInput | EventSpaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EventSpaces.
+     */
+    cursor?: EventSpaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventSpaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventSpaces.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EventSpaces.
+     */
+    distinct?: EventSpaceScalarFieldEnum | EventSpaceScalarFieldEnum[]
+  }
+
+  /**
+   * EventSpace findMany
+   */
+  export type EventSpaceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * Filter, which EventSpaces to fetch.
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventSpaces to fetch.
+     */
+    orderBy?: EventSpaceOrderByWithRelationInput | EventSpaceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EventSpaces.
+     */
+    cursor?: EventSpaceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventSpaces from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventSpaces.
+     */
+    skip?: number
+    distinct?: EventSpaceScalarFieldEnum | EventSpaceScalarFieldEnum[]
+  }
+
+  /**
+   * EventSpace create
+   */
+  export type EventSpaceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EventSpace.
+     */
+    data: XOR<EventSpaceCreateInput, EventSpaceUncheckedCreateInput>
+  }
+
+  /**
+   * EventSpace createMany
+   */
+  export type EventSpaceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EventSpaces.
+     */
+    data: EventSpaceCreateManyInput | EventSpaceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EventSpace createManyAndReturn
+   */
+  export type EventSpaceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * The data used to create many EventSpaces.
+     */
+    data: EventSpaceCreateManyInput | EventSpaceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EventSpace update
+   */
+  export type EventSpaceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EventSpace.
+     */
+    data: XOR<EventSpaceUpdateInput, EventSpaceUncheckedUpdateInput>
+    /**
+     * Choose, which EventSpace to update.
+     */
+    where: EventSpaceWhereUniqueInput
+  }
+
+  /**
+   * EventSpace updateMany
+   */
+  export type EventSpaceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EventSpaces.
+     */
+    data: XOR<EventSpaceUpdateManyMutationInput, EventSpaceUncheckedUpdateManyInput>
+    /**
+     * Filter which EventSpaces to update
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * Limit how many EventSpaces to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EventSpace updateManyAndReturn
+   */
+  export type EventSpaceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * The data used to update EventSpaces.
+     */
+    data: XOR<EventSpaceUpdateManyMutationInput, EventSpaceUncheckedUpdateManyInput>
+    /**
+     * Filter which EventSpaces to update
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * Limit how many EventSpaces to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EventSpace upsert
+   */
+  export type EventSpaceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EventSpace to update in case it exists.
+     */
+    where: EventSpaceWhereUniqueInput
+    /**
+     * In case the EventSpace found by the `where` argument doesn't exist, create a new EventSpace with this data.
+     */
+    create: XOR<EventSpaceCreateInput, EventSpaceUncheckedCreateInput>
+    /**
+     * In case the EventSpace was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EventSpaceUpdateInput, EventSpaceUncheckedUpdateInput>
+  }
+
+  /**
+   * EventSpace delete
+   */
+  export type EventSpaceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
+    /**
+     * Filter which EventSpace to delete.
+     */
+    where: EventSpaceWhereUniqueInput
+  }
+
+  /**
+   * EventSpace deleteMany
+   */
+  export type EventSpaceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EventSpaces to delete
+     */
+    where?: EventSpaceWhereInput
+    /**
+     * Limit how many EventSpaces to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EventSpace.reviews
+   */
+  export type EventSpace$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * EventSpace without action
+   */
+  export type EventSpaceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventSpace
+     */
+    select?: EventSpaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventSpace
+     */
+    omit?: EventSpaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventSpaceInclude<ExtArgs> | null
   }
 
 
@@ -13114,6 +14599,7 @@ export namespace Prisma {
     gymId: 'gymId',
     parkingId: 'parkingId',
     pgId: 'pgId',
+    eventSpaceId: 'eventSpaceId',
     rating: 'rating',
     comment: 'comment',
     createdAt: 'createdAt',
@@ -13121,6 +14607,33 @@ export namespace Prisma {
   };
 
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+  export const EventSpaceScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    subCategory: 'subCategory',
+    type: 'type',
+    propertyDetails: 'propertyDetails',
+    pricing: 'pricing',
+    amenities: 'amenities',
+    facilities: 'facilities',
+    availableSpaces: 'availableSpaces',
+    bookingDetails: 'bookingDetails',
+    additionalServices: 'additionalServices',
+    rules: 'rules',
+    nearbyPlaces: 'nearbyPlaces',
+    availabilityStatus: 'availabilityStatus',
+    ageOfProperty: 'ageOfProperty',
+    description: 'description',
+    images: 'images',
+    videos: 'videos',
+    isDeleted: 'isDeleted',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EventSpaceScalarFieldEnum = (typeof EventSpaceScalarFieldEnum)[keyof typeof EventSpaceScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13280,6 +14793,7 @@ export namespace Prisma {
     parkings?: ParkingListRelationFilter
     payingGuests?: PayingGuestsListRelationFilter
     reviews?: ReviewListRelationFilter
+    eventSpaces?: EventSpaceListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -13303,6 +14817,7 @@ export namespace Prisma {
     parkings?: ParkingOrderByRelationAggregateInput
     payingGuests?: PayingGuestsOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
+    eventSpaces?: EventSpaceOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13329,6 +14844,7 @@ export namespace Prisma {
     parkings?: ParkingListRelationFilter
     payingGuests?: PayingGuestsListRelationFilter
     reviews?: ReviewListRelationFilter
+    eventSpaces?: EventSpaceListRelationFilter
   }, "id" | "mobile">
 
   export type UserOrderByWithAggregationInput = {
@@ -14159,6 +15675,7 @@ export namespace Prisma {
     gymId?: StringNullableFilter<"Review"> | string | null
     parkingId?: StringNullableFilter<"Review"> | string | null
     pgId?: StringNullableFilter<"Review"> | string | null
+    eventSpaceId?: StringNullableFilter<"Review"> | string | null
     rating?: IntNullableFilter<"Review"> | number | null
     comment?: StringNullableFilter<"Review"> | string | null
     createdAt?: DateTimeFilter<"Review"> | Date | string
@@ -14167,6 +15684,7 @@ export namespace Prisma {
     gym?: XOR<GymNullableScalarRelationFilter, GymWhereInput> | null
     parking?: XOR<ParkingNullableScalarRelationFilter, ParkingWhereInput> | null
     pg?: XOR<PayingGuestsNullableScalarRelationFilter, PayingGuestsWhereInput> | null
+    eventSpace?: XOR<EventSpaceNullableScalarRelationFilter, EventSpaceWhereInput> | null
   }
 
   export type ReviewOrderByWithRelationInput = {
@@ -14175,6 +15693,7 @@ export namespace Prisma {
     gymId?: SortOrderInput | SortOrder
     parkingId?: SortOrderInput | SortOrder
     pgId?: SortOrderInput | SortOrder
+    eventSpaceId?: SortOrderInput | SortOrder
     rating?: SortOrderInput | SortOrder
     comment?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -14183,6 +15702,7 @@ export namespace Prisma {
     gym?: GymOrderByWithRelationInput
     parking?: ParkingOrderByWithRelationInput
     pg?: PayingGuestsOrderByWithRelationInput
+    eventSpace?: EventSpaceOrderByWithRelationInput
   }
 
   export type ReviewWhereUniqueInput = Prisma.AtLeast<{
@@ -14194,6 +15714,7 @@ export namespace Prisma {
     gymId?: StringNullableFilter<"Review"> | string | null
     parkingId?: StringNullableFilter<"Review"> | string | null
     pgId?: StringNullableFilter<"Review"> | string | null
+    eventSpaceId?: StringNullableFilter<"Review"> | string | null
     rating?: IntNullableFilter<"Review"> | number | null
     comment?: StringNullableFilter<"Review"> | string | null
     createdAt?: DateTimeFilter<"Review"> | Date | string
@@ -14202,6 +15723,7 @@ export namespace Prisma {
     gym?: XOR<GymNullableScalarRelationFilter, GymWhereInput> | null
     parking?: XOR<ParkingNullableScalarRelationFilter, ParkingWhereInput> | null
     pg?: XOR<PayingGuestsNullableScalarRelationFilter, PayingGuestsWhereInput> | null
+    eventSpace?: XOR<EventSpaceNullableScalarRelationFilter, EventSpaceWhereInput> | null
   }, "id">
 
   export type ReviewOrderByWithAggregationInput = {
@@ -14210,6 +15732,7 @@ export namespace Prisma {
     gymId?: SortOrderInput | SortOrder
     parkingId?: SortOrderInput | SortOrder
     pgId?: SortOrderInput | SortOrder
+    eventSpaceId?: SortOrderInput | SortOrder
     rating?: SortOrderInput | SortOrder
     comment?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -14230,10 +15753,151 @@ export namespace Prisma {
     gymId?: StringNullableWithAggregatesFilter<"Review"> | string | null
     parkingId?: StringNullableWithAggregatesFilter<"Review"> | string | null
     pgId?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    eventSpaceId?: StringNullableWithAggregatesFilter<"Review"> | string | null
     rating?: IntNullableWithAggregatesFilter<"Review"> | number | null
     comment?: StringNullableWithAggregatesFilter<"Review"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+  }
+
+  export type EventSpaceWhereInput = {
+    AND?: EventSpaceWhereInput | EventSpaceWhereInput[]
+    OR?: EventSpaceWhereInput[]
+    NOT?: EventSpaceWhereInput | EventSpaceWhereInput[]
+    id?: StringFilter<"EventSpace"> | string
+    userId?: StringFilter<"EventSpace"> | string
+    subCategory?: StringNullableFilter<"EventSpace"> | string | null
+    type?: StringNullableFilter<"EventSpace"> | string | null
+    propertyDetails?: JsonNullableFilter<"EventSpace">
+    pricing?: JsonNullableFilter<"EventSpace">
+    amenities?: JsonNullableFilter<"EventSpace">
+    facilities?: JsonNullableFilter<"EventSpace">
+    availableSpaces?: JsonNullableFilter<"EventSpace">
+    bookingDetails?: JsonNullableFilter<"EventSpace">
+    additionalServices?: JsonNullableFilter<"EventSpace">
+    rules?: JsonNullableFilter<"EventSpace">
+    nearbyPlaces?: JsonNullableFilter<"EventSpace">
+    availabilityStatus?: StringNullableFilter<"EventSpace"> | string | null
+    ageOfProperty?: IntNullableFilter<"EventSpace"> | number | null
+    description?: StringNullableFilter<"EventSpace"> | string | null
+    images?: StringNullableListFilter<"EventSpace">
+    videos?: StringNullableListFilter<"EventSpace">
+    isDeleted?: BoolFilter<"EventSpace"> | boolean
+    createdAt?: DateTimeFilter<"EventSpace"> | Date | string
+    updatedAt?: DateTimeFilter<"EventSpace"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
+  }
+
+  export type EventSpaceOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    propertyDetails?: SortOrderInput | SortOrder
+    pricing?: SortOrderInput | SortOrder
+    amenities?: SortOrderInput | SortOrder
+    facilities?: SortOrderInput | SortOrder
+    availableSpaces?: SortOrderInput | SortOrder
+    bookingDetails?: SortOrderInput | SortOrder
+    additionalServices?: SortOrderInput | SortOrder
+    rules?: SortOrderInput | SortOrder
+    nearbyPlaces?: SortOrderInput | SortOrder
+    availabilityStatus?: SortOrderInput | SortOrder
+    ageOfProperty?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    images?: SortOrder
+    videos?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    reviews?: ReviewOrderByRelationAggregateInput
+  }
+
+  export type EventSpaceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EventSpaceWhereInput | EventSpaceWhereInput[]
+    OR?: EventSpaceWhereInput[]
+    NOT?: EventSpaceWhereInput | EventSpaceWhereInput[]
+    userId?: StringFilter<"EventSpace"> | string
+    subCategory?: StringNullableFilter<"EventSpace"> | string | null
+    type?: StringNullableFilter<"EventSpace"> | string | null
+    propertyDetails?: JsonNullableFilter<"EventSpace">
+    pricing?: JsonNullableFilter<"EventSpace">
+    amenities?: JsonNullableFilter<"EventSpace">
+    facilities?: JsonNullableFilter<"EventSpace">
+    availableSpaces?: JsonNullableFilter<"EventSpace">
+    bookingDetails?: JsonNullableFilter<"EventSpace">
+    additionalServices?: JsonNullableFilter<"EventSpace">
+    rules?: JsonNullableFilter<"EventSpace">
+    nearbyPlaces?: JsonNullableFilter<"EventSpace">
+    availabilityStatus?: StringNullableFilter<"EventSpace"> | string | null
+    ageOfProperty?: IntNullableFilter<"EventSpace"> | number | null
+    description?: StringNullableFilter<"EventSpace"> | string | null
+    images?: StringNullableListFilter<"EventSpace">
+    videos?: StringNullableListFilter<"EventSpace">
+    isDeleted?: BoolFilter<"EventSpace"> | boolean
+    createdAt?: DateTimeFilter<"EventSpace"> | Date | string
+    updatedAt?: DateTimeFilter<"EventSpace"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    reviews?: ReviewListRelationFilter
+  }, "id">
+
+  export type EventSpaceOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrderInput | SortOrder
+    type?: SortOrderInput | SortOrder
+    propertyDetails?: SortOrderInput | SortOrder
+    pricing?: SortOrderInput | SortOrder
+    amenities?: SortOrderInput | SortOrder
+    facilities?: SortOrderInput | SortOrder
+    availableSpaces?: SortOrderInput | SortOrder
+    bookingDetails?: SortOrderInput | SortOrder
+    additionalServices?: SortOrderInput | SortOrder
+    rules?: SortOrderInput | SortOrder
+    nearbyPlaces?: SortOrderInput | SortOrder
+    availabilityStatus?: SortOrderInput | SortOrder
+    ageOfProperty?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    images?: SortOrder
+    videos?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EventSpaceCountOrderByAggregateInput
+    _avg?: EventSpaceAvgOrderByAggregateInput
+    _max?: EventSpaceMaxOrderByAggregateInput
+    _min?: EventSpaceMinOrderByAggregateInput
+    _sum?: EventSpaceSumOrderByAggregateInput
+  }
+
+  export type EventSpaceScalarWhereWithAggregatesInput = {
+    AND?: EventSpaceScalarWhereWithAggregatesInput | EventSpaceScalarWhereWithAggregatesInput[]
+    OR?: EventSpaceScalarWhereWithAggregatesInput[]
+    NOT?: EventSpaceScalarWhereWithAggregatesInput | EventSpaceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EventSpace"> | string
+    userId?: StringWithAggregatesFilter<"EventSpace"> | string
+    subCategory?: StringNullableWithAggregatesFilter<"EventSpace"> | string | null
+    type?: StringNullableWithAggregatesFilter<"EventSpace"> | string | null
+    propertyDetails?: JsonNullableWithAggregatesFilter<"EventSpace">
+    pricing?: JsonNullableWithAggregatesFilter<"EventSpace">
+    amenities?: JsonNullableWithAggregatesFilter<"EventSpace">
+    facilities?: JsonNullableWithAggregatesFilter<"EventSpace">
+    availableSpaces?: JsonNullableWithAggregatesFilter<"EventSpace">
+    bookingDetails?: JsonNullableWithAggregatesFilter<"EventSpace">
+    additionalServices?: JsonNullableWithAggregatesFilter<"EventSpace">
+    rules?: JsonNullableWithAggregatesFilter<"EventSpace">
+    nearbyPlaces?: JsonNullableWithAggregatesFilter<"EventSpace">
+    availabilityStatus?: StringNullableWithAggregatesFilter<"EventSpace"> | string | null
+    ageOfProperty?: IntNullableWithAggregatesFilter<"EventSpace"> | number | null
+    description?: StringNullableWithAggregatesFilter<"EventSpace"> | string | null
+    images?: StringNullableListFilter<"EventSpace">
+    videos?: StringNullableListFilter<"EventSpace">
+    isDeleted?: BoolWithAggregatesFilter<"EventSpace"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"EventSpace"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"EventSpace"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -14257,6 +15921,7 @@ export namespace Prisma {
     parkings?: ParkingCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14280,6 +15945,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -14303,6 +15969,7 @@ export namespace Prisma {
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14326,6 +15993,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -15301,6 +16969,7 @@ export namespace Prisma {
     gym?: GymCreateNestedOneWithoutReviewsInput
     parking?: ParkingCreateNestedOneWithoutReviewsInput
     pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+    eventSpace?: EventSpaceCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateInput = {
@@ -15309,6 +16978,7 @@ export namespace Prisma {
     gymId?: string | null
     parkingId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -15325,6 +16995,7 @@ export namespace Prisma {
     gym?: GymUpdateOneWithoutReviewsNestedInput
     parking?: ParkingUpdateOneWithoutReviewsNestedInput
     pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+    eventSpace?: EventSpaceUpdateOneWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateInput = {
@@ -15333,6 +17004,7 @@ export namespace Prisma {
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15345,6 +17017,7 @@ export namespace Prisma {
     gymId?: string | null
     parkingId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -15365,8 +17038,180 @@ export namespace Prisma {
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventSpaceCreateInput = {
+    id?: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutEventSpacesInput
+    reviews?: ReviewCreateNestedManyWithoutEventSpaceInput
+  }
+
+  export type EventSpaceUncheckedCreateInput = {
+    id?: string
+    userId: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutEventSpaceInput
+  }
+
+  export type EventSpaceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutEventSpacesNestedInput
+    reviews?: ReviewUpdateManyWithoutEventSpaceNestedInput
+  }
+
+  export type EventSpaceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutEventSpaceNestedInput
+  }
+
+  export type EventSpaceCreateManyInput = {
+    id?: string
+    userId: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventSpaceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventSpaceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15470,6 +17315,12 @@ export namespace Prisma {
     none?: ReviewWhereInput
   }
 
+  export type EventSpaceListRelationFilter = {
+    every?: EventSpaceWhereInput
+    some?: EventSpaceWhereInput
+    none?: EventSpaceWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -15500,6 +17351,10 @@ export namespace Prisma {
   }
 
   export type ReviewOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EventSpaceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16244,12 +18099,18 @@ export namespace Prisma {
     isNot?: PayingGuestsWhereInput | null
   }
 
+  export type EventSpaceNullableScalarRelationFilter = {
+    is?: EventSpaceWhereInput | null
+    isNot?: EventSpaceWhereInput | null
+  }
+
   export type ReviewCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     gymId?: SortOrder
     parkingId?: SortOrder
     pgId?: SortOrder
+    eventSpaceId?: SortOrder
     rating?: SortOrder
     comment?: SortOrder
     createdAt?: SortOrder
@@ -16266,6 +18127,7 @@ export namespace Prisma {
     gymId?: SortOrder
     parkingId?: SortOrder
     pgId?: SortOrder
+    eventSpaceId?: SortOrder
     rating?: SortOrder
     comment?: SortOrder
     createdAt?: SortOrder
@@ -16278,6 +18140,7 @@ export namespace Prisma {
     gymId?: SortOrder
     parkingId?: SortOrder
     pgId?: SortOrder
+    eventSpaceId?: SortOrder
     rating?: SortOrder
     comment?: SortOrder
     createdAt?: SortOrder
@@ -16286,6 +18149,64 @@ export namespace Prisma {
 
   export type ReviewSumOrderByAggregateInput = {
     rating?: SortOrder
+  }
+
+  export type EventSpaceCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrder
+    type?: SortOrder
+    propertyDetails?: SortOrder
+    pricing?: SortOrder
+    amenities?: SortOrder
+    facilities?: SortOrder
+    availableSpaces?: SortOrder
+    bookingDetails?: SortOrder
+    additionalServices?: SortOrder
+    rules?: SortOrder
+    nearbyPlaces?: SortOrder
+    availabilityStatus?: SortOrder
+    ageOfProperty?: SortOrder
+    description?: SortOrder
+    images?: SortOrder
+    videos?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventSpaceAvgOrderByAggregateInput = {
+    ageOfProperty?: SortOrder
+  }
+
+  export type EventSpaceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrder
+    type?: SortOrder
+    availabilityStatus?: SortOrder
+    ageOfProperty?: SortOrder
+    description?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventSpaceMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subCategory?: SortOrder
+    type?: SortOrder
+    availabilityStatus?: SortOrder
+    ageOfProperty?: SortOrder
+    description?: SortOrder
+    isDeleted?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventSpaceSumOrderByAggregateInput = {
+    ageOfProperty?: SortOrder
   }
 
   export type BlogCreateNestedManyWithoutUserInput = {
@@ -16337,6 +18258,13 @@ export namespace Prisma {
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
+  export type EventSpaceCreateNestedManyWithoutUserInput = {
+    create?: XOR<EventSpaceCreateWithoutUserInput, EventSpaceUncheckedCreateWithoutUserInput> | EventSpaceCreateWithoutUserInput[] | EventSpaceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventSpaceCreateOrConnectWithoutUserInput | EventSpaceCreateOrConnectWithoutUserInput[]
+    createMany?: EventSpaceCreateManyUserInputEnvelope
+    connect?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+  }
+
   export type BlogUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<BlogCreateWithoutUserInput, BlogUncheckedCreateWithoutUserInput> | BlogCreateWithoutUserInput[] | BlogUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BlogCreateOrConnectWithoutUserInput | BlogCreateOrConnectWithoutUserInput[]
@@ -16384,6 +18312,13 @@ export namespace Prisma {
     connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
     createMany?: ReviewCreateManyUserInputEnvelope
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type EventSpaceUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<EventSpaceCreateWithoutUserInput, EventSpaceUncheckedCreateWithoutUserInput> | EventSpaceCreateWithoutUserInput[] | EventSpaceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventSpaceCreateOrConnectWithoutUserInput | EventSpaceCreateOrConnectWithoutUserInput[]
+    createMany?: EventSpaceCreateManyUserInputEnvelope
+    connect?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -16508,6 +18443,20 @@ export namespace Prisma {
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
+  export type EventSpaceUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EventSpaceCreateWithoutUserInput, EventSpaceUncheckedCreateWithoutUserInput> | EventSpaceCreateWithoutUserInput[] | EventSpaceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventSpaceCreateOrConnectWithoutUserInput | EventSpaceCreateOrConnectWithoutUserInput[]
+    upsert?: EventSpaceUpsertWithWhereUniqueWithoutUserInput | EventSpaceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EventSpaceCreateManyUserInputEnvelope
+    set?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    disconnect?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    delete?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    connect?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    update?: EventSpaceUpdateWithWhereUniqueWithoutUserInput | EventSpaceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EventSpaceUpdateManyWithWhereWithoutUserInput | EventSpaceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EventSpaceScalarWhereInput | EventSpaceScalarWhereInput[]
+  }
+
   export type BlogUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<BlogCreateWithoutUserInput, BlogUncheckedCreateWithoutUserInput> | BlogCreateWithoutUserInput[] | BlogUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BlogCreateOrConnectWithoutUserInput | BlogCreateOrConnectWithoutUserInput[]
@@ -16604,6 +18553,20 @@ export namespace Prisma {
     update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type EventSpaceUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EventSpaceCreateWithoutUserInput, EventSpaceUncheckedCreateWithoutUserInput> | EventSpaceCreateWithoutUserInput[] | EventSpaceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EventSpaceCreateOrConnectWithoutUserInput | EventSpaceCreateOrConnectWithoutUserInput[]
+    upsert?: EventSpaceUpsertWithWhereUniqueWithoutUserInput | EventSpaceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EventSpaceCreateManyUserInputEnvelope
+    set?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    disconnect?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    delete?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    connect?: EventSpaceWhereUniqueInput | EventSpaceWhereUniqueInput[]
+    update?: EventSpaceUpdateWithWhereUniqueWithoutUserInput | EventSpaceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EventSpaceUpdateManyWithWhereWithoutUserInput | EventSpaceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EventSpaceScalarWhereInput | EventSpaceScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -17142,6 +19105,12 @@ export namespace Prisma {
     connect?: PayingGuestsWhereUniqueInput
   }
 
+  export type EventSpaceCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<EventSpaceCreateWithoutReviewsInput, EventSpaceUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: EventSpaceCreateOrConnectWithoutReviewsInput
+    connect?: EventSpaceWhereUniqueInput
+  }
+
   export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
     create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
@@ -17178,6 +19147,90 @@ export namespace Prisma {
     delete?: PayingGuestsWhereInput | boolean
     connect?: PayingGuestsWhereUniqueInput
     update?: XOR<XOR<PayingGuestsUpdateToOneWithWhereWithoutReviewsInput, PayingGuestsUpdateWithoutReviewsInput>, PayingGuestsUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type EventSpaceUpdateOneWithoutReviewsNestedInput = {
+    create?: XOR<EventSpaceCreateWithoutReviewsInput, EventSpaceUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: EventSpaceCreateOrConnectWithoutReviewsInput
+    upsert?: EventSpaceUpsertWithoutReviewsInput
+    disconnect?: EventSpaceWhereInput | boolean
+    delete?: EventSpaceWhereInput | boolean
+    connect?: EventSpaceWhereUniqueInput
+    update?: XOR<XOR<EventSpaceUpdateToOneWithWhereWithoutReviewsInput, EventSpaceUpdateWithoutReviewsInput>, EventSpaceUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type EventSpaceCreateimagesInput = {
+    set: string[]
+  }
+
+  export type EventSpaceCreatevideosInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutEventSpacesInput = {
+    create?: XOR<UserCreateWithoutEventSpacesInput, UserUncheckedCreateWithoutEventSpacesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEventSpacesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ReviewCreateNestedManyWithoutEventSpaceInput = {
+    create?: XOR<ReviewCreateWithoutEventSpaceInput, ReviewUncheckedCreateWithoutEventSpaceInput> | ReviewCreateWithoutEventSpaceInput[] | ReviewUncheckedCreateWithoutEventSpaceInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutEventSpaceInput | ReviewCreateOrConnectWithoutEventSpaceInput[]
+    createMany?: ReviewCreateManyEventSpaceInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutEventSpaceInput = {
+    create?: XOR<ReviewCreateWithoutEventSpaceInput, ReviewUncheckedCreateWithoutEventSpaceInput> | ReviewCreateWithoutEventSpaceInput[] | ReviewUncheckedCreateWithoutEventSpaceInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutEventSpaceInput | ReviewCreateOrConnectWithoutEventSpaceInput[]
+    createMany?: ReviewCreateManyEventSpaceInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type EventSpaceUpdateimagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type EventSpaceUpdatevideosInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutEventSpacesNestedInput = {
+    create?: XOR<UserCreateWithoutEventSpacesInput, UserUncheckedCreateWithoutEventSpacesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEventSpacesInput
+    upsert?: UserUpsertWithoutEventSpacesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEventSpacesInput, UserUpdateWithoutEventSpacesInput>, UserUncheckedUpdateWithoutEventSpacesInput>
+  }
+
+  export type ReviewUpdateManyWithoutEventSpaceNestedInput = {
+    create?: XOR<ReviewCreateWithoutEventSpaceInput, ReviewUncheckedCreateWithoutEventSpaceInput> | ReviewCreateWithoutEventSpaceInput[] | ReviewUncheckedCreateWithoutEventSpaceInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutEventSpaceInput | ReviewCreateOrConnectWithoutEventSpaceInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutEventSpaceInput | ReviewUpsertWithWhereUniqueWithoutEventSpaceInput[]
+    createMany?: ReviewCreateManyEventSpaceInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutEventSpaceInput | ReviewUpdateWithWhereUniqueWithoutEventSpaceInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutEventSpaceInput | ReviewUpdateManyWithWhereWithoutEventSpaceInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutEventSpaceNestedInput = {
+    create?: XOR<ReviewCreateWithoutEventSpaceInput, ReviewUncheckedCreateWithoutEventSpaceInput> | ReviewCreateWithoutEventSpaceInput[] | ReviewUncheckedCreateWithoutEventSpaceInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutEventSpaceInput | ReviewCreateOrConnectWithoutEventSpaceInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutEventSpaceInput | ReviewUpsertWithWhereUniqueWithoutEventSpaceInput[]
+    createMany?: ReviewCreateManyEventSpaceInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutEventSpaceInput | ReviewUpdateWithWhereUniqueWithoutEventSpaceInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutEventSpaceInput | ReviewUpdateManyWithWhereWithoutEventSpaceInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -17756,6 +19809,7 @@ export namespace Prisma {
     gym?: GymCreateNestedOneWithoutReviewsInput
     parking?: ParkingCreateNestedOneWithoutReviewsInput
     pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+    eventSpace?: EventSpaceCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateWithoutUserInput = {
@@ -17763,6 +19817,7 @@ export namespace Prisma {
     gymId?: string | null
     parkingId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -17776,6 +19831,64 @@ export namespace Prisma {
 
   export type ReviewCreateManyUserInputEnvelope = {
     data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EventSpaceCreateWithoutUserInput = {
+    id?: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewCreateNestedManyWithoutEventSpaceInput
+  }
+
+  export type EventSpaceUncheckedCreateWithoutUserInput = {
+    id?: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutEventSpaceInput
+  }
+
+  export type EventSpaceCreateOrConnectWithoutUserInput = {
+    where: EventSpaceWhereUniqueInput
+    create: XOR<EventSpaceCreateWithoutUserInput, EventSpaceUncheckedCreateWithoutUserInput>
+  }
+
+  export type EventSpaceCreateManyUserInputEnvelope = {
+    data: EventSpaceCreateManyUserInput | EventSpaceCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -18033,10 +20146,54 @@ export namespace Prisma {
     gymId?: StringNullableFilter<"Review"> | string | null
     parkingId?: StringNullableFilter<"Review"> | string | null
     pgId?: StringNullableFilter<"Review"> | string | null
+    eventSpaceId?: StringNullableFilter<"Review"> | string | null
     rating?: IntNullableFilter<"Review"> | number | null
     comment?: StringNullableFilter<"Review"> | string | null
     createdAt?: DateTimeFilter<"Review"> | Date | string
     updatedAt?: DateTimeFilter<"Review"> | Date | string
+  }
+
+  export type EventSpaceUpsertWithWhereUniqueWithoutUserInput = {
+    where: EventSpaceWhereUniqueInput
+    update: XOR<EventSpaceUpdateWithoutUserInput, EventSpaceUncheckedUpdateWithoutUserInput>
+    create: XOR<EventSpaceCreateWithoutUserInput, EventSpaceUncheckedCreateWithoutUserInput>
+  }
+
+  export type EventSpaceUpdateWithWhereUniqueWithoutUserInput = {
+    where: EventSpaceWhereUniqueInput
+    data: XOR<EventSpaceUpdateWithoutUserInput, EventSpaceUncheckedUpdateWithoutUserInput>
+  }
+
+  export type EventSpaceUpdateManyWithWhereWithoutUserInput = {
+    where: EventSpaceScalarWhereInput
+    data: XOR<EventSpaceUpdateManyMutationInput, EventSpaceUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type EventSpaceScalarWhereInput = {
+    AND?: EventSpaceScalarWhereInput | EventSpaceScalarWhereInput[]
+    OR?: EventSpaceScalarWhereInput[]
+    NOT?: EventSpaceScalarWhereInput | EventSpaceScalarWhereInput[]
+    id?: StringFilter<"EventSpace"> | string
+    userId?: StringFilter<"EventSpace"> | string
+    subCategory?: StringNullableFilter<"EventSpace"> | string | null
+    type?: StringNullableFilter<"EventSpace"> | string | null
+    propertyDetails?: JsonNullableFilter<"EventSpace">
+    pricing?: JsonNullableFilter<"EventSpace">
+    amenities?: JsonNullableFilter<"EventSpace">
+    facilities?: JsonNullableFilter<"EventSpace">
+    availableSpaces?: JsonNullableFilter<"EventSpace">
+    bookingDetails?: JsonNullableFilter<"EventSpace">
+    additionalServices?: JsonNullableFilter<"EventSpace">
+    rules?: JsonNullableFilter<"EventSpace">
+    nearbyPlaces?: JsonNullableFilter<"EventSpace">
+    availabilityStatus?: StringNullableFilter<"EventSpace"> | string | null
+    ageOfProperty?: IntNullableFilter<"EventSpace"> | number | null
+    description?: StringNullableFilter<"EventSpace"> | string | null
+    images?: StringNullableListFilter<"EventSpace">
+    videos?: StringNullableListFilter<"EventSpace">
+    isDeleted?: BoolFilter<"EventSpace"> | boolean
+    createdAt?: DateTimeFilter<"EventSpace"> | Date | string
+    updatedAt?: DateTimeFilter<"EventSpace"> | Date | string
   }
 
   export type UserCreateWithoutBlogsInput = {
@@ -18059,6 +20216,7 @@ export namespace Prisma {
     parkings?: ParkingCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBlogsInput = {
@@ -18081,6 +20239,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBlogsInput = {
@@ -18169,6 +20328,7 @@ export namespace Prisma {
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBlogsInput = {
@@ -18191,6 +20351,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CommentUpsertWithWhereUniqueWithoutBlogInput = {
@@ -18245,6 +20406,7 @@ export namespace Prisma {
     parkings?: ParkingCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLikesInput = {
@@ -18267,6 +20429,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLikesInput = {
@@ -18344,6 +20507,7 @@ export namespace Prisma {
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLikesInput = {
@@ -18366,6 +20530,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BlogUpsertWithoutLikesInput = {
@@ -18433,6 +20598,7 @@ export namespace Prisma {
     parkings?: ParkingCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
@@ -18455,6 +20621,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -18532,6 +20699,7 @@ export namespace Prisma {
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -18554,6 +20722,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BlogUpsertWithoutCommentsInput = {
@@ -18621,6 +20790,7 @@ export namespace Prisma {
     parkings?: ParkingCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGymsInput = {
@@ -18643,6 +20813,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGymsInput = {
@@ -18659,6 +20830,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutReviewsInput
     parking?: ParkingCreateNestedOneWithoutReviewsInput
     pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+    eventSpace?: EventSpaceCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateWithoutGymInput = {
@@ -18666,6 +20838,7 @@ export namespace Prisma {
     userId: string
     parkingId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -18713,6 +20886,7 @@ export namespace Prisma {
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGymsInput = {
@@ -18735,6 +20909,7 @@ export namespace Prisma {
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReviewUpsertWithWhereUniqueWithoutGymInput = {
@@ -18773,6 +20948,7 @@ export namespace Prisma {
     gyms?: GymCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutParkingsInput = {
@@ -18795,6 +20971,7 @@ export namespace Prisma {
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutParkingsInput = {
@@ -18811,6 +20988,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutReviewsInput
     gym?: GymCreateNestedOneWithoutReviewsInput
     pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+    eventSpace?: EventSpaceCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateWithoutParkingInput = {
@@ -18818,6 +20996,7 @@ export namespace Prisma {
     userId: string
     gymId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -18865,6 +21044,7 @@ export namespace Prisma {
     gyms?: GymUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutParkingsInput = {
@@ -18887,6 +21067,7 @@ export namespace Prisma {
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReviewUpsertWithWhereUniqueWithoutParkingInput = {
@@ -18925,6 +21106,7 @@ export namespace Prisma {
     gyms?: GymCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPayingGuestsInput = {
@@ -18947,6 +21129,7 @@ export namespace Prisma {
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPayingGuestsInput = {
@@ -18963,6 +21146,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutReviewsInput
     gym?: GymCreateNestedOneWithoutReviewsInput
     parking?: ParkingCreateNestedOneWithoutReviewsInput
+    eventSpace?: EventSpaceCreateNestedOneWithoutReviewsInput
   }
 
   export type ReviewUncheckedCreateWithoutPgInput = {
@@ -18970,6 +21154,7 @@ export namespace Prisma {
     userId: string
     gymId?: string | null
     parkingId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -19017,6 +21202,7 @@ export namespace Prisma {
     gyms?: GymUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPayingGuestsInput = {
@@ -19039,6 +21225,7 @@ export namespace Prisma {
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ReviewUpsertWithWhereUniqueWithoutPgInput = {
@@ -19077,6 +21264,7 @@ export namespace Prisma {
     gyms?: GymCreateNestedManyWithoutUserInput
     parkings?: ParkingCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReviewsInput = {
@@ -19099,6 +21287,7 @@ export namespace Prisma {
     gyms?: GymUncheckedCreateNestedManyWithoutUserInput
     parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
     payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    eventSpaces?: EventSpaceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReviewsInput = {
@@ -19285,6 +21474,59 @@ export namespace Prisma {
     create: XOR<PayingGuestsCreateWithoutReviewsInput, PayingGuestsUncheckedCreateWithoutReviewsInput>
   }
 
+  export type EventSpaceCreateWithoutReviewsInput = {
+    id?: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutEventSpacesInput
+  }
+
+  export type EventSpaceUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    userId: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventSpaceCreateOrConnectWithoutReviewsInput = {
+    where: EventSpaceWhereUniqueInput
+    create: XOR<EventSpaceCreateWithoutReviewsInput, EventSpaceUncheckedCreateWithoutReviewsInput>
+  }
+
   export type UserUpsertWithoutReviewsInput = {
     update: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
     create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
@@ -19316,6 +21558,7 @@ export namespace Prisma {
     gyms?: GymUpdateManyWithoutUserNestedInput
     parkings?: ParkingUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -19338,6 +21581,7 @@ export namespace Prisma {
     gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
     parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
     payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    eventSpaces?: EventSpaceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type GymUpsertWithoutReviewsInput = {
@@ -19537,6 +21781,223 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type EventSpaceUpsertWithoutReviewsInput = {
+    update: XOR<EventSpaceUpdateWithoutReviewsInput, EventSpaceUncheckedUpdateWithoutReviewsInput>
+    create: XOR<EventSpaceCreateWithoutReviewsInput, EventSpaceUncheckedCreateWithoutReviewsInput>
+    where?: EventSpaceWhereInput
+  }
+
+  export type EventSpaceUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: EventSpaceWhereInput
+    data: XOR<EventSpaceUpdateWithoutReviewsInput, EventSpaceUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type EventSpaceUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutEventSpacesNestedInput
+  }
+
+  export type EventSpaceUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutEventSpacesInput = {
+    id: string
+    name?: string | null
+    isSubscribed?: boolean
+    created_at?: Date | string
+    whatsappMobile?: string
+    mobile?: string | null
+    role?: string
+    state?: string
+    city?: string
+    latitude?: number | null
+    longitude?: number | null
+    coverURL?: string | null
+    isDeleted?: boolean
+    blogs?: BlogCreateNestedManyWithoutUserInput
+    likes?: LikeCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutUserInput
+    gyms?: GymCreateNestedManyWithoutUserInput
+    parkings?: ParkingCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutEventSpacesInput = {
+    id: string
+    name?: string | null
+    isSubscribed?: boolean
+    created_at?: Date | string
+    whatsappMobile?: string
+    mobile?: string | null
+    role?: string
+    state?: string
+    city?: string
+    latitude?: number | null
+    longitude?: number | null
+    coverURL?: string | null
+    isDeleted?: boolean
+    blogs?: BlogUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikeUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutUserInput
+    gyms?: GymUncheckedCreateNestedManyWithoutUserInput
+    parkings?: ParkingUncheckedCreateNestedManyWithoutUserInput
+    payingGuests?: PayingGuestsUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutEventSpacesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutEventSpacesInput, UserUncheckedCreateWithoutEventSpacesInput>
+  }
+
+  export type ReviewCreateWithoutEventSpaceInput = {
+    id?: string
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    gym?: GymCreateNestedOneWithoutReviewsInput
+    parking?: ParkingCreateNestedOneWithoutReviewsInput
+    pg?: PayingGuestsCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutEventSpaceInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutEventSpaceInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutEventSpaceInput, ReviewUncheckedCreateWithoutEventSpaceInput>
+  }
+
+  export type ReviewCreateManyEventSpaceInputEnvelope = {
+    data: ReviewCreateManyEventSpaceInput | ReviewCreateManyEventSpaceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutEventSpacesInput = {
+    update: XOR<UserUpdateWithoutEventSpacesInput, UserUncheckedUpdateWithoutEventSpacesInput>
+    create: XOR<UserCreateWithoutEventSpacesInput, UserUncheckedCreateWithoutEventSpacesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutEventSpacesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutEventSpacesInput, UserUncheckedUpdateWithoutEventSpacesInput>
+  }
+
+  export type UserUpdateWithoutEventSpacesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    isSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    whatsappMobile?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    coverURL?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    blogs?: BlogUpdateManyWithoutUserNestedInput
+    likes?: LikeUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutUserNestedInput
+    gyms?: GymUpdateManyWithoutUserNestedInput
+    parkings?: ParkingUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutEventSpacesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    isSubscribed?: BoolFieldUpdateOperationsInput | boolean
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    whatsappMobile?: StringFieldUpdateOperationsInput | string
+    mobile?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    coverURL?: NullableStringFieldUpdateOperationsInput | string | null
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    blogs?: BlogUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikeUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutUserNestedInput
+    gyms?: GymUncheckedUpdateManyWithoutUserNestedInput
+    parkings?: ParkingUncheckedUpdateManyWithoutUserNestedInput
+    payingGuests?: PayingGuestsUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type ReviewUpsertWithWhereUniqueWithoutEventSpaceInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutEventSpaceInput, ReviewUncheckedUpdateWithoutEventSpaceInput>
+    create: XOR<ReviewCreateWithoutEventSpaceInput, ReviewUncheckedCreateWithoutEventSpaceInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutEventSpaceInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutEventSpaceInput, ReviewUncheckedUpdateWithoutEventSpaceInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutEventSpaceInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutEventSpaceInput>
+  }
+
   export type BlogCreateManyUserInput = {
     id?: string
     views?: number
@@ -19651,8 +22112,32 @@ export namespace Prisma {
     gymId?: string | null
     parkingId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventSpaceCreateManyUserInput = {
+    id?: string
+    subCategory?: string | null
+    type?: string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: string | null
+    ageOfProperty?: number | null
+    description?: string | null
+    images?: EventSpaceCreateimagesInput | string[]
+    videos?: EventSpaceCreatevideosInput | string[]
+    isDeleted?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -20003,6 +22488,7 @@ export namespace Prisma {
     gym?: GymUpdateOneWithoutReviewsNestedInput
     parking?: ParkingUpdateOneWithoutReviewsNestedInput
     pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+    eventSpace?: EventSpaceUpdateOneWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateWithoutUserInput = {
@@ -20010,6 +22496,7 @@ export namespace Prisma {
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20021,8 +22508,80 @@ export namespace Prisma {
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventSpaceUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUpdateManyWithoutEventSpaceNestedInput
+  }
+
+  export type EventSpaceUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutEventSpaceNestedInput
+  }
+
+  export type EventSpaceUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyDetails?: NullableJsonNullValueInput | InputJsonValue
+    pricing?: NullableJsonNullValueInput | InputJsonValue
+    amenities?: NullableJsonNullValueInput | InputJsonValue
+    facilities?: NullableJsonNullValueInput | InputJsonValue
+    availableSpaces?: NullableJsonNullValueInput | InputJsonValue
+    bookingDetails?: NullableJsonNullValueInput | InputJsonValue
+    additionalServices?: NullableJsonNullValueInput | InputJsonValue
+    rules?: NullableJsonNullValueInput | InputJsonValue
+    nearbyPlaces?: NullableJsonNullValueInput | InputJsonValue
+    availabilityStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    ageOfProperty?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: EventSpaceUpdateimagesInput | string[]
+    videos?: EventSpaceUpdatevideosInput | string[]
+    isDeleted?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -20092,6 +22651,7 @@ export namespace Prisma {
     userId: string
     parkingId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -20107,6 +22667,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
     parking?: ParkingUpdateOneWithoutReviewsNestedInput
     pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+    eventSpace?: EventSpaceUpdateOneWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateWithoutGymInput = {
@@ -20114,6 +22675,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20125,6 +22687,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20136,6 +22699,7 @@ export namespace Prisma {
     userId: string
     gymId?: string | null
     pgId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -20151,6 +22715,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
     gym?: GymUpdateOneWithoutReviewsNestedInput
     pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+    eventSpace?: EventSpaceUpdateOneWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateWithoutParkingInput = {
@@ -20158,6 +22723,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20169,6 +22735,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20180,6 +22747,7 @@ export namespace Prisma {
     userId: string
     gymId?: string | null
     parkingId?: string | null
+    eventSpaceId?: string | null
     rating?: number | null
     comment?: string | null
     createdAt?: Date | string
@@ -20195,6 +22763,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutReviewsNestedInput
     gym?: GymUpdateOneWithoutReviewsNestedInput
     parking?: ParkingUpdateOneWithoutReviewsNestedInput
+    eventSpace?: EventSpaceUpdateOneWithoutReviewsNestedInput
   }
 
   export type ReviewUncheckedUpdateWithoutPgInput = {
@@ -20202,6 +22771,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20213,6 +22783,55 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     gymId?: NullableStringFieldUpdateOperationsInput | string | null
     parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventSpaceId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyEventSpaceInput = {
+    id?: string
+    userId: string
+    gymId?: string | null
+    parkingId?: string | null
+    pgId?: string | null
+    rating?: number | null
+    comment?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ReviewUpdateWithoutEventSpaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    gym?: GymUpdateOneWithoutReviewsNestedInput
+    parking?: ParkingUpdateOneWithoutReviewsNestedInput
+    pg?: PayingGuestsUpdateOneWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutEventSpaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutEventSpaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    gymId?: NullableStringFieldUpdateOperationsInput | string | null
+    parkingId?: NullableStringFieldUpdateOperationsInput | string | null
+    pgId?: NullableStringFieldUpdateOperationsInput | string | null
     rating?: NullableIntFieldUpdateOperationsInput | number | null
     comment?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

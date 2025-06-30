@@ -28,6 +28,28 @@ class RedisCache {
         }
     }
 
+    async delPattern(pattern: string): Promise<void> {
+        try {
+            let cursor = '0';
+            do {
+                const reply = await redisClient.scan(cursor, {
+                    MATCH: pattern,
+                    COUNT: 100,
+                });
+
+                cursor = reply.cursor;
+
+                for (const key of reply.keys) {
+                    await redisClient.del(key);
+                    logger.info(`🔁 Redis DEL pattern match: ${key}`);
+                }
+            } while (cursor !== '0');
+        } catch (err) {
+            logger.error(`❌ Redis DEL PATTERN error [${pattern}]: ${(err as Error).message}`);
+        }
+    }
+
+
     async exists(key: string): Promise<boolean> {
         try {
             const result = await redisClient.exists(key);
