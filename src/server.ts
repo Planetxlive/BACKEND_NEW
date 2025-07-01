@@ -10,8 +10,16 @@ import cors from "cors";
 import client from "prom-client";
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
+import responseTime from "response-time";
+import { createLogger, transports } from "winston";
+import LokiTransport from "winston-loki";
 
 const options = {
+    transports: [
+        new LokiTransport({
+          host: "http://127.0.0.1:3100"
+        })
+      ],
     definition: {
       openapi: '3.0.0',
       info: { title: 'PlanetX API', version: '1.0.0' },
@@ -23,8 +31,30 @@ const options = {
 
 const collectDefaultMetrics = client.collectDefaultMetrics;
 collectDefaultMetrics();
+const reqResTime = new client.Histogram({
+    name: 'http_express_req_res_time',
+    help: 'Request and response time taken by the server',
+    labelNames: ['method', 'route', 'status'],
+    buckets: [1, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000],
+});
+const totalRequestCounter = new client.Counter({
+    name: 'total_requests_count',
+    help: 'Total number of requests made to the server',
+});
+
 
 const app = express();
+
+app.use(responseTime((req, res, time) => {
+    totalRequestCounter.inc();
+     reqResTime.labels({
+        method: req.method,
+        route: req.url,
+        status: res.statusCode,
+     }).observe(time);
+}));
+
+
 app.get("/metrics", async (req: Request, res: Response) => {
     res.setHeader("Content-Type", client.register.contentType);
     res.send(await client.register.metrics());
